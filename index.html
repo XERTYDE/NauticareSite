@@ -31,20 +31,35 @@
             padding: 1rem 0;
             text-align: center;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .header.scrolled {
             padding: 0.2rem 0;
+            justify-content: center;
+        }
+        .logo-container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .header.scrolled .logo-container {
+            height: 0;
+            margin: 0;
         }
         .logo {
             width: 300px;
             height: auto;
-            margin-bottom: 1rem;
             transition: all 0.3s ease;
+            transform-origin: center;
+            will-change: transform, opacity;
         }
         .header.scrolled .logo {
-            width: 0;
-            height: 0;
-            margin: 0;
+            transform: scale(0);
             opacity: 0;
             visibility: hidden;
         }
@@ -551,10 +566,12 @@
             padding: 0 2rem;
             gap: 2.5rem;
             position: relative;
-            transition: gap 0.3s ease;
+            transition: all 0.3s ease;
         }
         .header.scrolled .navbar {
             gap: 2rem;
+            margin: 0;
+            padding: 0.5rem 2rem;
         }
         .logo.premium-logo {
             display: flex;
@@ -584,6 +601,7 @@
             gap: 2.2rem;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
         .nav-links li {
             display: inline-block;
@@ -596,7 +614,7 @@
             letter-spacing: 1px;
             padding: 0.2rem 0.5rem;
             border-radius: 0.5rem;
-            transition: background 0.22s, color 0.22s, transform 0.22s;
+            transition: all 0.22s ease;
             position: relative;
             overflow: hidden;
         }
@@ -991,9 +1009,11 @@
 </head>
 <body>
     <header class="header glass-header">
-        <a href="/">
-            <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo">
-        </a>
+        <div class="logo-container">
+            <a href="/">
+                <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo">
+            </a>
+        </div>
         <nav class="navbar">
             <ul class="nav-links">
                 <li><a href="#">Accueil</a></li>
@@ -1413,18 +1433,46 @@
         // Script pour gérer le scroll et la navbar
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector('.header');
+            const logo = document.querySelector('.logo');
+            const logoContainer = document.querySelector('.logo-container');
             let lastScroll = 0;
+            const scrollThreshold = 50;
 
-            window.addEventListener('scroll', function() {
+            function updateHeader() {
                 const currentScroll = window.pageYOffset;
+                const scrollProgress = Math.min(currentScroll / scrollThreshold, 1);
 
-                if (currentScroll > 50) {
-                    header.classList.add('scrolled');
+                if (currentScroll > 0) {
+                    // Animer le logo et son conteneur
+                    logo.style.transform = `scale(${1 - scrollProgress})`;
+                    logo.style.opacity = 1 - scrollProgress;
+                    logoContainer.style.height = `${80 * (1 - scrollProgress)}px`;
+                    
+                    if (currentScroll > scrollThreshold) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
                 } else {
+                    logo.style.transform = 'scale(1)';
+                    logo.style.opacity = 1;
+                    logoContainer.style.height = '80px';
                     header.classList.remove('scrolled');
                 }
 
                 lastScroll = currentScroll;
+            }
+
+            // Utiliser requestAnimationFrame pour des animations plus fluides
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        updateHeader();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             });
         });
     </script>
