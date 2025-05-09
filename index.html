@@ -1087,6 +1087,148 @@
         .header.scrolled ~ .about-container {
             margin-top: 6rem;
         }
+
+        /* Styles pour le carousel 3D */
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            perspective: 1200px;
+            padding: 1.5rem 0;
+            height: 450px;
+            overflow: hidden;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-item.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .carousel-item-content {
+            position: relative;
+            width: 70%;
+            height: 70%;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            text-align: center;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.95);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            z-index: 2;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel-arrow.prev {
+            left: 2rem;
+        }
+        .carousel-arrow.next {
+            right: 2rem;
+        }
+        .carousel-item img {
+            width: 70px;
+            height: auto;
+            margin: 0 auto 0.5rem auto;
+            display: block;
+            transform: translateZ(15px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel-item h2 {
+            color: #ff6b00;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            transform: translateZ(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel-item p {
+            font-size: 0.75rem;
+            color: #333;
+            line-height: 1.2;
+            transform: translateZ(15px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel-dot.active {
+            background: #ff6b00;
+            transform: scale(1.2);
+        }
+        @media (max-width: 768px) {
+            .carousel {
+                height: 350px;
+            }
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+            }
+            .carousel-arrow svg {
+                width: 20px;
+                height: 20px;
+            }
+            .carousel-item-content {
+                padding: 1.5rem;
+            }
+            .carousel-item img {
+                width: 140px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1246,23 +1388,44 @@
                 </p>
             </div>
             
-            <div style="display: flex; flex-direction: column; gap: 3rem; max-width: 800px; margin: 0 auto;">
-                <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
-                    <img src="./features/img/p1.png" alt="Patch Cou" style="width: 160px; height: auto; margin: 0 auto 1.5rem auto; display: block;">
-                    <h2 style="color: #ff6b00; font-size: 1.4rem; margin-bottom: 1rem;">Patch Cou</h2>
-                    <p style="font-size: 1.1rem; color: #333; line-height: 1.5;">Idéal pour les irritations du cou, ce patch offre une protection optimale et un confort exceptionnel.</p>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <div class="carousel-item-content">
+                            <img src="./features/img/p1.png" alt="Patch Cou">
+                            <h2>Patch Cou</h2>
+                            <p>Idéal pour les irritations du cou, ce patch offre une protection optimale et un confort exceptionnel.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-item-content">
+                            <img src="./features/img/p2.png" alt="Patch Petit">
+                            <h2>Patch Petit</h2>
+                            <p>Parfait pour les petites zones d'irritation, ce patch discret assure une protection efficace.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-item-content">
+                            <img src="./features/img/p3.png" alt="Patch Articulation">
+                            <h2>Patch Articulation</h2>
+                            <p>Le Patch Articulation est spécialement conçu pour être placé derrière les articulations (genoux, coudes, entre-jambes) pour une protection optimale contre les frottements et les irritations.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
-                    <img src="./features/img/p2.png" alt="Patch Petit" style="width: 120px; height: auto; margin: 0 auto 1.5rem auto; display: block;">
-                    <h2 style="color: #ff6b00; font-size: 1.4rem; margin-bottom: 1rem;">Patch Petit</h2>
-                    <p style="font-size: 1.1rem; color: #333; line-height: 1.5;">Parfait pour les petites zones d'irritation, ce patch discret assure une protection efficace.</p>
-                </div>
-
-                <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
-                    <img src="./features/img/p3.png" alt="Patch Articulation" style="width: 200px; height: auto; margin: 0 auto 1.5rem auto; display: block;">
-                    <h2 style="color: #ff6b00; font-size: 1.4rem; margin-bottom: 1rem;">Patch Articulation</h2>
-                    <p style="font-size: 1.1rem; color: #333; line-height: 1.5;">Le Patch Articulation est spécialement conçu pour être placé derrière les articulations (genoux, coudes, entre-jambes) pour une protection optimale contre les frottements et les irritations.</p>
+                <button class="carousel-arrow prev" aria-label="Précédent">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="carousel-arrow next" aria-label="Suivant">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
                 </div>
             </div>
         </div>
@@ -1594,6 +1757,99 @@
 
             // Mettre à jour les liens actifs au chargement de la page
             updateActiveLinks();
+        });
+    </script>
+
+    <script>
+        // Script pour le carousel 3D
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const items = document.querySelectorAll('.carousel-item');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.querySelector('.carousel-arrow.prev');
+            const nextBtn = document.querySelector('.carousel-arrow.next');
+            let currentIndex = 0;
+            const totalItems = items.length;
+            const radius = 250;
+            const theta = (2 * Math.PI) / totalItems;
+
+            function updateCarousel() {
+                items.forEach((item, index) => {
+                    const angle = theta * (index - currentIndex);
+                    const x = radius * Math.sin(angle);
+                    const z = radius * Math.cos(angle);
+                    const opacity = Math.abs(angle) < Math.PI / 2 ? 1 : 0;
+                    const scale = Math.abs(angle) < Math.PI / 2 ? 1 : 0.3;
+
+                    item.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${-angle}rad) scale(${scale})`;
+                    item.style.opacity = opacity;
+                    item.classList.toggle('active', opacity === 1);
+                });
+
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            }
+
+            // Événements pour les boutons
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Événements pour les points de navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            // Défilement automatique avec un délai plus long
+            let autoSlide = setInterval(nextSlide, 8000); // Augmenté de 5000ms à 8000ms
+
+            // Pause du défilement automatique au survol
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlide);
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(nextSlide, 8000); // Même délai que ci-dessus
+            });
+
+            // Support du tactile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            carousel.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            carousel.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    nextSlide();
+                }
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    prevSlide();
+                }
+            }
+
+            // Initialisation
+            updateCarousel();
         });
     </script>
 </body>
