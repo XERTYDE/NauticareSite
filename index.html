@@ -120,7 +120,7 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
-            z-index: 0;
+            z-index: -1;
             filter: brightness(0.95) sepia(0.08);
         }
         .overlay-content {
@@ -868,13 +868,13 @@
         <nav class="navbar">
             <ul class="nav-links">
                 <li><a href="#">Accueil</a></li>
-                <li><a href="produit.html">Produits</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="#nos-patchs">Produits</a></li>
+                <li><a href="#about-us">A propos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <video class="video-bg" autoplay loop muted playsinline>
+    <video class="video-bg" autoplay loop muted playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; filter: brightness(0.95) sepia(0.08);">
         <source src="features/bg/bg1.mp4" type="video/mp4" id="bg-video-source">
         Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
@@ -999,6 +999,98 @@
             </div>
         </div>
     </main>
+    <div class="produit-container" id="nos-patchs" style="max-width: 950px; margin: 3rem auto 2rem auto; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 8px 32px rgba(255,107,0,0.10); padding: 2.5rem 2rem; flex: 1; position: relative; z-index: 1;">
+        <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem;">Nos Patchs</h1>
+        <div class="description-section" style="max-width: 800px; margin: 0 auto 3rem auto; text-align: center;">
+            <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 2rem;">
+                Nauticare est une marque dédiée aux sports nautiques, en particulier au surf, qui propose des patchs de protection cutanée réutilisables, unisexes et durables. Ces patchs ont pour mission de prévenir et protéger les zones du corps exposées aux frottements, irritations, et brûlures, fréquents lors des sessions de surf. Leur conception technique garantit une excellente tenue dans l'eau, même lors de sessions longues ou intenses, tout en respectant les mouvements naturels du corps.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 2rem;">
+                La mission de Nauticare est d'améliorer le confort des sportifs en leur offrant une solution pratique, durable et éco-conçue, pour une pratique plus agréable en harmonie avec leur corps. Les trois formes des patchs ont été conçues pour s'adapter aux différentes zones du corps, en particulier celles sujettes aux frottements et irritations. Chaque patch est pensé pour assurer une protection ciblée, tout en permettant de positionner les languettes de manière personnalisée, selon les besoins de chaque utilisateur. Les patchs peuvent être combinés de manière complémentaire pour recouvrir davantage de zone du corps, pour une protection sur mesure.
+            </p>
+            <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div class="feature-item" style="background: #fff; padding: 1rem; border-radius: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-size: 1rem; color: #ff6b00; font-weight: 600;">Lavable et réutilisable</p>
+                </div>
+                <div class="feature-item" style="background: #fff; padding: 1rem; border-radius: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-size: 1rem; color: #ff6b00; font-weight: 600;">Solution durable et économique</p>
+                </div>
+                <div class="feature-item" style="background: #fff; padding: 1rem; border-radius: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-size: 1rem; color: #ff6b00; font-weight: 600;">Hypoallergénique et dermophile</p>
+                </div>
+                <div class="feature-item" style="background: #fff; padding: 1rem; border-radius: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-size: 1rem; color: #ff6b00; font-weight: 600;">Patchs Biosourcés et Biodégradables</p>
+                </div>
+                <div class="feature-item" style="background: #fff; padding: 1rem; border-radius: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-size: 1rem; color: #ff6b00; font-weight: 600;">Résistant aux conditions environnementales</p>
+                </div>
+                <div class="feature-item" style="background: #fff; padding: 1rem; border-radius: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-size: 1rem; color: #ff6b00; font-weight: 600;">Permet à la peau de respirer</p>
+                </div>
+                <div class="feature-item" style="background: #fff; padding: 1rem; border-radius: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-size: 1rem; color: #ff6b00; font-weight: 600;">Se positionne sur des zones pileuses</p>
+                </div>
+                <div class="feature-item" style="background: #fff; padding: 1rem; border-radius: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <p style="margin: 0; font-size: 1rem; color: #ff6b00; font-weight: 600;">Glisse facilement sous la combinaison</p>
+                </div>
+            </div>
+        </div>
+        <div class="patch-list" style="display: flex; flex-direction: column; gap: 2.5rem; align-items: center; max-width: 600px; margin: 0 auto;">
+            <div class="patch-card" style="background: #fff; border-radius: 1.2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2rem 2.5rem; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s, transform 0.2s;">
+                <img src="features/img/p1.png" alt="Patch Cou" class="patch-img" style="width: 160px; margin-bottom: 1.5rem; border-radius: 1rem;">
+                <h2 class="patch-title" style="color: #ff6b00; font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;">Patch Cou</h2>
+                <p class="patch-desc" style="font-size: 1.1rem; color: #333; line-height: 1.5;">Idéal pour les irritations du cou, ce patch offre une protection optimale et un confort exceptionnel.</p>
+            </div>
+            <div class="patch-card" style="background: #fff; border-radius: 1.2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2rem 2.5rem; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s, transform 0.2s;">
+                <img src="features/img/p2.png" alt="Patch Petit" class="patch-img" style="width: 120px; margin-bottom: 1.5rem; border-radius: 1rem;">
+                <h2 class="patch-title" style="color: #ff6b00; font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;">Patch Petit</h2>
+                <p class="patch-desc" style="font-size: 1.1rem; color: #333; line-height: 1.5;">Parfait pour les petites zones d'irritation, ce patch discret assure une protection efficace.</p>
+            </div>
+            <div class="patch-card" style="background: #fff; border-radius: 1.2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2rem 2.5rem; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s, transform 0.2s;">
+                <img src="features/img/p3.png" alt="Patch Articulation" class="patch-img" style="width: 200px; margin-bottom: 1.5rem; border-radius: 1rem;">
+                <h2 class="patch-title" style="color: #ff6b00; font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;">Patch Articulation</h2>
+                <p class="patch-desc" style="font-size: 1.1rem; color: #333; line-height: 1.5;">Le Patch Articulation est spécialement conçu pour être placé derrière les articulations (genoux, coudes, entre-jambes) pour une protection optimale contre les frottements et les irritations.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-container" id="about-us" style="max-width: 900px; margin: 3rem auto; padding: 2.5rem; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 8px 32px rgba(255,107,0,0.10); position: relative; z-index: 1;">
+        <div class="section">
+            <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem;">Notre Équipe</h1>
+            <img src="features/img/team.jpg" alt="Notre équipe" class="team-img" style="width: 100%; max-width: 800px; height: auto; margin: 0 auto 2rem auto; display: block;">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
+                Chez Nauticare, nous sommes une équipe passionnée de surfeurs et d'entrepreneurs déterminés à améliorer l'expérience des sportifs nautiques. Notre mission est de créer des solutions innovantes et durables pour protéger la peau des sportifs tout en respectant l'environnement.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
+                Notre équipe combine expertise technique et passion pour le surf, ce qui nous permet de comprendre parfaitement les besoins des utilisateurs et de développer des produits qui répondent à leurs attentes.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: #ff6b00; font-size: 1.5rem; margin-bottom: 1.5rem;">Nos Valeurs</h2>
+            <ul class="values-list" style="list-style: none; padding: 0;">
+                <li class="value-item" style="background: #fff7f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(255,107,0,0.05);">
+                    <h3 style="color: #ff6b00; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">Innovation</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 0;">
+                        Nous développons constamment de nouvelles solutions pour améliorer la protection et le confort des sportifs.
+                    </p>
+                </li>
+                <li class="value-item" style="background: #fff7f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(255,107,0,0.05);">
+                    <h3 style="color: #ff6b00; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">Durabilité</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 0;">
+                        Nous nous engageons à créer des produits respectueux de l'environnement et durables.
+                    </p>
+                </li>
+                <li class="value-item" style="background: #fff7f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(255,107,0,0.05);">
+                    <h3 style="color: #ff6b00; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">Qualité</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 0;">
+                        Nous nous efforçons d'offrir des produits de la plus haute qualité pour garantir la satisfaction de nos clients.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-content">
             <div style="font-size:1.08rem;opacity:0.93;">&copy; 2024 Nauticare &mdash; Tous droits réservés</div>
@@ -1026,6 +1118,35 @@
     <script>
     // Liste locale des vidéos disponibles
     const videoList = ['bg1.mp4', 'bg2.mp4', 'bg3.mp4', 'bg4.mp4', 'bg5.mp4', 'bg6.mp4', 'bg7.mp4'];
+
+    // Fonction pour envoyer les données de clic au serveur
+    async function trackClick(packType) {
+        try {
+            const response = await fetch('/api/track-click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    packType: packType,
+                    timestamp: new Date().toISOString(),
+                    quantities: packType === 'demarrage' ? quantitiesDemarrage : quantitiesRecharge
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Erreur lors du suivi du clic');
+            }
+            
+            // Rediriger vers la page de paiement ou afficher un message
+            alert('Redirection vers la page de paiement...');
+            // window.location.href = '/paiement.html'; // Décommenter quand la page de paiement sera prête
+            
+        } catch (error) {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue. Veuillez réessayer.');
+        }
+    }
 
     // Charger une vidéo de fond aléatoire
     function loadRandomBackground() {
@@ -1117,15 +1238,15 @@
     }
 
     // Bouton de démarrage
-    document.getElementById('acheter-demarrage').onclick = async function() {
-        // Ton code ici si nécessaire
+    document.getElementById('acheter-demarrage').onclick = function() {
+        trackClick('demarrage');
     };
 
     // Bouton de recharge
-    document.getElementById('acheter-recharge').onclick = async function() {
-        // Ton code ici si nécessaire
+    document.getElementById('acheter-recharge').onclick = function() {
+        trackClick('recharge');
     };
-</script>
+    </script>
 
 </body>
 </html> 
