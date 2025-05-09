@@ -244,6 +244,12 @@
             font-size: 1.3rem;
             margin-bottom: 1rem;
         }
+        .pack-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8000;
+            margin: 1rem 0;
+        }
         .pack-img {
             height: 220px;
             margin-bottom: 1.5rem;
@@ -327,7 +333,7 @@
             right: 100%;
             bottom: -0.45em;
             height: 2.5px;
-            background: linear-gradient(90deg, #7fd8ff 0%, #003366 100%);
+            background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
             border-radius: 2px;
             opacity: 0;
             transition: opacity 0.22s, right 0.22s;
@@ -554,19 +560,19 @@
         <h1 style="text-align:center;margin-bottom:2.5rem;">Découvrez les packs Nauticare</h1>
         <div class="packs-container">
             <div class="pack">
-                <h2>Pack de démarrage</h2>
-                <img src="features/img/pack-demarrage.png" alt="Boîte de protection" class="pack-img">
-                <ul>
-                    <li>1 boîte de protection</li>
-                    <li>3 patchs anti irritation</li>
-                </ul>
+                <h2>Pack de Démarrage</h2>
+                <div class="pack-price">30€</div>
+                <img src="features/img/pack-demarrage.png" alt="Pack de Démarrage" class="pack-img">
+                <p>Commencez votre voyage vers une peau plus saine avec notre pack de démarrage complet.</p>
                 <div class="pack-button">
-                <button class="cta-btn" id="acheter-demarrage">Acheter le pack de démarrage</button>
+                    <button class="cta-btn" id="acheter-demarrage">Acheter le pack de démarrage</button>
                 </div>
             </div>
             <div class="pack">
-                <h2>Pack de recharge</h2>
-                <img src="features/img/recharge.png" alt="Patchs recharge" class="pack-img">
+                <h2>Pack de Recharge</h2>
+                <div class="pack-price">20€</div>
+                <img src="features/img/recharge.png" alt="Pack de Recharge" class="pack-img">
+                <p>Rechargez votre stock de patches pour continuer à prendre soin de votre peau.</p>
                 <div class="patch-selection">
                     <div class="patch-option">
                         <div class="patch-info">
