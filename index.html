@@ -19,6 +19,10 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        * {
+            font-family: 'Montserrat', Arial, sans-serif;
         }
         .header {
             position: fixed;
@@ -622,6 +626,35 @@
             position: relative;
             overflow: hidden;
         }
+        .nav-links a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -0.20em;
+            height: 2.5px;
+            background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
+            border-radius: 2px;
+            opacity: 0;
+            transition: all 0.22s ease;
+        }
+        .nav-links a:hover {
+            background: rgba(255,179,71,0.10);
+            transform: scale(1.07);
+        }
+        .nav-links a:hover::after {
+            opacity: 1;
+            right: 0;
+        }
+        .nav-links a:active {
+            background: rgba(255,179,71,0.10);
+            transform: scale(1.07);
+        }
+        .nav-links a:active::after {
+            opacity: 1;
+            right: 0;
+        }
         .login-icon {
             margin-left: 2rem;
             padding: 0.5rem;
@@ -641,27 +674,6 @@
             stroke: #fff;
             stroke-width: 2;
             fill: none;
-        }
-        .nav-links a::after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 100%;
-            bottom: -0.20em;
-            height: 2.5px;
-            background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
-            border-radius: 2px;
-            opacity: 0;
-            transition: opacity 0.22s, right 0.22s;
-        }
-        .nav-links a:hover, .nav-links a:focus {
-            background: rgba(255,179,71,0.10);
-            transform: scale(1.07);
-        }
-        .nav-links a:hover::after, .nav-links a:focus::after {
-            opacity: 1;
-            right: 0;
         }
         @media (max-width: 700px) {
             .navbar { 
@@ -1056,7 +1068,7 @@
         </div>
         <nav class="navbar">
             <ul class="nav-links">
-                <li><a href="#">Accueil</a></li>
+                <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#nos-patchs">Produits</a></li>
                 <li><a href="#about-us">A propos</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -1497,12 +1509,27 @@
             let lastScroll = 0;
             const scrollThreshold = 50;
 
+            // Fonction pour mettre à jour les liens actifs
+            function updateActiveLinks() {
+                const sections = document.querySelectorAll('section[id], main[id]');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    const link = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+                    
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        if (link) link.classList.add('active');
+                    }
+                });
+            }
+
             function updateHeader() {
                 const currentScroll = window.pageYOffset;
                 const scrollProgress = Math.min(currentScroll / scrollThreshold, 1);
 
                 if (currentScroll > 0) {
-                    // Animer le logo et son conteneur
                     logo.style.transform = `scale(${1 - scrollProgress})`;
                     logo.style.opacity = 1 - scrollProgress;
                     logoContainer.style.height = `${60 * (1 - scrollProgress)}px`;
@@ -1520,6 +1547,7 @@
                 }
 
                 lastScroll = currentScroll;
+                updateActiveLinks();
             }
 
             // Utiliser requestAnimationFrame pour des animations plus fluides
@@ -1533,6 +1561,9 @@
                     ticking = true;
                 }
             });
+
+            // Mettre à jour les liens actifs au chargement de la page
+            updateActiveLinks();
         });
     </script>
 </body>
