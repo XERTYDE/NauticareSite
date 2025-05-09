@@ -23,7 +23,7 @@
         .header {
             position: relative;
             z-index: 2;
-            background: #ff8000;
+            background: #C95126;
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
             padding: 2rem 0 1rem 0;
             text-align: center;
@@ -50,7 +50,7 @@
             margin-right: auto;
         }
         .cta-btn {
-            background: #ff8000;
+            background: #C95126;
             color: #fff;
             font-size: 1.2rem;
             font-weight: 700;
@@ -63,7 +63,7 @@
             display: inline-block;
         }
         .cta-btn:hover {
-            background: #ff8000cc;
+            background: #C95126cc;
         }
         .features {
             display: flex;
@@ -85,8 +85,8 @@
             border-radius: 1rem;
             padding: 1.2rem 1.5rem;
             width: calc(50% - 1rem);
-            box-shadow: 0 2px 8px rgba(255,128,0,0.08);
-            color: #ff8000;
+            box-shadow: 0 2px 8px rgba(201,81,38,0.08);
+            color: #C95126;
             font-weight: 600;
             font-size: 1.1rem;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -94,7 +94,7 @@
         }
         .feature:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255,128,0,0.12);
+            box-shadow: 0 4px 12px rgba(201,81,38,0.12);
         }
         @media (max-width: 600px) {
             .main { padding: 1.2rem 0.5rem; }
@@ -143,7 +143,7 @@
             letter-spacing: 1px;
             position: relative;
             z-index: 2;
-            box-shadow: 0 -4px 24px rgba(255,128,0,0.10);
+            box-shadow: 0 -4px 24px rgba(201,81,38,0.10);
             flex-shrink: 0;
             border-top: 2.5px solid transparent;
             border-image: linear-gradient(90deg, #7fd8ff 0%, #003366 100%);
@@ -201,13 +201,13 @@
             height: 32px;
         }
         .footer-socials a:hover svg {
-            stroke: #ff8000;
+            stroke: #C95126;
             transform: scale(1.1);
         }
         .footer-socials img {
             background: #fff7f0;
             border-radius: 50%;
-            box-shadow: 0 2px 8px #ff800033;
+            box-shadow: 0 2px 8px #C9512633;
             padding: 0.35rem;
             width: 32px;
             height: 32px;
@@ -216,7 +216,7 @@
         .footer-socials img:hover {
             filter: invert(60%) sepia(100%) saturate(700%) hue-rotate(10deg) brightness(1.2);
             background: #ffe0b2;
-            box-shadow: 0 4px 16px #ff800055;
+            box-shadow: 0 4px 16px #C9512655;
         }
         .packs-container {
             display: flex;
@@ -231,11 +231,11 @@
         }
         .pack {
             background: #fff;
-            border-radius: 1.2rem;
+            border-radius: 1rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-            padding: 1rem;
+            padding: 1.2rem;
             flex: 1;
-            width: 450px;
+            width: 650px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -243,16 +243,11 @@
             align-items: center;
             transition: transform 0.3s, box-shadow 0.3s;
             margin: 0 auto;
-            min-height: 500px;
+            min-height: 400px;
         }
         .pack.recharge-pack {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 1rem;
-            width: 450px;
-            min-height: 500px;
+            width: 650px;
+            min-height: 400px;
         }
         .pack.recharge-pack .pack-header {
             text-align: center;
@@ -260,14 +255,14 @@
             width: 100%;
         }
         .pack.recharge-pack .pack-header h2 {
-            color: #ff8000;
+            color: #C95126;
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
         }
         .pack.recharge-pack .pack-header .pack-price {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ff8000;
+            color: #C95126;
             margin: 0.5rem 0 2rem 0;
         }
         .pack.recharge-pack .pack-content-wrapper {
@@ -320,35 +315,33 @@
         }
         .pack:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(255,128,0,0.15);
+            box-shadow: 0 8px 24px rgba(201,81,38,0.15);
         }
         .pack-img {
-            height: 200px;
-            margin-bottom: 1rem;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            width: 300px;
+            height: auto;
+            margin-bottom: 1.5rem;
         }
         .pack h2 {
-            color: #ff8000;
+            color: #C95126;
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
         }
         .pack-price {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ff8000;
+            color: #C95126;
             margin: 0.5rem 0 1.5rem 0;
         }
         .pack.recharge-pack .pack-header h2 {
-            color: #ff8000;
+            color: #C95126;
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
         }
         .pack.recharge-pack .pack-header .pack-price {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ff8000;
+            color: #C95126;
             margin: 0.5rem 0 2rem 0;
         }
         .pack p {
@@ -357,60 +350,174 @@
             line-height: 1.4;
         }
         .patch-selection {
-            margin: 0.8rem 0;
-            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            padding: 0.8rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 280px;
         }
         .patch-option {
-            padding: 0.8rem;
-            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            width: 100%;
         }
-        .patch-option img {
-            width: 60px;
-            height: auto;
-            border-radius: 0.5rem;
-            box-shadow: none;
+        .patch-info {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .patch-info img {
+            width: 30px;
+            height: 30px;
             object-fit: contain;
         }
-        .patch-option:nth-child(1) img,
-        .patch-option:nth-child(3) img {
-            width: 80px;
+        .patch-info label {
+            font-size: 0.85rem;
+            color: #333;
+            font-weight: 500;
+            white-space: nowrap;
         }
-        .features {
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .quantity-btn {
+            width: 22px;
+            height: 22px;
+            border: none;
+            background: #C95126;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+        .quantity-btn:hover {
+            background: #ff9500;
+        }
+        .quantity-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .quantity-display {
+            min-width: 18px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: 600;
+        }
+        .patch-counter {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            padding: 0.5rem;
+            background: #f0f0f0;
+            border-radius: 6px;
+            margin-top: 0.4rem;
+            font-weight: 500;
+        }
+        .patch-counter.error {
+            color: #dc3545;
+            background: #fff5f5;
+        }
+        .pack-content-wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            width: 100%;
+            margin-bottom: 1.2rem;
+            max-width: 600px;
+            align-items: flex-start;
+        }
+        .pack-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: 220px;
+        }
+        .pack-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            min-width: 300px;
+        }
+        .pack-img {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 0.8rem;
+        }
+        .pack-description {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            max-width: 220px;
+            margin: 0 auto;
+        }
+        .patch-counter {
             margin-top: 1.5rem;
+            font-size: 1rem;
+            color: #C95126;
+            font-weight: 600;
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 0.8rem;
+            background: #fff7f0;
+        }
+        .patch-counter.error {
+            color: #ff4444;
+            background: #fff0f0;
+        }
+        .pack-button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .cta-btn {
+            font-size: 0.9rem;
+            padding: 0.7rem 1.2rem;
+            max-width: 200px;
+        }
+        .cta-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
         }
         @media (max-width: 1100px) {
-            .packs-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem;
-            }
             .pack, .pack.recharge-pack {
                 width: 100%;
-                max-width: 450px;
+                max-width: 650px;
                 min-height: auto;
+                padding: 1rem;
             }
-        }
-        @media (max-width: 900px) {
-            .overlay-content {
-                padding: 1.5rem 1rem;
-                margin: 1.5rem auto;
-            }
-            .packs-container { 
-                flex-direction: column; 
-                gap: 1.2rem; 
-                align-items: center; 
-                padding: 0 1rem;
-            }
-            .pack.recharge-pack .pack-content {
+            .pack-content-wrapper {
+                flex-direction: column;
+                max-width: 100%;
                 align-items: center;
-                text-align: center;
-                width: 100%;
+                gap: 1.2rem;
             }
-            .pack.recharge-pack .pack-content .pack-button {
-                width: 100%;
-                justify-content: center;
+            .pack-left, .pack-content {
+                min-width: 100%;
             }
-            .pack.recharge-pack .pack-description {
+            .pack-img {
+                max-width: 200px;
+            }
+            .pack-description {
                 max-width: 100%;
             }
         }
@@ -442,7 +549,7 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            box-shadow: 0 2px 8px #ff800033;
+            box-shadow: 0 2px 8px #C9512633;
             background: #fff;
             object-fit: cover;
         }
@@ -495,7 +602,7 @@
             .nav-links { gap: 1.2rem; }
         }
         .glass-header {
-            background: rgba(255,128,0,0.92);
+            background: rgba(201,81,38,0.92);
             backdrop-filter: blur(8px) saturate(1.2);
             box-shadow: 0 4px 24px rgba(0,0,0,0.10);
             border-bottom: 1.5px solid #ffd9b3;
@@ -505,8 +612,8 @@
             font-weight: 900;
             letter-spacing: 3px;
             color: #fff;
-            text-shadow: 0 4px 24px rgba(255,128,0,0.18), 0 1px 0 #fff;
-            filter: drop-shadow(0 2px 8px #ff800055);
+            text-shadow: 0 4px 24px rgba(201,81,38,0.18), 0 1px 0 #fff;
+            filter: drop-shadow(0 2px 8px #C9512655);
         }
         .main-title {
             font-size: 2.3rem;
@@ -518,58 +625,58 @@
         }
         .glass-main {
             background: rgba(255,255,255,0.85);
-            box-shadow: 0 8px 32px rgba(255,128,0,0.10), 0 1.5px 0 #ffd9b3;
+            box-shadow: 0 8px 32px rgba(201,81,38,0.10), 0 1.5px 0 #ffd9b3;
             backdrop-filter: blur(6px) saturate(1.1);
         }
         .premium-shadow {
-            box-shadow: 0 8px 32px rgba(255,128,0,0.10), 0 1.5px 0 #ffd9b3;
+            box-shadow: 0 8px 32px rgba(201,81,38,0.10), 0 1.5px 0 #ffd9b3;
             border-radius: 1.5rem;
         }
         .premium-pack {
             position: relative;
             transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s;
-            box-shadow: 0 4px 24px rgba(255,128,0,0.10), 0 1.5px 0 #ffd9b3;
+            box-shadow: 0 4px 24px rgba(201,81,38,0.10), 0 1.5px 0 #ffd9b3;
         }
         .premium-pack:hover {
             transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 12px 32px rgba(255,128,0,0.18), 0 2px 0 #ffd9b3;
+            box-shadow: 0 12px 32px rgba(201,81,38,0.18), 0 2px 0 #ffd9b3;
         }
         .badge {
             position: absolute;
             top: 1.2rem;
             right: 1.2rem;
-            background: linear-gradient(90deg, #ffb347 0%, #ff8000 100%);
+            background: linear-gradient(90deg, #ffb347 0%, #C95126 100%);
             color: #fff;
             font-size: 0.95rem;
             font-weight: 700;
             padding: 0.4rem 1.1rem;
             border-radius: 1.2rem;
-            box-shadow: 0 2px 8px rgba(255,128,0,0.13);
+            box-shadow: 0 2px 8px rgba(201,81,38,0.13);
             letter-spacing: 1px;
         }
         .pack-price {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ff8000;
+            color: #C95126;
             margin: 0.5rem 0 1.5rem 0;
         }
         .pack.recharge-pack .pack-header .pack-price {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ff8000;
+            color: #C95126;
             margin: 0.5rem 0 2rem 0;
         }
         .premium-btn {
             font-size: 1.15rem;
             font-weight: 800;
             letter-spacing: 1px;
-            box-shadow: 0 4px 16px rgba(255,128,0,0.13);
+            box-shadow: 0 4px 16px rgba(201,81,38,0.13);
             transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
         }
         .premium-btn:hover {
             background: #ffb347;
             color: #fff;
-            box-shadow: 0 8px 32px rgba(255,128,0,0.18);
+            box-shadow: 0 8px 32px rgba(201,81,38,0.18);
             transform: scale(1.04);
         }
         .premium-features {
@@ -579,7 +686,7 @@
         .footer.premium-footer {
             background: #222;
             border-top: 1.5px solid #ffd9b3;
-            box-shadow: 0 -4px 24px rgba(255,128,0,0.10);
+            box-shadow: 0 -4px 24px rgba(201,81,38,0.10);
             padding-top: 2rem;
         }
         .footer-svg {
@@ -600,65 +707,7 @@
             width: 300px;
             height: auto;
             display: block;
-            filter: drop-shadow(0 4px 16px #ff800055);
-        }
-        .patch-info {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        .patch-option label {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 600;
-        }
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .quantity-btn {
-            width: 28px;
-            height: 28px;
-            border: none;
-            border-radius: 50%;
-            background: #ff8000;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        .quantity-btn:hover {
-            background: #ff9500;
-        }
-        .quantity-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        .quantity-display {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ff8000;
-            min-width: 30px;
-            text-align: center;
-        }
-        .patch-counter {
-            margin-top: 1.5rem;
-            font-size: 1rem;
-            color: #ff8000;
-            font-weight: 600;
-            text-align: center;
-            padding: 0.8rem;
-            border-radius: 0.8rem;
-            background: #fff7f0;
-        }
-        .patch-counter.error {
-            color: #ff4444;
-            background: #fff0f0;
+            filter: drop-shadow(0 4px 16px #C9512655);
         }
     </style>
 </head>
@@ -681,65 +730,107 @@
         Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
     <main class="overlay-content" id="accueil">
-        <h1 style="text-align:center;margin-bottom:2.5rem;">Découvrez les packs Nauticare</h1>
+        <h1 style="text-align:center;margin:1rem 0 1.5rem 0;">Découvrez les packs Nauticare</h1>
         <div class="packs-container">
             <div class="pack">
                 <div class="pack-header">
-                    <h2>Pack de Démarrage</h2>
-                    <div class="pack-price">30€</div>
-                </div>
-                <img src="features/img/pack-demarrage.png" alt="Pack de Démarrage" class="pack-img">
-                <p>Commencez votre voyage vers une peau plus saine avec notre pack de démarrage complet.</p>
-                <div class="pack-button">
-                    <button class="cta-btn" id="acheter-demarrage">Acheter le pack de démarrage</button>
-                </div>
-            </div>
-            <div class="pack recharge-pack">
-                <div class="pack-header">
-                    <h2>Pack de Recharge</h2>
-                    <div class="pack-price">20€</div>
+                <h2>Pack de Démarrage</h2>
+                <div class="pack-price">30€</div>
                 </div>
                 <div class="pack-content-wrapper">
                     <div class="pack-left">
-                        <img src="features/img/recharge.png" alt="Pack de Recharge" class="pack-img">
-                        <p class="pack-description">Rechargez votre stock de patches pour continuer à prendre soin de votre peau.</p>
+                <img src="features/img/pack-demarrage.png" alt="Pack de Démarrage" class="pack-img">
+                        <p class="pack-description">Commencez votre voyage vers une peau plus saine avec notre pack de démarrage complet.</p>
                     </div>
                     <div class="pack-content">
                         <div class="patch-selection">
                             <div class="patch-option">
                                 <div class="patch-info">
                                     <img src="features/img/p1.png" alt="Patch Cou">
-                                    <label for="patch-cou">Patch Cou</label>
+                                    <label for="patch-cou-demarrage">Patch Cou</label>
                                 </div>
                                 <div class="quantity-controls">
-                                    <button class="quantity-btn" onclick="updateQuantity('cou', -1)">-</button>
-                                    <span class="quantity-display" id="quantity-cou">0</span>
-                                    <button class="quantity-btn" onclick="updateQuantity('cou', 1)">+</button>
+                                    <button class="quantity-btn" onclick="updateQuantityDemarrage('cou', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-cou-demarrage">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantityDemarrage('cou', 1)">+</button>
                                 </div>
                             </div>
                             <div class="patch-option">
                                 <div class="patch-info">
                                     <img src="features/img/p2.png" alt="Patch Petit">
-                                    <label for="patch-petit">Patch Petit</label>
+                                    <label for="patch-petit-demarrage">Patch Petit</label>
                                 </div>
                                 <div class="quantity-controls">
-                                    <button class="quantity-btn" onclick="updateQuantity('petit', -1)">-</button>
-                                    <span class="quantity-display" id="quantity-petit">0</span>
-                                    <button class="quantity-btn" onclick="updateQuantity('petit', 1)">+</button>
+                                    <button class="quantity-btn" onclick="updateQuantityDemarrage('petit', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-petit-demarrage">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantityDemarrage('petit', 1)">+</button>
                                 </div>
                             </div>
                             <div class="patch-option">
                                 <div class="patch-info">
                                     <img src="features/img/p3.png" alt="Patch Grand">
-                                    <label for="patch-grand">Patch Grand</label>
+                                    <label for="patch-grand-demarrage">Patch Grand</label>
                                 </div>
                                 <div class="quantity-controls">
-                                    <button class="quantity-btn" onclick="updateQuantity('grand', -1)">-</button>
-                                    <span class="quantity-display" id="quantity-grand">0</span>
-                                    <button class="quantity-btn" onclick="updateQuantity('grand', 1)">+</button>
+                                    <button class="quantity-btn" onclick="updateQuantityDemarrage('grand', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-grand-demarrage">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantityDemarrage('grand', 1)">+</button>
                                 </div>
                             </div>
-                            <div class="patch-counter">Sélectionnez 3 patchs</div>
+                            <div class="patch-counter" id="counter-demarrage">Sélectionnez 3 patchs</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pack-button">
+                    <button class="cta-btn" id="acheter-demarrage" disabled>Acheter le pack de démarrage</button>
+                </div>
+            </div>
+            <div class="pack recharge-pack">
+                <div class="pack-header">
+                <h2>Pack de Recharge</h2>
+                <div class="pack-price">20€</div>
+                </div>
+                <div class="pack-content-wrapper">
+                    <div class="pack-left">
+                <img src="features/img/recharge.png" alt="Pack de Recharge" class="pack-img">
+                        <p class="pack-description">Rechargez votre stock de patches pour continuer à prendre soin de votre peau.</p>
+                    </div>
+                    <div class="pack-content">
+                <div class="patch-selection">
+                    <div class="patch-option">
+                        <div class="patch-info">
+                                    <img src="features/img/p1.png" alt="Patch Cou">
+                                    <label for="patch-cou-recharge">Patch Cou</label>
+                        </div>
+                        <div class="quantity-controls">
+                                    <button class="quantity-btn" onclick="updateQuantityRecharge('cou', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-cou-recharge">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantityRecharge('cou', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="patch-option">
+                        <div class="patch-info">
+                                    <img src="features/img/p2.png" alt="Patch Petit">
+                                    <label for="patch-petit-recharge">Patch Petit</label>
+                        </div>
+                        <div class="quantity-controls">
+                                    <button class="quantity-btn" onclick="updateQuantityRecharge('petit', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-petit-recharge">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantityRecharge('petit', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="patch-option">
+                        <div class="patch-info">
+                                    <img src="features/img/p3.png" alt="Patch Grand">
+                                    <label for="patch-grand-recharge">Patch Grand</label>
+                        </div>
+                        <div class="quantity-controls">
+                                    <button class="quantity-btn" onclick="updateQuantityRecharge('grand', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-grand-recharge">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantityRecharge('grand', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="patch-counter" id="counter-recharge">Sélectionnez 3 patchs</div>
                         </div>
                     </div>
                 </div>
@@ -750,12 +841,12 @@
         </div>
         <div class="features">
             <div class="feature-row">
-                <div class="feature">Hypoallergénique</div>
-                <div class="feature">Résistant à l'eau</div>
+            <div class="feature">Hypoallergénique</div>
+            <div class="feature">Résistant à l'eau</div>
             </div>
             <div class="feature-row">
-                <div class="feature">Ultra-confort</div>
-                <div class="feature">Discret & efficace</div>
+            <div class="feature">Ultra-confort</div>
+            <div class="feature">Discret & efficace</div>
             </div>
         </div>
     </main>
@@ -785,7 +876,7 @@
     </footer>
     <script>
     // Liste locale des vidéos disponibles
-    const videoList = ['bg1.mp4', 'bg2.mp4', 'bg3.mp4', 'bg4.mp4', 'bg5.mp4', 'bg6.mp4', 'bg7.mp4']; // Remplace par tes vrais noms de fichiers
+    const videoList = ['bg1.mp4', 'bg2.mp4', 'bg3.mp4', 'bg4.mp4', 'bg5.mp4', 'bg6.mp4', 'bg7.mp4'];
 
     // Charger une vidéo de fond aléatoire
     function loadRandomBackground() {
@@ -802,39 +893,76 @@
     // Charger une vidéo aléatoire au chargement de la page
     loadRandomBackground();
 
-    // Gestion de la sélection des patchs
-    const quantities = {
+    // Système de sélection pour le pack de démarrage
+    const quantitiesDemarrage = {
         cou: 0,
         petit: 0,
         grand: 0
     };
 
-    const counter = document.querySelector('.patch-counter');
-    const rechargeButton = document.getElementById('acheter-recharge');
-    let totalQuantity = 0;
+    const counterDemarrage = document.getElementById('counter-demarrage');
+    const demarrageButton = document.getElementById('acheter-demarrage');
+    let totalQuantityDemarrage = 0;
 
-    function updateQuantity(type, change) {
-        const newQuantity = quantities[type] + change;
+    function updateQuantityDemarrage(type, change) {
+        const newQuantity = quantitiesDemarrage[type] + change;
 
         // Vérifier si le changement est valide
         if (newQuantity < 0) return;
-        if (totalQuantity + change > 3) return;
+        if (totalQuantityDemarrage + change > 3) return;
 
         // Mettre à jour la quantité
-        quantities[type] = newQuantity;
-        totalQuantity += change;
+        quantitiesDemarrage[type] = newQuantity;
+        totalQuantityDemarrage += change;
 
         // Mettre à jour l'affichage
-        document.getElementById(`quantity-${type}`).textContent = quantities[type];
+        document.getElementById(`quantity-${type}-demarrage`).textContent = quantitiesDemarrage[type];
 
         // Mettre à jour le compteur
-        if (totalQuantity === 3) {
-            counter.textContent = '3 patchs sélectionnés';
-            counter.classList.remove('error');
+        if (totalQuantityDemarrage === 3) {
+            counterDemarrage.textContent = '3 patchs sélectionnés';
+            counterDemarrage.classList.remove('error');
+            demarrageButton.disabled = false;
+        } else {
+            counterDemarrage.textContent = `Sélectionnez ${3 - totalQuantityDemarrage} patch${3 - totalQuantityDemarrage > 1 ? 's' : ''} supplémentaire${3 - totalQuantityDemarrage > 1 ? 's' : ''}`;
+            counterDemarrage.classList.remove('error');
+            demarrageButton.disabled = true;
+        }
+    }
+
+    // Système de sélection pour le pack de recharge
+    const quantitiesRecharge = {
+        cou: 0,
+        petit: 0,
+        grand: 0
+    };
+
+    const counterRecharge = document.getElementById('counter-recharge');
+    const rechargeButton = document.getElementById('acheter-recharge');
+    let totalQuantityRecharge = 0;
+
+    function updateQuantityRecharge(type, change) {
+        const newQuantity = quantitiesRecharge[type] + change;
+
+        // Vérifier si le changement est valide
+        if (newQuantity < 0) return;
+        if (totalQuantityRecharge + change > 3) return;
+
+        // Mettre à jour la quantité
+        quantitiesRecharge[type] = newQuantity;
+        totalQuantityRecharge += change;
+
+        // Mettre à jour l'affichage
+        document.getElementById(`quantity-${type}-recharge`).textContent = quantitiesRecharge[type];
+
+        // Mettre à jour le compteur
+        if (totalQuantityRecharge === 3) {
+            counterRecharge.textContent = '3 patchs sélectionnés';
+            counterRecharge.classList.remove('error');
             rechargeButton.disabled = false;
         } else {
-            counter.textContent = `Sélectionnez ${3 - totalQuantity} patch${3 - totalQuantity > 1 ? 's' : ''} supplémentaire${3 - totalQuantity > 1 ? 's' : ''}`;
-            counter.classList.remove('error');
+            counterRecharge.textContent = `Sélectionnez ${3 - totalQuantityRecharge} patch${3 - totalQuantityRecharge > 1 ? 's' : ''} supplémentaire${3 - totalQuantityRecharge > 1 ? 's' : ''}`;
+            counterRecharge.classList.remove('error');
             rechargeButton.disabled = true;
         }
     }
