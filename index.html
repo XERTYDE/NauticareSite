@@ -67,16 +67,24 @@
         }
         .features {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             gap: 2rem;
             margin-top: 2.5rem;
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .feature-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            width: 100%;
         }
         .feature {
             background: linear-gradient(135deg, #fff7f0 0%, #ffe0b2 100%);
             border-radius: 1rem;
             padding: 1.2rem 1.5rem;
-            min-width: 180px;
+            width: calc(50% - 1rem);
             box-shadow: 0 2px 8px rgba(255,128,0,0.08);
             color: #ff8000;
             font-weight: 600;
@@ -741,10 +749,14 @@
             </div>
         </div>
         <div class="features">
-            <div class="feature">Hypoallergénique</div>
-            <div class="feature">Résistant à l'eau</div>
-            <div class="feature">Ultra-confort</div>
-            <div class="feature">Discret & efficace</div>
+            <div class="feature-row">
+                <div class="feature">Hypoallergénique</div>
+                <div class="feature">Résistant à l'eau</div>
+            </div>
+            <div class="feature-row">
+                <div class="feature">Ultra-confort</div>
+                <div class="feature">Discret & efficace</div>
+            </div>
         </div>
     </main>
     <footer class="footer">
