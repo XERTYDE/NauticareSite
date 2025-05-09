@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nauticare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        body {
+            margin: 0;
+            background: #fff7f0;
+            min-height: 100vh;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            position: relative;
+            z-index: 2;
+            background: rgba(255,128,0,0.92);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+        }
+        .logo {
+            width: 300px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            gap: 2.5rem;
+            position: relative;
+        }
+        .nav-logo {
+            width: 48px;
+            height: auto;
+            margin-right: 1.5rem;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.2rem;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links li {
+            display: inline-block;
+        }
+        .nav-links a {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            letter-spacing: 1px;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.22s, color 0.22s, transform 0.22s;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-links a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -0.45em;
+            height: 2.5px;
+            background: linear-gradient(90deg, #7fd8ff 0%, #003366 100%);
+            border-radius: 2px;
+            opacity: 0;
+            transition: opacity 0.22s, right 0.22s;
+        }
+        .nav-links a:hover, .nav-links a:focus {
+            background: rgba(255,179,71,0.10);
+            transform: scale(1.07);
+        }
+        .nav-links a:hover::after, .nav-links a:focus::after {
+            opacity: 1;
+            right: 0;
+        }
+        .about-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.95);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px rgba(255,128,0,0.10);
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .team-img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 0 auto 2rem auto;
+            display: block;
+        }
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        h1 {
+            color: #ff8000;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        h2 {
+            color: #ff8000;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .values-list {
+            list-style: none;
+            padding: 0;
+        }
+        .value-item {
+            background: #fff7f0;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(255,128,0,0.05);
+        }
+        .value-item h3 {
+            color: #ff8000;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .footer {
+            width: 100%;
+            background: rgba(34,34,34,0.97);
+            color: #fff;
+            text-align: center;
+            padding: 2.2rem 0 1.5rem 0;
+            font-size: 1.13rem;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 -4px 24px rgba(255,128,0,0.10);
+            flex-shrink: 0;
+            border-top: 2.5px solid transparent;
+            border-image: linear-gradient(90deg, #7fd8ff 0%, #003366 100%);
+            border-image-slice: 1;
+            backdrop-filter: blur(6px) saturate(1.1);
+        }
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.1rem;
+        }
+        .footer a {
+            color: #7fd8ff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.1rem 0.7rem;
+            border-radius: 0.5rem;
+            transition: background 0.22s, color 0.22s, transform 0.22s;
+            position: relative;
+            overflow: hidden;
+        }
+        .footer a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -0.45em;
+            height: 2.5px;
+            background: linear-gradient(90deg, #7fd8ff 0%, #003366 100%);
+            border-radius: 2px;
+            opacity: 0;
+            transition: opacity 0.22s, right 0.22s;
+        }
+        .footer a:hover {
+            transform: scale(1.07);
+        }
+        .footer a:hover::after {
+            opacity: 1;
+            right: 0;
+        }
+        .footer-socials {
+            margin-top:1.2rem;
+            display: flex;
+            gap: 1.1rem;
+            justify-content: center;
+        }
+        .footer-socials svg {
+            stroke: #7fd8ff;
+            transition: stroke 0.2s, transform 0.2s;
+            width: 32px;
+            height: 32px;
+        }
+        .footer-socials a:hover svg {
+            stroke: #ff8000;
+            transform: scale(1.1);
+        }
+        @media (max-width: 900px) {
+            .about-container {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 0.7rem;
+                padding: 0 0.5rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/">
+            <img src="/features/img/logo2.svg" alt="Nauticare Logo" class="logo">
+        </a>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/produit">Produits</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="about-container">
+        <div class="section">
+            <h1>Notre Équipe</h1>
+            <img src="/features/img/team.png" alt="Notre équipe" class="team-img">
+            <p>
+                Nauticare, c'est l'histoire d'une équipe pluridisciplinaire composée de Thomas, Hugo et Mattéo, étudiants en ingénierie informatique à CPE Lyon, Dorian, en master management de l'innovation Université Lumière Lyon 2, ainsi que Tristan et Maëly, en master design produit usages & service à La Martinière Diderot.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Nos Valeurs</h2>
+            <p>Nous partageons des valeurs fondamentales qui guident notre démarche :</p>
+            
+            <ul class="values-list">
+                <li class="value-item">
+                    <h3>Le confort et la protection</h3>
+                    <p>Nous plaçons le respect du corps au cœur de notre démarche, en apportant un confort essentiel aux sportifs dans un environnement où celui-ci est soumis à des tensions et contraintes physiques.</p>
+                </li>
+                <li class="value-item">
+                    <h3>L'inclusivité</h3>
+                    <p>Nous souhaitons concevoir des produits qui s'ajustent aux zones du corps les plus sujettes aux irritations, tout en étant adaptés à différentes morphologies.</p>
+                </li>
+                <li class="value-item">
+                    <h3>L'écoresponsabilité</h3>
+                    <p>Conscients de notre empreinte écologique, nous favorisons des alternatives durables et réutilisables pour limiter l'impact des produits jetables.</p>
+                </li>
+                <li class="value-item">
+                    <h3>L'écoute</h3>
+                    <p>Nous accordons une attention particulière aux retours, besoins et attentes de nos futurs utilisateurs. Cette écoute attentive nous permet d'ajuster continuellement nos produits pour qu'ils répondent au plus près de leurs besoins réels et de leurs exigences.</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Notre Objectif</h2>
+            <p>
+                Notre objectif est d'améliorer le confort des pratiquants de sports nautiques en prévenant et protégeant les frottements et irritations grâce à une solution pratique, durable et adaptée à la morphologie du corps. Nous répondons aux besoins des sportifs pour rendre leur pratique plus agréable.
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div style="font-size:1.08rem;opacity:0.93;">&copy; 2024 Nauticare &mdash; Tous droits réservés</div>
+            <div>
+                <a href="mailto:thenauticare@gmail.com">thenauticare@gmail.com</a>
+                <span style="color:#7fd8ff;opacity:0.5;">|</span>
+                <a href="/mentions">Mentions légales</a>
+            </div>
+            <div class="footer-socials">
+                <a href="#" title="Instagram" class="footer-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" title="Facebook" class="footer-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="#" title="Twitter" class="footer-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
