@@ -57,10 +57,10 @@
             border: none;
             border-radius: 2rem;
             padding: 1rem 2.5rem;
-            margin-top: 2rem;
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             transition: background 0.3s;
+            display: inline-block;
         }
         .cta-btn:hover {
             background: #ff8000cc;
@@ -118,9 +118,10 @@
             background: rgba(255,255,255,0.92);
             border-radius: 1.5rem;
             box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-            max-width: 700px;
-            margin: 3rem auto;
-            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem 1rem;
             flex: 1 0 auto;
         }
         .footer {
@@ -211,63 +212,187 @@
         .packs-container {
             display: flex;
             flex-wrap: nowrap;
-            gap: 3.5rem;
+            gap: 2rem;
             justify-content: center;
             align-items: stretch;
-            margin: 2.5rem 0 0 0;
+            margin: 1.5rem auto;
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 1rem;
         }
         .pack {
             background: #fff;
             border-radius: 1.2rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-            padding: 2rem 1.5rem 2.5rem 1.5rem;
-            max-width: 340px;
-            min-width: 260px;
+            padding: 1rem;
+            flex: 1;
+            width: 450px;
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
+            align-items: center;
             transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0 auto;
+            min-height: 500px;
+        }
+        .pack.recharge-pack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            width: 450px;
+            min-height: 500px;
+        }
+        .pack.recharge-pack .pack-header {
+            text-align: center;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .pack.recharge-pack .pack-header h2 {
+            color: #ff8000;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .pack.recharge-pack .pack-header .pack-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8000;
+            margin: 0.5rem 0 2rem 0;
+        }
+        .pack.recharge-pack .pack-content-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 1rem;
+            width: 100%;
+            flex: 1;
+        }
+        .pack.recharge-pack .pack-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 0 0 auto;
+        }
+        .pack.recharge-pack .pack-img {
+            width: 140px;
+            height: auto;
+            margin: 0;
+        }
+        .pack.recharge-pack .pack-description {
+            text-align: center;
+            margin-top: 0.8rem;
+            max-width: 180px;
+            font-size: 0.9rem;
+        }
+        .pack.recharge-pack .pack-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            width: 100%;
+        }
+        .pack.recharge-pack .pack-content .patch-selection {
+            flex: 1;
+        }
+        .pack.recharge-pack .pack-content .pack-button {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .pack.recharge-pack .pack-content .cta-btn {
+            width: auto;
+            min-width: 200px;
         }
         .pack:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 24px rgba(255,128,0,0.15);
         }
-        .pack-button {
-            margin-top: auto;
-            padding-top: 1.5rem;
+        .pack-img {
+            height: 200px;
+            margin-bottom: 1rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         .pack h2 {
             color: #ff8000;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
         }
         .pack-price {
             font-size: 1.5rem;
             font-weight: 700;
             color: #ff8000;
-            margin: 1rem 0;
+            margin: 0.5rem 0 1.5rem 0;
         }
-        .pack-img {
-            height: 220px;
-            margin-bottom: 1.5rem;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .pack ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.2rem 0;
-            color: #222;
-            font-size: 1.05rem;
-        }
-        .pack ul li {
+        .pack.recharge-pack .pack-header h2 {
+            color: #ff8000;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
         }
+        .pack.recharge-pack .pack-header .pack-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8000;
+            margin: 0.5rem 0 2rem 0;
+        }
+        .pack p {
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+        .patch-selection {
+            margin: 0.8rem 0;
+            text-align: left;
+        }
+        .patch-option {
+            padding: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+        .features {
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 1100px) {
+            .packs-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .pack, .pack.recharge-pack {
+                width: 100%;
+                max-width: 450px;
+                min-height: auto;
+            }
+        }
         @media (max-width: 900px) {
-            .packs-container { flex-direction: column; gap: 1.5rem; align-items: center; }
-            .pack { max-width: 95vw; min-width: 0; }
+            .overlay-content {
+                padding: 1.5rem 1rem;
+                margin: 1.5rem auto;
+            }
+            .packs-container { 
+                flex-direction: column; 
+                gap: 1.2rem; 
+                align-items: center; 
+                padding: 0 1rem;
+            }
+            .pack.recharge-pack .pack-content {
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+            .pack.recharge-pack .pack-content .pack-button {
+                width: 100%;
+                justify-content: center;
+            }
+            .pack.recharge-pack .pack-description {
+                max-width: 100%;
+            }
         }
         .navbar {
             display: flex;
@@ -403,12 +528,16 @@
             letter-spacing: 1px;
         }
         .pack-price {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #ff8000;
-            margin-bottom: 1.2rem;
-            margin-top: 0.5rem;
-            letter-spacing: 1px;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+        .pack.recharge-pack .pack-header .pack-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8000;
+            margin: 0.5rem 0 2rem 0;
         }
         .premium-btn {
             font-size: 1.15rem;
@@ -452,23 +581,6 @@
             height: auto;
             display: block;
             filter: drop-shadow(0 4px 16px #ff800055);
-        }
-        .patch-selection {
-            margin: 1.5rem 0;
-            text-align: left;
-        }
-        .patch-option {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            border-radius: 0.8rem;
-            background: #fff7f0;
-            transition: background 0.2s;
-        }
-        .patch-option:hover {
-            background: #fff0e0;
         }
         .patch-info {
             display: flex;
@@ -558,54 +670,64 @@
         <h1 style="text-align:center;margin-bottom:2.5rem;">Découvrez les packs Nauticare</h1>
         <div class="packs-container">
             <div class="pack">
-                <h2>Pack de Démarrage</h2>
-                <div class="pack-price">30€</div>
+                <div class="pack-header">
+                    <h2>Pack de Démarrage</h2>
+                    <div class="pack-price">30€</div>
+                </div>
                 <img src="features/img/pack-demarrage.png" alt="Pack de Démarrage" class="pack-img">
                 <p>Commencez votre voyage vers une peau plus saine avec notre pack de démarrage complet.</p>
                 <div class="pack-button">
                     <button class="cta-btn" id="acheter-demarrage">Acheter le pack de démarrage</button>
                 </div>
             </div>
-            <div class="pack">
-                <h2>Pack de Recharge</h2>
-                <div class="pack-price">20€</div>
-                <img src="features/img/recharge.png" alt="Pack de Recharge" class="pack-img">
-                <p>Rechargez votre stock de patches pour continuer à prendre soin de votre peau.</p>
-                <div class="patch-selection">
-                    <div class="patch-option">
-                        <div class="patch-info">
-                            <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/patch-2029362_1280.png" alt="Patch Classique">
-                            <label for="patch-classique">Patch Classique</label>
-                        </div>
-                        <div class="quantity-controls">
-                            <button class="quantity-btn" onclick="updateQuantity('classique', -1)">-</button>
-                            <span class="quantity-display" id="quantity-classique">0</span>
-                            <button class="quantity-btn" onclick="updateQuantity('classique', 1)">+</button>
+            <div class="pack recharge-pack">
+                <div class="pack-header">
+                    <h2>Pack de Recharge</h2>
+                    <div class="pack-price">20€</div>
+                </div>
+                <div class="pack-content-wrapper">
+                    <div class="pack-left">
+                        <img src="features/img/recharge.png" alt="Pack de Recharge" class="pack-img">
+                        <p class="pack-description">Rechargez votre stock de patches pour continuer à prendre soin de votre peau.</p>
+                    </div>
+                    <div class="pack-content">
+                        <div class="patch-selection">
+                            <div class="patch-option">
+                                <div class="patch-info">
+                                    <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/patch-2029362_1280.png" alt="Patch Classique">
+                                    <label for="patch-classique">Patch Classique</label>
+                                </div>
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn" onclick="updateQuantity('classique', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-classique">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantity('classique', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="patch-option">
+                                <div class="patch-info">
+                                    <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/patch-2029362_1280.png" alt="Patch Sport" style="border:2.5px solid #ff8000;">
+                                    <label for="patch-sport">Patch Sport</label>
+                                </div>
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn" onclick="updateQuantity('sport', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-sport">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantity('sport', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="patch-option">
+                                <div class="patch-info">
+                                    <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/patch-2029362_1280.png" alt="Patch Sensitive" style="border:2.5px solid #ff8000;">
+                                    <label for="patch-sensitive">Patch Sensitive</label>
+                                </div>
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn" onclick="updateQuantity('sensitive', -1)">-</button>
+                                    <span class="quantity-display" id="quantity-sensitive">0</span>
+                                    <button class="quantity-btn" onclick="updateQuantity('sensitive', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="patch-counter">Sélectionnez 3 patchs</div>
                         </div>
                     </div>
-                    <div class="patch-option">
-                        <div class="patch-info">
-                            <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/patch-2029362_1280.png" alt="Patch Sport" style="border:2.5px solid #ff8000;">
-                            <label for="patch-sport">Patch Sport</label>
-                        </div>
-                        <div class="quantity-controls">
-                            <button class="quantity-btn" onclick="updateQuantity('sport', -1)">-</button>
-                            <span class="quantity-display" id="quantity-sport">0</span>
-                            <button class="quantity-btn" onclick="updateQuantity('sport', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="patch-option">
-                        <div class="patch-info">
-                            <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/patch-2029362_1280.png" alt="Patch Sensitive" style="border:2.5px dashed #ff8000;">
-                            <label for="patch-sensitive">Patch Sensitive</label>
-                        </div>
-                        <div class="quantity-controls">
-                            <button class="quantity-btn" onclick="updateQuantity('sensitive', -1)">-</button>
-                            <span class="quantity-display" id="quantity-sensitive">0</span>
-                            <button class="quantity-btn" onclick="updateQuantity('sensitive', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="patch-counter">Sélectionnez 3 patchs</div>
                 </div>
                 <div class="pack-button">
                     <button class="cta-btn" id="acheter-recharge" disabled>Acheter le pack de recharge</button>
