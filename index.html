@@ -29,11 +29,9 @@
             text-align: center;
         }
         .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            width: 300px;
+            height: auto;
+            margin-bottom: 1rem;
         }
         .main {
             max-width: 700px;
@@ -168,7 +166,7 @@
             right: 100%;
             bottom: -0.45em;
             height: 2.5px;
-            background: linear-gradient(90deg, #7fd8ff 0%, #003366 100%);
+            background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
             border-radius: 2px;
             opacity: 0;
             transition: opacity 0.22s, right 0.22s;
@@ -540,9 +538,9 @@
 </head>
 <body>
     <header class="header glass-header">
-        <div class="logo-container">
-            <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo-img">
-        </div>
+        <a href="/">
+            <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo">
+        </a>
         <nav class="navbar">
             <ul class="nav-links">
                 <li><a href="#">Accueil</a></li>
