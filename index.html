@@ -81,20 +81,22 @@
             width: 100%;
         }
         .feature {
-            background: linear-gradient(135deg, #fff7f0 0%, #ffe0b2 100%);
+            background: #fff;
             border-radius: 1rem;
             padding: 1.2rem 1.5rem;
             width: calc(50% - 1rem);
-            box-shadow: 0 2px 8px rgba(201,81,38,0.08);
+            box-shadow: 0 4px 16px rgba(201,81,38,0.08);
             color: #C95126;
             font-weight: 600;
             font-size: 1.1rem;
             transition: transform 0.2s, box-shadow 0.2s;
             text-align: center;
+            border: 1px solid rgba(201,81,38,0.1);
         }
         .feature:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(201,81,38,0.12);
+            box-shadow: 0 6px 20px rgba(201,81,38,0.12);
+            border-color: rgba(201,81,38,0.2);
         }
         @media (max-width: 600px) {
             .main { padding: 1.2rem 0.5rem; }
@@ -779,12 +781,12 @@
                 width: 20px;
                 height: 20px;
                 font-size: 0.7rem;
-            }
-            .quantity-display {
+        }
+        .quantity-display {
                 min-width: 16px;
                 font-size: 0.7rem;
-            }
-            .patch-counter {
+        }
+        .patch-counter {
                 font-size: 0.7rem;
                 padding: 0.4rem;
             }
@@ -796,7 +798,7 @@
             .features {
                 width: 100%;
                 gap: 1rem;
-                margin-top: 1.5rem;
+            margin-top: 1.5rem;
             }
             .feature-row {
                 flex-direction: column;
@@ -915,8 +917,8 @@
                             </div>
                             <div class="patch-option">
                                 <div class="patch-info">
-                                    <img src="features/img/p3.png" alt="Patch Grand">
-                                    <label for="patch-grand-demarrage">Patch Grand</label>
+                                    <img src="features/img/p3.png" alt="Patch Articulation">
+                                    <label for="patch-grand-demarrage">Patch Articulation</label>
                                 </div>
                                 <div class="quantity-controls">
                                     <button class="quantity-btn" onclick="updateQuantityDemarrage('grand', -1)">-</button>
@@ -968,15 +970,15 @@
                     </div>
                     <div class="patch-option">
                         <div class="patch-info">
-                                    <img src="features/img/p3.png" alt="Patch Grand">
-                                    <label for="patch-grand-recharge">Patch Grand</label>
+                                    <img src="features/img/p3.png" alt="Patch Articulation">
+                                    <label for="patch-grand-recharge">Patch Articulation</label>
                         </div>
                         <div class="quantity-controls">
                                     <button class="quantity-btn" onclick="updateQuantityRecharge('grand', -1)">-</button>
                                     <span class="quantity-display" id="quantity-grand-recharge">0</span>
                                     <button class="quantity-btn" onclick="updateQuantityRecharge('grand', 1)">+</button>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
                             <div class="patch-counter" id="counter-recharge">Sélectionnez 3 patchs</div>
                         </div>
                     </div>
@@ -988,12 +990,12 @@
         </div>
         <div class="features">
             <div class="feature-row">
-            <div class="feature">Hypoallergénique</div>
+            <div class="feature">Protège des irritations</div>
             <div class="feature">Résistant à l'eau</div>
             </div>
             <div class="feature-row">
-            <div class="feature">Ultra-confort</div>
-            <div class="feature">Discret & efficace</div>
+            <div class="feature">Hypoallergénique</div>
+            <div class="feature">30h d'utilisation par patch</div>
             </div>
         </div>
     </main>
