@@ -640,64 +640,71 @@
         </div>
     </footer>
     <script>
-        // Charger une vidéo de fond aléatoire
-        async function loadRandomBackground() {
-            try {
-                const response = await fetch('/random-bg');
-                const data = await response.json();
-                const videoSource = document.getElementById('bg-video-source');
-                videoSource.src = 'features/bg/' + data.video;
-                // Recharger la vidéo avec la nouvelle source
-                videoSource.parentElement.load();
-            } catch (error) {
-                console.error('Erreur lors du chargement de la vidéo de fond:', error);
-            }
+    // Liste locale des vidéos disponibles
+    const videoList = ['video1.mp4', 'video2.mp4', 'video3.mp4']; // Remplace par tes vrais noms de fichiers
+
+    // Charger une vidéo de fond aléatoire
+    function loadRandomBackground() {
+        try {
+            const randomVideo = videoList[Math.floor(Math.random() * videoList.length)];
+            const videoSource = document.getElementById('bg-video-source');
+            videoSource.src = 'features/bg/' + randomVideo;
+            videoSource.parentElement.load();
+        } catch (error) {
+            console.error('Erreur lors du chargement de la vidéo de fond :', error);
         }
+    }
 
-        // Charger une vidéo aléatoire au chargement de la page
-        loadRandomBackground();
+    // Charger une vidéo aléatoire au chargement de la page
+    loadRandomBackground();
 
-        document.getElementById('acheter-demarrage').onclick = async function() {
-        };
+    // Gestion de la sélection des patchs
+    const quantities = {
+        classique: 0,
+        sport: 0,
+        sensitive: 0
+    };
 
-        // Gestion de la sélection des patchs
-        const quantities = {
-            classique: 0,
-            sport: 0,
-            sensitive: 0
-        };
-        const counter = document.querySelector('.patch-counter');
-        const rechargeButton = document.getElementById('acheter-recharge');
-        let totalQuantity = 0;
+    const counter = document.querySelector('.patch-counter');
+    const rechargeButton = document.getElementById('acheter-recharge');
+    let totalQuantity = 0;
 
-        function updateQuantity(type, change) {
-            const newQuantity = quantities[type] + change;
-            
-            // Vérifier si le changement est valide
-            if (newQuantity < 0) return;
-            if (totalQuantity + change > 3) return;
-            
-            // Mettre à jour la quantité
-            quantities[type] = newQuantity;
-            totalQuantity += change;
-            
-            // Mettre à jour l'affichage
-            document.getElementById(`quantity-${type}`).textContent = quantities[type];
-            
-            // Mettre à jour le compteur
-            if (totalQuantity === 3) {
-                counter.textContent = '3 patchs sélectionnés';
-                counter.classList.remove('error');
-                rechargeButton.disabled = false;
-            } else {
-                counter.textContent = `Sélectionnez ${3 - totalQuantity} patch${3 - totalQuantity > 1 ? 's' : ''} supplémentaire${3 - totalQuantity > 1 ? 's' : ''}`;
-                counter.classList.remove('error');
-                rechargeButton.disabled = true;
-            }
+    function updateQuantity(type, change) {
+        const newQuantity = quantities[type] + change;
+
+        // Vérifier si le changement est valide
+        if (newQuantity < 0) return;
+        if (totalQuantity + change > 3) return;
+
+        // Mettre à jour la quantité
+        quantities[type] = newQuantity;
+        totalQuantity += change;
+
+        // Mettre à jour l'affichage
+        document.getElementById(`quantity-${type}`).textContent = quantities[type];
+
+        // Mettre à jour le compteur
+        if (totalQuantity === 3) {
+            counter.textContent = '3 patchs sélectionnés';
+            counter.classList.remove('error');
+            rechargeButton.disabled = false;
+        } else {
+            counter.textContent = `Sélectionnez ${3 - totalQuantity} patch${3 - totalQuantity > 1 ? 's' : ''} supplémentaire${3 - totalQuantity > 1 ? 's' : ''}`;
+            counter.classList.remove('error');
+            rechargeButton.disabled = true;
         }
+    }
 
-        document.getElementById('acheter-recharge').onclick = async function() {
-        };
-    </script>
+    // Bouton de démarrage
+    document.getElementById('acheter-demarrage').onclick = async function() {
+        // Ton code ici si nécessaire
+    };
+
+    // Bouton de recharge
+    document.getElementById('acheter-recharge').onclick = async function() {
+        // Ton code ici si nécessaire
+    };
+</script>
+
 </body>
 </html> 
