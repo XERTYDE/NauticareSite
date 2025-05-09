@@ -1259,7 +1259,51 @@
         Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
     <main class="overlay-content" id="accueil">
-        <h1 style="text-align:center;margin:1rem 0 1.5rem 0;">Découvrez les packs Nauticare</h1>
+        <div class="hero-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-bottom: 3rem; padding: 3rem 2rem; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10); position: relative; overflow: hidden;">
+            <!-- Effet de gradient en arrière-plan -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 100%; background: linear-gradient(135deg, rgba(255,107,0,0.05) 0%, rgba(255,255,255,0) 100%); z-index: 0;"></div>
+            
+            <!-- Contenu principal -->
+            <div style="position: relative; z-index: 1; width: 100%;">
+                <h1 style="font-size: 2.8rem; color: #ff6b00; margin-bottom: 1.5rem; font-weight: 800; text-align: center; line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Vous avez des irritations quand vous surfez ?</h1>
+                <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 2rem; font-weight: 700; text-align: center;">On a la solution pour vous</h2>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 3rem; width: 100%;">
+                    <div class="hero-left" style="flex: 1; position: relative;">
+                        <img src="features/img/pack-demarrage.png" alt="Pack Nauticare" style="width: 100%; max-width: 400px; height: auto; border-radius: 1rem; box-shadow: 0 8px 32px rgba(255,107,0,0.15); transition: transform 0.3s ease;">
+                        <!-- Badge de qualité -->
+                        <div style="position: absolute; top: 1rem; right: 1rem; background: #ff6b00; color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(255,107,0,0.2);">
+                            Made in France
+                        </div>
+                    </div>
+                    <div class="hero-right" style="flex: 1; text-align: left;">
+                        <div style="background: linear-gradient(135deg, #fff7f0 0%, #fff 100%); padding: 2rem; border-radius: 1.2rem; margin-bottom: 2rem; border: 1px solid rgba(255,107,0,0.15); box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; overflow: hidden;">
+                            <!-- Effet de brillance -->
+                            <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent); transform: rotate(45deg); animation: shine 3s infinite;"></div>
+                            
+                            <p style="font-size: 1.4rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-weight: 500; position: relative;">Nauticare vous propose un patch hydrophobe pour vous protéger des irritations, pouvant vous protéger jusqu'à <span style="color: #ff6b00; font-weight: 700;">30 heures</span> !</p>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem;">
+                                <div style="background: white; padding: 1rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 12px rgba(255,107,0,0.05); border: 1px solid rgba(255,107,0,0.1);">
+                                    <div style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
+                                    <div style="color: #333; font-weight: 600; font-size: 0.95rem;">Protection optimale</div>
+                                </div>
+                                <div style="background: white; padding: 1rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 12px rgba(255,107,0,0.05); border: 1px solid rgba(255,107,0,0.1);">
+                                    <div style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
+                                    <div style="color: #333; font-weight: 600; font-size: 0.95rem;">Résistant à l'eau</div>
+                                </div>
+                                <div style="background: white; padding: 1rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 12px rgba(255,107,0,0.05); border: 1px solid rgba(255,107,0,0.1);">
+                                    <div style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
+                                    <div style="color: #333; font-weight: 600; font-size: 0.95rem;">Hypoallergénique</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#packs-section" class="cta-btn" style="display: inline-block; text-decoration: none; font-size: 1.2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%); box-shadow: 0 4px 15px rgba(255,107,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">Découvrir nos offres</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 id="packs-section" style="text-align:center;margin:1rem 0 1.5rem 0;">Découvrez les packs Nauticare</h1>
         <div class="packs-container">
             <div class="pack">
                 <div class="pack-header">
