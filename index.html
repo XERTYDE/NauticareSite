@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nauticare - Patch Anti Irritation</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Préchargement des images critiques -->
+    <link rel="preload" as="image" href="features/img/logo2.svg">
+    <link rel="preload" as="image" href="features/img/pack-demarrage.png">
+    <link rel="preload" as="image" href="features/img/recharge.png">
+    <link rel="preload" as="image" href="features/img/p1.png">
+    <link rel="preload" as="image" href="features/img/p2.png">
+    <link rel="preload" as="image" href="features/img/p3.png">
+    <!-- Préchargement de la première vidéo de fond -->
+    <link rel="preload" as="video" href="features/bg/bg1.mp4">
     <style>
         html, body {
             height: 100%;
@@ -404,27 +413,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem;
+            padding: 0.8rem;
             background: white;
             border-radius: 6px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             width: 100%;
+            min-height: 50px;
         }
         .patch-info {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.8rem;
+            min-width: 0;
+            flex: 1;
         }
         .patch-info img {
-            width: 30px;
-            height: 30px;
+            width: 45px;
+            height: 45px;
             object-fit: contain;
+            display: block;
+            min-width: 45px;
+            min-height: 45px;
+            transition: transform 0.3s ease;
         }
         .patch-info label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #333;
             font-weight: 500;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .quantity-controls {
             display: flex;
@@ -864,8 +882,8 @@
                 padding: 0.8rem;
             }
             .patch-info img {
-                width: 30px;
-                height: 30px;
+                width: 45px;
+                height: 45px;
             }
             .patch-info label {
                 font-size: 1rem;
@@ -1229,13 +1247,264 @@
                 width: 140px;
             }
         }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px 5px 0;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.8) transparent transparent;
+        }
+
+        /* Styles pour l'indicateur de progression */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b00, #ff9500);
+            width: 0%;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(255,107,0,0.3);
+        }
+
+        /* Styles pour les badges de réseaux sociaux */
+        .social-badges {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .social-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-badge:hover {
+            transform: scale(1.1) translateX(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .social-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .social-badge:hover::before {
+            transform: translateX(100%);
+        }
+
+        .social-badge svg {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .social-badge.instagram:hover svg {
+            fill: #E1306C;
+        }
+
+        .social-badge.facebook:hover svg {
+            fill: #1877F2;
+        }
+
+        .social-badge.twitter:hover svg {
+            fill: #1DA1F2;
+        }
+
+        .social-badge.tiktok:hover svg {
+            fill: #000000;
+        }
+
+        .social-badge .tooltip {
+            position: absolute;
+            right: 60px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .social-badge:hover .tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .social-badges {
+                right: 1rem;
+            }
+            .social-badge {
+                width: 40px;
+                height: 40px;
+            }
+            .social-badge svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Styles pour la barre de progression verticale */
+        .scroll-progress-container {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            z-index: 1000;
+        }
+
+        .scroll-progress-bar {
+            width: 100%;
+            background: linear-gradient(to bottom, #ff6b00, #ff9500);
+            border-radius: 2px;
+            transition: height 0.1s ease;
+            height: 0%;
+        }
+
+        .scroll-progress-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: #ff6b00;
+            border-radius: 50%;
+            transition: top 0.1s ease;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+        }
+
+        /* Styles pour les animations des sections */
+        .partners-container, .testimonials-container {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        .partners-container.reveal, .testimonials-container.reveal {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .partner-card, .testimonial-card {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            transition-delay: calc(var(--delay, 0) * 0.1s);
+        }
+
+        .partners-container.reveal .partner-card,
+        .testimonials-container.reveal .testimonial-card {
+            opacity: 1;
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body>
+    <!-- Barre de progression verticale -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar"></div>
+        <div class="scroll-progress-dot"></div>
+    </div>
+
+    <!-- Indicateur de progression -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Badges de réseaux sociaux -->
+    <div class="social-badges">
+        <a href="#" class="social-badge instagram" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span class="tooltip">Suivez-nous sur Instagram</span>
+        </a>
+        <a href="#" class="social-badge facebook" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+            <span class="tooltip">Rejoignez-nous sur Facebook</span>
+        </a>
+        <a href="#" class="social-badge twitter" title="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+            <span class="tooltip">Suivez-nous sur Twitter</span>
+        </a>
+        <a href="#" class="social-badge tiktok" title="TikTok">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                <path d="M15 8v8a4 4 0 0 1-4 4"></path>
+                <line x1="15" y1="4" x2="15" y2="8"></line>
+            </svg>
+            <span class="tooltip">Découvrez-nous sur TikTok</span>
+        </a>
+    </div>
+
     <header class="header glass-header">
         <div class="logo-container">
             <a href="/">
-                <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo">
+                <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo" fetchpriority="high">
             </a>
         </div>
         <nav class="navbar">
@@ -1254,7 +1523,7 @@
             </div>
         </nav>
     </header>
-    <video class="video-bg" autoplay loop muted playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; filter: brightness(0.95) sepia(0.08);">
+    <video class="video-bg" autoplay loop muted playsinline preload="metadata" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; filter: brightness(0.95) sepia(0.08);">
         <source src="features/bg/bg1.mp4" type="video/mp4" id="bg-video-source">
         Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
@@ -1307,19 +1576,20 @@
         <div class="packs-container">
             <div class="pack">
                 <div class="pack-header">
+                    <!-- Suppression du badge Bestseller -->
                 <h2>Pack de Démarrage</h2>
                 <div class="pack-price">30€</div>
                 </div>
                 <div class="pack-content-wrapper">
                     <div class="pack-left">
-                <img src="features/img/pack-demarrage.png" alt="Pack de Démarrage" class="pack-img">
+                        <img src="features/img/pack-demarrage.png" alt="Pack de Démarrage" class="pack-img" loading="eager" fetchpriority="high" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05) rotate(2deg)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'">
                         <p class="pack-description">Commencez votre voyage vers une peau plus saine avec notre pack de démarrage complet 3 patchs + une boîte de protection.</p>
                     </div>
                     <div class="pack-content">
                         <div class="patch-selection">
-                            <div class="patch-option">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection optimale pour le cou, zone sensible aux frottements')" onmouseout="hideTooltip(this)">
                                 <div class="patch-info">
-                                    <img src="features/img/p1.png" alt="Patch Cou">
+                                    <img src="features/img/p1.png" alt="Patch Cou" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-cou-demarrage">Patch Cou</label>
                                 </div>
                                 <div class="quantity-controls">
@@ -1328,9 +1598,9 @@
                                     <button class="quantity-btn" onclick="updateQuantityDemarrage('cou', 1)">+</button>
                                 </div>
                             </div>
-                            <div class="patch-option">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Idéal pour les petites zones d\'irritation')" onmouseout="hideTooltip(this)">
                                 <div class="patch-info">
-                                    <img src="features/img/p2.png" alt="Patch Petit">
+                                    <img src="features/img/p2.png" alt="Patch Petit" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-petit-demarrage">Patch Petit</label>
                                 </div>
                                 <div class="quantity-controls">
@@ -1339,9 +1609,9 @@
                                     <button class="quantity-btn" onclick="updateQuantityDemarrage('petit', 1)">+</button>
                                 </div>
                             </div>
-                            <div class="patch-option">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection renforcée pour les articulations')" onmouseout="hideTooltip(this)">
                                 <div class="patch-info">
-                                    <img src="features/img/p3.png" alt="Patch Articulation">
+                                    <img src="features/img/p3.png" alt="Patch Articulation" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-grand-demarrage">Patch Articulation</label>
                                 </div>
                                 <div class="quantity-controls">
@@ -1355,24 +1625,25 @@
                     </div>
                 </div>
                 <div class="pack-button">
-                    <button class="cta-btn" id="acheter-demarrage" disabled>Acheter le pack de démarrage</button>
+                    <button class="cta-btn" id="acheter-demarrage" disabled style="transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 24px rgba(255,107,0,0.2)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(255,107,0,0.1)'">Acheter le pack de démarrage</button>
                 </div>
             </div>
             <div class="pack recharge-pack">
                 <div class="pack-header">
+                    <div style="position: absolute; top: 1rem; right: 1rem; background: linear-gradient(135deg, #00b4d8, #0077b6); color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,180,216,0.2); z-index: 1;">Nouveau</div>
                 <h2>Pack de Recharge</h2>
                 <div class="pack-price">20€</div>
                 </div>
                 <div class="pack-content-wrapper">
                     <div class="pack-left">
-                <img src="features/img/recharge.png" alt="Pack de Recharge" class="pack-img">
+                        <img src="features/img/recharge.png" alt="Pack de Recharge" class="pack-img" loading="eager" fetchpriority="high" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05) rotate(-2deg)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'">
                         <p class="pack-description">Rechargez votre stock de patches pour continuer à prendre soin de votre peau.</p>
                     </div>
                     <div class="pack-content">
                 <div class="patch-selection">
-                    <div class="patch-option">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection optimale pour le cou, zone sensible aux frottements')" onmouseout="hideTooltip(this)">
                         <div class="patch-info">
-                                    <img src="features/img/p1.png" alt="Patch Cou">
+                                    <img src="features/img/p1.png" alt="Patch Cou" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-cou-recharge">Patch Cou</label>
                         </div>
                         <div class="quantity-controls">
@@ -1381,9 +1652,9 @@
                                     <button class="quantity-btn" onclick="updateQuantityRecharge('cou', 1)">+</button>
                         </div>
                     </div>
-                    <div class="patch-option">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Idéal pour les petites zones d\'irritation')" onmouseout="hideTooltip(this)">
                         <div class="patch-info">
-                                    <img src="features/img/p2.png" alt="Patch Petit">
+                                    <img src="features/img/p2.png" alt="Patch Petit" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-petit-recharge">Patch Petit</label>
                         </div>
                         <div class="quantity-controls">
@@ -1392,9 +1663,9 @@
                                     <button class="quantity-btn" onclick="updateQuantityRecharge('petit', 1)">+</button>
                         </div>
                     </div>
-                    <div class="patch-option">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection renforcée pour les articulations')" onmouseout="hideTooltip(this)">
                         <div class="patch-info">
-                                    <img src="features/img/p3.png" alt="Patch Articulation">
+                                    <img src="features/img/p3.png" alt="Patch Articulation" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-grand-recharge">Patch Articulation</label>
                         </div>
                         <div class="quantity-controls">
@@ -1408,18 +1679,8 @@
                     </div>
                 </div>
                 <div class="pack-button">
-                    <button class="cta-btn" id="acheter-recharge" disabled>Acheter le pack de recharge</button>
+                    <button class="cta-btn" id="acheter-recharge" disabled style="transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 24px rgba(255,107,0,0.2)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(255,107,0,0.1)'">Acheter le pack de recharge</button>
                 </div>
-            </div>
-        </div>
-        <div class="features">
-            <div class="feature-row">
-            <div class="feature">Protège des irritations</div>
-            <div class="feature">Résistant à l'eau</div>
-            </div>
-            <div class="feature-row">
-            <div class="feature">Hypoallergénique</div>
-            <div class="feature">30h d'utilisation par patch</div>
             </div>
         </div>
     </main>
@@ -1478,7 +1739,7 @@
     <div class="about-container" id="about-us" style="max-width: 900px; margin: 3rem auto; padding: 2.5rem; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 8px 32px rgba(255,107,0,0.10); position: relative; z-index: 1;">
         <div class="section-about">
             <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem;">Notre Équipe</h1>
-            <img src="features/img/team.png" alt="Notre équipe" class="team-img" style="width: 100%; max-width: 800px; height: auto; margin: 0 auto 2rem auto; display: block;">
+            <img src="features/img/team.png" alt="Notre équipe" class="team-img" loading="lazy" style="width: 100%; max-width: 800px; height: auto; margin: 0 auto 2rem auto; display: block;">
             <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
                 Chez Nauticare, nous sommes une équipe passionnée de surfeurs et d'entrepreneurs déterminés à améliorer l'expérience des sportifs nautiques. Notre mission est de créer des solutions innovantes et durables pour protéger la peau des sportifs tout en respectant l'environnement.
             </p>
@@ -1524,7 +1785,48 @@
         </div>
     </div>
 
-    <div class="testimonials-container" style="width: 100%; margin: 4rem 0 0 0; padding: 4rem 0; background: rgba(255,255,255,0.95); position: relative; z-index: 1;">
+    <!-- Section Partenaires -->
+    <div class="partners-container" style="width: 100%; margin: 0; padding: 4rem 0; background: rgba(255,255,255,0.95); position: relative; z-index: 1;">
+        <div class="section-partners" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 3rem; position: relative;">
+                Nos Partenaires
+                <div style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #ff6b00, #ff9500); border-radius: 3px;"></div>
+            </h1>
+            
+            <div style="display: flex; justify-content: center; align-items: center; gap: 6rem; flex-wrap: wrap; margin-bottom: 3rem;">
+                <!-- Partenaire Coluxia -->
+                <div class="partner-card" style="--delay: 0; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); transition: all 0.2s ease; cursor: pointer; transform: translateX(0); flex: 0 1 300px;" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                    <div style="text-align: center;">
+                        <img src="features/img/coluxia.svg" alt="Logo Coluxia" style="width: 180px; height: auto; margin-bottom: 1rem;">
+                        <h3 style="color: #333; font-size: 1.2rem; margin-bottom: 0.5rem;">Laboratoire Coluxia</h3>
+                        <p style="color: #666; font-size: 1rem;">Notre partenaire de confiance pour la recherche et le développement</p>
+                    </div>
+                </div>
+
+                <!-- Partenaire FFS -->
+                <div class="partner-card" style="--delay: 1; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); transition: all 0.2s ease; cursor: pointer; transform: translateX(0); flex: 0 1 300px;" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                    <div style="text-align: center;">
+                        <img src="features/img/ffs.png" alt="Logo Fédération Française de Surf" style="width: 180px; height: auto; margin-bottom: 1rem;">
+                        <h3 style="color: #333; font-size: 1.2rem; margin-bottom: 0.5rem;">Fédération Française de Surf</h3>
+                        <p style="color: #666; font-size: 1rem;">Partenaire officiel pour le développement du surf en France</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Texte descriptif -->
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #333;">
+                    Nous sommes fiers de collaborer avec des partenaires de confiance qui partagent nos valeurs d'excellence et d'innovation. Ces partenariats nous permettent de développer des produits de qualité supérieure et de contribuer activement au développement du surf en France.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials-container" style="width: 100%; margin: 0; padding: 4rem 0; background: rgba(255,255,255,0.95); position: relative; z-index: 1;">
         <div class="section-testimonials" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
             <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 3rem; position: relative;">
                 Ce que disent nos clients
@@ -1533,12 +1835,14 @@
             
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;">
                 <!-- Témoignage 1 -->
-                <div style="background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.3s ease; cursor: pointer; transform: translateY(0);" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                <div class="testimonial-card" style="--delay: 0; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
                     <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: #ff6b00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; transition: all 0.3s ease;">"</div>
                     <div style="margin-top: 1rem;">
                         <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic;">"Ces patchs ont complètement changé ma façon de surfer. Plus d'irritations, même après des sessions de 4 heures !"</p>
                         <div style="display: flex; align-items: center; gap: 1rem;">
-                            <img src="features/img/avatar1.jpg" alt="Thomas" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            <img src="features/img/avatar1.jpg" alt="Thomas" loading="lazy" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                             <div>
                                 <div style="font-weight: 600; color: #333;">Thomas</div>
                                 <div style="color: #666; font-size: 0.9rem;">Surfeur professionnel</div>
@@ -1548,12 +1852,14 @@
                 </div>
 
                 <!-- Témoignage 2 -->
-                <div style="background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.3s ease; cursor: pointer; transform: translateY(0);" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                <div class="testimonial-card" style="--delay: 1; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
                     <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: #ff6b00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; transition: all 0.3s ease;">"</div>
                     <div style="margin-top: 1rem;">
                         <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic;">"La qualité est exceptionnelle. Les patchs tiennent parfaitement même dans les vagues les plus puissantes."</p>
                         <div style="display: flex; align-items: center; gap: 1rem;">
-                            <img src="features/img/avatar2.jpg" alt="Sophie" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            <img src="features/img/avatar2.jpg" alt="Sophie" loading="lazy" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                             <div>
                                 <div style="font-weight: 600; color: #333;">Sophie</div>
                                 <div style="color: #666; font-size: 0.9rem;">Instructrice de surf</div>
@@ -1563,12 +1869,14 @@
                 </div>
 
                 <!-- Témoignage 3 -->
-                <div style="background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.3s ease; cursor: pointer; transform: translateY(0);" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                <div class="testimonial-card" style="--delay: 2; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
                     <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: #ff6b00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; transition: all 0.3s ease;">"</div>
                     <div style="margin-top: 1rem;">
                         <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic;">"Enfin une solution durable pour les irritations ! Je recommande vivement à tous les surfeurs."</p>
                         <div style="display: flex; align-items: center; gap: 1rem;">
-                            <img src="features/img/avatar3.jpg" alt="Marc" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            <img src="features/img/avatar3.jpg" alt="Marc" loading="lazy" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                             <div>
                                 <div style="font-weight: 600; color: #333;">Marc</div>
                                 <div style="color: #666; font-size: 0.9rem;">Surfeur passionné</div>
@@ -1780,7 +2088,7 @@
     <script>
         // Script pour l'effet de scroll reveal
         document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.section-produit, .section-about');
+            const sections = document.querySelectorAll('.section-produit, .section-about, .partners-container, .testimonials-container');
             
             const observerOptions = {
                 root: null,
@@ -1792,11 +2100,6 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('reveal');
-                        // Animer les cartes de patchs avec des délais progressifs
-                        const cards = entry.target.querySelectorAll('.patch-card');
-                        cards.forEach((card, index) => {
-                            card.style.setProperty('--delay', index);
-                        });
                     } else {
                         entry.target.classList.remove('reveal');
                     }
@@ -1966,6 +2269,154 @@
 
             // Initialisation
             updateCarousel();
+        });
+    </script>
+
+    <script>
+        function showTooltip(element, text) {
+            let tooltip = element.querySelector('.tooltip');
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                element.appendChild(tooltip);
+            }
+            tooltip.textContent = text;
+            tooltip.style.opacity = '1';
+        }
+
+        function hideTooltip(element) {
+            const tooltip = element.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.style.opacity = '0';
+            }
+        }
+    </script>
+
+    <script>
+        // Optimisation de la vidéo de fond
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.video-bg');
+            const videoSource = document.getElementById('bg-video-source');
+            
+            // Fonction pour charger la vidéo suivante en arrière-plan
+            function preloadNextVideo() {
+                const currentVideo = videoSource.src.split('/').pop();
+                const currentIndex = videoList.indexOf(currentVideo);
+                const nextIndex = (currentIndex + 1) % videoList.length;
+                const nextVideo = videoList[nextIndex];
+                
+                // Créer un élément video temporaire pour précharger
+                const tempVideo = document.createElement('video');
+                tempVideo.src = 'features/bg/' + nextVideo;
+                tempVideo.preload = 'metadata';
+            }
+
+            // Optimiser la lecture de la vidéo
+            video.addEventListener('loadedmetadata', function() {
+                // Réduire la qualité de la vidéo si nécessaire
+                if (window.innerWidth <= 768) {
+                    video.playbackRate = 0.75; // Ralentir légèrement la vidéo sur mobile
+                }
+                
+                // Précharger la vidéo suivante
+                preloadNextVideo();
+            });
+
+            // Gérer le changement de vidéo
+            video.addEventListener('ended', function() {
+                const currentVideo = videoSource.src.split('/').pop();
+                const currentIndex = videoList.indexOf(currentVideo);
+                const nextIndex = (currentIndex + 1) % videoList.length;
+                videoSource.src = 'features/bg/' + videoList[nextIndex];
+                video.load();
+                video.play();
+                preloadNextVideo();
+            });
+
+            // Optimiser la performance sur mobile
+            if ('connection' in navigator) {
+                if (navigator.connection.saveData) {
+                    video.removeAttribute('autoplay');
+                }
+                if (navigator.connection.effectiveType === '4g') {
+                    video.playbackRate = 1;
+                } else {
+                    video.playbackRate = 0.75;
+                }
+            }
+        });
+
+        // Lazy loading des images avec Intersection Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+        });
+    </script>
+
+    <script>
+        // ... existing scripts ...
+
+        // Script pour l'indicateur de progression
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.getElementById('progressBar');
+            
+            window.addEventListener('scroll', function() {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+        });
+
+        // Animation des badges sociaux
+        document.addEventListener('DOMContentLoaded', function() {
+            const badges = document.querySelectorAll('.social-badge');
+            
+            badges.forEach((badge, index) => {
+                badge.style.opacity = '0';
+                badge.style.transform = 'translateX(20px)';
+                
+                setTimeout(() => {
+                    badge.style.transition = 'all 0.3s ease';
+                    badge.style.opacity = '1';
+                    badge.style.transform = 'translateX(0)';
+                }, 500 + (index * 100));
+            });
+        });
+    </script>
+
+    <script>
+        // Script pour la barre de progression verticale
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.querySelector('.scroll-progress-bar');
+            const progressDot = document.querySelector('.scroll-progress-dot');
+            
+            window.addEventListener('scroll', function() {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                
+                // Mettre à jour la hauteur de la barre
+                progressBar.style.height = scrolled + '%';
+                
+                // Mettre à jour la position du point
+                progressDot.style.top = scrolled + '%';
+            });
         });
     </script>
 </body>
