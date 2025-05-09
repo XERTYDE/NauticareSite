@@ -89,6 +89,26 @@
             opacity: 1;
             right: 0;
         }
+        .login-icon {
+            margin-left: 2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            position: fixed;
+            right: 1rem;
+            margin-right: 0;
+            z-index: 1001;
+        }
+        .login-icon:hover {
+            transform: scale(1.1);
+        }
+        .login-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+        }
         .contact-container {
             max-width: 600px;
             margin: 3rem auto 2rem auto;
@@ -243,11 +263,18 @@
         </a>
         <nav class="navbar">
             <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="produit.html">Produits</a></li>
-                <li><a href="about.html">A propos</a></li>
+                <li><a href="index.html#accueil">Accueil</a></li>
+                <li><a href="index.html#nos-patchs">Produits</a></li>
+                <li><a href="index.html#about-us">A propos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="login-icon" title="Se connecter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                    <polyline points="10 17 15 12 10 7"/>
+                    <line x1="15" y1="12" x2="3" y2="12"/>
+                </svg>
+            </div>
         </nav>
     </header>
 

@@ -28,7 +28,7 @@
             z-index: 1000;
             background: #ff6b00;
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             text-align: center;
             transition: all 0.3s ease;
             display: flex;
@@ -36,16 +36,17 @@
             align-items: center;
         }
         .header.scrolled {
-            padding: 0.2rem 0;
+            padding: 0.5rem 0;
             justify-content: center;
         }
         .logo-container {
-            height: 80px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
             overflow: hidden;
+            margin-bottom: 0.5rem;
         }
         .header.scrolled .logo-container {
             height: 0;
@@ -560,18 +561,19 @@
         .navbar {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem;
-            gap: 2.5rem;
+            padding: 0 0 0 2rem;
             position: relative;
             transition: all 0.3s ease;
+            width: 100%;
+            margin-top: -0.5rem;
         }
         .header.scrolled .navbar {
             gap: 2rem;
             margin: 0;
-            padding: 0.5rem 2rem;
+            padding: 0.5rem 0 0.5rem 2rem;
         }
         .logo.premium-logo {
             display: flex;
@@ -602,6 +604,8 @@
             margin: 0;
             padding: 0;
             align-items: center;
+            justify-content: center;
+            flex: 1;
         }
         .nav-links li {
             display: inline-block;
@@ -618,13 +622,33 @@
             position: relative;
             overflow: hidden;
         }
+        .login-icon {
+            margin-left: 2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            position: fixed;
+            right: 1rem;
+            margin-right: 0;
+            z-index: 1001;
+        }
+        .login-icon:hover {
+            transform: scale(1.1);
+        }
+        .login-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+        }
         .nav-links a::after {
             content: '';
             display: block;
             position: absolute;
             left: 0;
             right: 100%;
-            bottom: -0.45em;
+            bottom: -0.20em;
             height: 2.5px;
             background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
             border-radius: 2px;
@@ -640,9 +664,25 @@
             right: 0;
         }
         @media (max-width: 700px) {
-            .navbar { flex-direction: column; gap: 0.7rem; padding: 0 0.5rem; justify-content: flex-start; }
-            .nav-logo-link { margin-right: 0; margin-bottom: 0.5rem; }
-            .nav-links { gap: 1.2rem; }
+            .navbar { 
+                flex-direction: column; 
+                gap: 0.7rem; 
+                padding: 0 0.5rem; 
+                justify-content: flex-start; 
+            }
+            .nav-logo-link { 
+                margin-right: 0; 
+                margin-bottom: 0.5rem; 
+            }
+            .nav-links { 
+                gap: 1.2rem; 
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .login-icon {
+                position: static;
+                margin: 0.5rem 0 0 0;
+            }
         }
         .glass-header {
             background: rgba(255,107,0,0.92);
@@ -1021,6 +1061,13 @@
                 <li><a href="#about-us">A propos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="login-icon" title="Se connecter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                    <polyline points="10 17 15 12 10 7"/>
+                    <line x1="15" y1="12" x2="3" y2="12"/>
+                </svg>
+            </div>
         </nav>
     </header>
     <video class="video-bg" autoplay loop muted playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; filter: brightness(0.95) sepia(0.08);">
@@ -1210,6 +1257,18 @@
                     <h3 style="color: #ff6b00; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">Qualité</h3>
                     <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 0;">
                         Nous nous efforçons d'offrir des produits de la plus haute qualité pour garantir la satisfaction de nos clients.
+                    </p>
+                </li>
+                <li class="value-item" style="background: #fff7f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(255,107,0,0.05);">
+                    <h3 style="color: #ff6b00; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">Passion</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 0;">
+                        Notre passion pour le surf et les sports nautiques nous pousse à créer des solutions innovantes pour les pratiquants.
+                    </p>
+                </li>
+                <li class="value-item" style="background: #fff7f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(255,107,0,0.05);">
+                    <h3 style="color: #ff6b00; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">Engagement</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 0;">
+                        Nous nous engageons à écouter et à répondre aux besoins de notre communauté de sportifs.
                     </p>
                 </li>
             </ul>
@@ -1446,7 +1505,7 @@
                     // Animer le logo et son conteneur
                     logo.style.transform = `scale(${1 - scrollProgress})`;
                     logo.style.opacity = 1 - scrollProgress;
-                    logoContainer.style.height = `${80 * (1 - scrollProgress)}px`;
+                    logoContainer.style.height = `${60 * (1 - scrollProgress)}px`;
                     
                     if (currentScroll > scrollThreshold) {
                         header.classList.add('scrolled');
@@ -1456,7 +1515,7 @@
                 } else {
                     logo.style.transform = 'scale(1)';
                     logo.style.opacity = 1;
-                    logoContainer.style.height = '80px';
+                    logoContainer.style.height = '60px';
                     header.classList.remove('scrolled');
                 }
 
