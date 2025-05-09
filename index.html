@@ -1454,9 +1454,176 @@
             opacity: 1;
             transform: translateX(0);
         }
+
+        /* Styles pour le menu hamburger */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1002;
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: rgba(255,107,0,0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            padding: 5rem 2rem;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav .nav-links {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mobile-nav .nav-links a {
+            font-size: 1.2rem;
+            color: #fff;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav .nav-links a:hover {
+            opacity: 1;
+            transform: translateX(10px);
+        }
+
+        /* Optimisations pour mobile */
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            .overlay-content {
+                padding: 1rem;
+                margin-top: 5rem;
+            }
+
+            .hero-container {
+                padding: 1.5rem;
+            }
+
+            .hero-container h1 {
+                font-size: 2rem;
+            }
+
+            .hero-container h2 {
+                font-size: 1.5rem;
+            }
+
+            .packs-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .pack, .pack.recharge-pack {
+                width: 100%;
+                min-height: auto;
+            }
+
+            .pack-content-wrapper {
+                flex-direction: column;
+            }
+
+            .pack-img {
+                max-width: 200px;
+            }
+
+            /* Optimisation des images */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Réduction des animations sur mobile */
+            .partners-container, .testimonials-container {
+                transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            }
+
+            .partner-card, .testimonial-card {
+                transition: all 0.2s ease;
+            }
+
+            /* Ajustement des espacements */
+            .section-produit, .section-about {
+                padding: 1.5rem;
+            }
+
+            .carousel-container {
+                height: 300px;
+            }
+
+            .carousel-item-content {
+                padding: 1rem;
+            }
+
+            .carousel-item img {
+                width: 100px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Ajout du menu hamburger -->
+    <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menu mobile -->
+    <nav class="mobile-nav">
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#nos-patchs">Produits</a></li>
+            <li><a href="#about-us">A propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
     <!-- Barre de progression verticale -->
     <div class="scroll-progress-container">
         <div class="scroll-progress-bar"></div>
@@ -1567,7 +1734,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#packs-section" class="cta-btn" style="display: inline-block; text-decoration: none; font-size: 1.2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%); box-shadow: 0 4px 15px rgba(255,107,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">Découvrir nos offres</a>
+                        <a href="#packs-section" class="cta-btn" style="display: inline-block; text-decoration: none; font-size: 1.2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%); box-shadow: 0 4px 15px rgba(255,107,0,0.3); transition: all 0.3s ease; position: relative; overflow: hidden; border-radius: 2rem;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(255,107,0,0.4)'; this.style.background='linear-gradient(135deg, #ff9500 0%, #ff6b00 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,107,0,0.3)'; this.style.background='linear-gradient(135deg, #ff6b00 0%, #ff9500 100%)';">Découvrir nos offres</a>
                     </div>
                 </div>
             </div>
@@ -1576,7 +1743,7 @@
         <div class="packs-container">
             <div class="pack">
                 <div class="pack-header">
-                    <!-- Suppression du badge Bestseller -->
+                    <div class="new-badge" style="position: absolute; top: 1rem; right: 1rem; background: linear-gradient(135deg, #00b4d8, #0077b6); color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,180,216,0.2); z-index: 1; pointer-events: none;">Nouveau</div>
                 <h2>Pack de Démarrage</h2>
                 <div class="pack-price">30€</div>
                 </div>
@@ -1630,7 +1797,7 @@
             </div>
             <div class="pack recharge-pack">
                 <div class="pack-header">
-                    <div style="position: absolute; top: 1rem; right: 1rem; background: linear-gradient(135deg, #00b4d8, #0077b6); color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,180,216,0.2); z-index: 1;">Nouveau</div>
+                    <div class="bestseller-badge" style="position: absolute; top: 1rem; right: 1rem; background: linear-gradient(135deg, #ff6b00, #ff9500); color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(255,107,0,0.2); z-index: 1; pointer-events: none;">Bestseller</div>
                 <h2>Pack de Recharge</h2>
                 <div class="pack-price">20€</div>
                 </div>
@@ -1739,7 +1906,9 @@
     <div class="about-container" id="about-us" style="max-width: 900px; margin: 3rem auto; padding: 2.5rem; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 8px 32px rgba(255,107,0,0.10); position: relative; z-index: 1;">
         <div class="section-about">
             <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem;">Notre Équipe</h1>
-            <img src="features/img/team.png" alt="Notre équipe" class="team-img" loading="lazy" style="width: 100%; max-width: 800px; height: auto; margin: 0 auto 2rem auto; display: block;">
+            <div style="width: 100%; max-width: 800px; margin: 0 auto 2rem auto; text-align: center;">
+                <img src="features/img/team.png" alt="Notre équipe" style="width: 100%; height: auto;">
+            </div>
             <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
                 Chez Nauticare, nous sommes une équipe passionnée de surfeurs et d'entrepreneurs déterminés à améliorer l'expérience des sportifs nautiques. Notre mission est de créer des solutions innovantes et durables pour protéger la peau des sportifs tout en respectant l'environnement.
             </p>
@@ -2416,6 +2585,48 @@
                 
                 // Mettre à jour la position du point
                 progressDot.style.top = scrolled + '%';
+            });
+        });
+    </script>
+
+    <script>
+        // Script pour le menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-nav .nav-links a');
+
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Fermer le menu au clic en dehors
+            document.addEventListener('click', function(e) {
+                if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Optimisation du chargement des images
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
             });
         });
     </script>
