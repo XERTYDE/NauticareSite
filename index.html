@@ -1426,7 +1426,7 @@
 
         .scroll-progress-bar {
             width: 100%;
-            background: linear-gradient(to bottom, #ff6b00, #ff9500);
+            background: linear-gradient(to bottom, #ff6b00, #ff6b00);
             border-radius: 2px;
             transition: height 0.1s ease;
             height: 0%;
@@ -1717,7 +1717,7 @@
         }
 
         [data-theme="dark"] .hero-container h1 {
-            color: #ff6b00 !important;
+            color: #ffffff !important;
         }
 
         [data-theme="dark"] .hero-container h2 {
@@ -1743,10 +1743,6 @@
         }
 
         [data-theme="dark"] .hero-right div div div {
-            color: #ffffff !important;
-        }
-
-        [data-theme="dark"] .hero-right div div div div {
             color: #ffffff !important;
         }
 
@@ -2038,23 +2034,16 @@
         }
 
         [data-theme="dark"] .scroll-progress-bar {
-            background: linear-gradient(to bottom, #ff9500, #ffb347);
+            background: linear-gradient(to bottom, #ff6b00, #ffb347);
             box-shadow: 0 0 10px rgba(255, 149, 0, 0.4);
         }
 
         [data-theme="dark"] .scroll-progress-dot {
-            background: #ff9500;
+            background: #ff6b00;
             box-shadow: 0 0 10px rgba(255, 149, 0, 0.6);
             border: 2px solid rgba(255, 255, 255, 0.2);
         }
-        /* Styles pour le mode nuit */
-        @media (prefers-color-scheme: dark) {
-            .feature[data-feature="protection"] span,
-            .feature[data-feature="water"] span,
-            .feature[data-feature="hypoallergenic"] span {
-                color: #ffffff !important;
-            }
-        }
+
     </style>
     <script>
         // Script pour le mode nuit
@@ -2104,10 +2093,6 @@
         <div class="scroll-progress-dot"></div>
     </div>
 
-    <!-- Indicateur de progression -->
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
 
     <!-- Badges de réseaux sociaux -->
     <div class="social-badges">
@@ -2211,16 +2196,16 @@
                             
                             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem;">
                                 <div style="background: white; padding: 1rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 12px rgba(255,107,0,0.05); border: 1px solid rgba(255,107,0,0.1);">
-                                    <div style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
-                                    <div style="color: #333; font-weight: 600; font-size: 0.95rem;">Protection optimale</div>
+                                    <div class='features-hero-icon' style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
+                                    <div class='features-hero-text' style="color: #333; font-weight: 600; font-size: 0.95rem;">Protection optimale</div>
                                 </div>
                                 <div style="background: white; padding: 1rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 12px rgba(255,107,0,0.05); border: 1px solid rgba(255,107,0,0.1);">
-                                    <div style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
-                                    <div style="color: #333; font-weight: 600; font-size: 0.95rem;">Résistant à l'eau</div>
+                                    <div class='features-hero-icon' style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
+                                    <div class='features-hero-text' style="color: #333; font-weight: 600; font-size: 0.95rem;">Résistant à l'eau</div>
                                 </div>
                                 <div style="background: white; padding: 1rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 12px rgba(255,107,0,0.05); border: 1px solid rgba(255,107,0,0.1);">
-                                    <div style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
-                                    <div style="color: #333; font-weight: 600; font-size: 0.95rem;">Hypoallergénique</div>
+                                    <div class='features-hero-icon' style="color: #ff6b00; font-size: 1.2rem; margin-bottom: 0.5rem;">✓</div>
+                                    <div class='features-hero-text' style="color: #333; font-weight: 600; font-size: 0.95rem;">Hypoallergénique</div>
                                 </div>
                             </div>
                         </div>
@@ -2497,10 +2482,10 @@
                 <div class="testimonial-card" style="--delay: 0; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
                      onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
                      onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: #ff6b00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; transition: all 0.3s ease;">"</div>
-                    <div style="margin-top: 1rem;">
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic;">"Ces patchs ont complètement changé ma façon de surfer. Plus d'irritations, même après des sessions de 4 heures !"</p>
-                        <div style="display: flex; align-items: center; gap: 1rem;">
+                    
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"Ces patchs ont complètement changé ma façon de surfer. Plus d'irritations, même après des sessions de 4 heures !"</p>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
                             <img src="features/img/avatar1.jpg" alt="Thomas" loading="lazy" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                             <div>
                                 <div style="font-weight: 600; color: #333;">Thomas</div>
@@ -2514,10 +2499,10 @@
                 <div class="testimonial-card" style="--delay: 1; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
                      onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
                      onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: #ff6b00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; transition: all 0.3s ease;">"</div>
-                    <div style="margin-top: 1rem;">
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic;">"La qualité est exceptionnelle. Les patchs tiennent parfaitement même dans les vagues les plus puissantes."</p>
-                        <div style="display: flex; align-items: center; gap: 1rem;">
+                    
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"La qualité est exceptionnelle. Les patchs tiennent parfaitement même dans les vagues les plus puissantes."</p>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
                             <img src="features/img/avatar2.jpg" alt="Sophie" loading="lazy" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                             <div>
                                 <div style="font-weight: 600; color: #333;">Sophie</div>
@@ -2531,10 +2516,10 @@
                 <div class="testimonial-card" style="--delay: 2; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
                      onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
                      onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: #ff6b00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; transition: all 0.3s ease;">"</div>
-                    <div style="margin-top: 1rem;">
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic;">"Enfin une solution durable pour les irritations ! Je recommande vivement à tous les surfeurs."</p>
-                        <div style="display: flex; align-items: center; gap: 1rem;">
+                    
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"Enfin une solution durable pour les irritations ! Je recommande vivement à tous les surfeurs."</p>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
                             <img src="features/img/avatar3.jpg" alt="Marc" loading="lazy" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                             <div>
                                 <div style="font-weight: 600; color: #333;">Marc</div>
@@ -3031,17 +3016,6 @@
 
     <script>
         // ... existing scripts ...
-
-        // Script pour l'indicateur de progression
-        document.addEventListener('DOMContentLoaded', function() {
-            const progressBar = document.getElementById('progressBar');
-            
-            window.addEventListener('scroll', function() {
-                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                const scrolled = (window.scrollY / windowHeight) * 100;
-                progressBar.style.width = scrolled + '%';
-            });
-        });
 
         // Animation des badges sociaux
         document.addEventListener('DOMContentLoaded', function() {
