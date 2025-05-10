@@ -11,13 +11,14 @@
         }
         body {
             margin: 0;
-            background: #fff7f0;
+            background: var(--bg-color);
             min-height: 100vh;
-            color: #222;
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             font-family: 'Montserrat', Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         * {
             font-family: 'Montserrat', Arial, sans-serif;
@@ -25,7 +26,7 @@
         .header {
             position: relative;
             z-index: 2;
-            background: rgba(255,107,0,0.92);
+            background: var(--header-bg);
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
             padding: 2rem 0 1rem 0;
             text-align: center;
@@ -62,44 +63,37 @@
         }
         .nav-links a {
             color: #fff;
+            text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            text-decoration: none;
-            letter-spacing: 1px;
             padding: 0.2rem 0.5rem;
             border-radius: 0.5rem;
-            transition: all 0.22s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         .nav-links a::after {
             content: '';
-            display: block;
             position: absolute;
+            bottom: 0;
             left: 0;
-            right: 100%;
-            bottom: -0.45em;
-            height: 2.5px;
-            background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
-            border-radius: 2px;
-            opacity: 0;
-            transition: all 0.22s ease;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #7fd8ff, #ff6b00);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
         }
         .nav-links a:hover {
-            background: rgba(255,179,71,0.10);
-            transform: scale(1.07);
+            color: #fff;
+            transform: translateY(-2px);
         }
         .nav-links a:hover::after {
-            opacity: 1;
-            right: 0;
+            transform: scaleX(1);
+            transform-origin: left;
         }
         .nav-links a:active {
-            background: rgba(255,179,71,0.10);
-            transform: scale(1.07);
-        }
-        .nav-links a:active::after {
-            opacity: 1;
-            right: 0;
+            transform: translateY(0);
         }
         .login-icon {
             margin-left: 2rem;
@@ -122,80 +116,147 @@
             fill: none;
         }
         .contact-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 3rem auto 2rem auto;
-            background: rgba(255,255,255,0.97);
+            background: var(--card-bg);
             border-radius: 1.5rem;
-            box-shadow: 0 8px 32px rgba(255,128,0,0.10), 0 1.5px 0 #ffd9b3;
-            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            padding: 3rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        h1 {
-            color: #ff6b00;
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b00, #ffb347);
+            border-radius: 4px 4px 0 0;
         }
         .contact-info {
             text-align: center;
-            margin-bottom: 2rem;
-            color: #333;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+        .contact-info p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
         .contact-info a {
-            color: #ff8000;
-            text-decoration: underline;
+            color: #ff6b00;
+            text-decoration: none;
             font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.2rem 0;
+        }
+        .contact-info a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b00, #ffb347);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: #ffb347;
+        }
+        .contact-info a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        h1 {
+            color: #ff6b00;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(255,107,0,0.1);
         }
         form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        form div {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 0.5rem;
         }
         label {
             font-weight: 600;
-            color: #222;
+            color: var(--text-color);
+            font-size: 1.1rem;
             margin-bottom: 0.3rem;
         }
         input, textarea {
             font-family: inherit;
             font-size: 1rem;
-            padding: 0.7rem 1rem;
-            border-radius: 0.7rem;
-            border: 1.5px solid #ffd9b3;
-            background: #fff7f0;
+            padding: 1rem 1.2rem;
+            border-radius: 0.8rem;
+            border: 2px solid rgba(255,107,0,0.2);
+            background: var(--card-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
             resize: vertical;
         }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ff6b00;
+            box-shadow: 0 0 0 4px rgba(255,107,0,0.1);
+        }
         textarea {
-            min-height: 100px;
+            min-height: 150px;
         }
         button {
-            background: #ff6b00;
+            background: linear-gradient(90deg, #ff6b00, #ffb347);
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             border: none;
             border-radius: 2rem;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: background 0.3s;
-            margin-top: 0.5rem;
+            box-shadow: 0 4px 16px rgba(255,107,0,0.2);
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         button:hover {
-            background: #ff6b00cc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,0,0.3);
+            background: linear-gradient(90deg, #ffb347, #ff6b00);
+        }
+        button:active {
+            transform: translateY(0);
         }
         .footer {
             width: 100%;
             background: rgba(34,34,34,0.97);
             color: #fff;
             text-align: center;
-            padding: 2.2rem 0 1.5rem 0;
-            font-size: 1.13rem;
+            padding: 1.2rem 0 0.8rem 0;
+            font-size: 1rem;
             letter-spacing: 1px;
             position: relative;
             z-index: 2;
             box-shadow: 0 -4px 24px rgba(255,107,0,0.10);
             flex-shrink: 0;
-            border-top: 2.5px solid transparent;
+            border-top: 2px solid transparent;
             border-image: linear-gradient(90deg, #7fd8ff 0%, #003366 100%);
             border-image-slice: 1;
             backdrop-filter: blur(6px) saturate(1.1);
@@ -206,13 +267,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.1rem;
+            gap: 0.6rem;
         }
         .footer a {
             color: #7fd8ff;
             text-decoration: none;
             font-weight: 600;
-            padding: 0.1rem 0.7rem;
+            padding: 0.1rem 0.5rem;
             border-radius: 0.5rem;
             transition: background 0.22s, color 0.22s, transform 0.22s;
             position: relative;
@@ -224,22 +285,41 @@
             position: absolute;
             left: 0;
             right: 100%;
-            bottom: -0.45em;
-            height: 2.5px;
+            bottom: -0.35em;
+            height: 2px;
             background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
             border-radius: 2px;
             opacity: 0;
             transition: opacity 0.22s, right 0.22s;
         }
         .footer a:hover {
-            transform: scale(1.07);
+            transform: scale(1.05);
         }
         .footer a:hover::after {
-            opacity: 1;
             right: 0;
+            opacity: 1;
+        }
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #7fd8ff;
+            transform: translateY(-3px);
+        }
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
         }
         .footer-socials {
-            margin-top:1.2rem;
+            margin-top: 1.2rem;
             display: flex;
             gap: 1.1rem;
             justify-content: center;
@@ -247,35 +327,75 @@
         .footer-socials svg {
             stroke: #7fd8ff;
             transition: stroke 0.2s, transform 0.2s;
+            width: 24px;
+            height: 24px;
         }
         .footer-socials a:hover svg {
             stroke: #ff6b00;
             transform: scale(1.1);
         }
-        @media (max-width: 900px) {
-            .contact-container {
-                margin: 2rem 1rem;
-                padding: 1.5rem;
-            }
-            .navbar {
-                flex-direction: column;
-                gap: 0.7rem;
-                padding: 0 0.5rem;
-            }
-            .nav-links {
-                gap: 1.2rem;
-            }
+        .theme-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ff6b00;
+            box-shadow: 0 4px 12px rgba(255,107,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            order: -1;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(255,107,0,0.3);
+        }
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+            transition: all 0.3s ease;
+        }
+        .moon-icon {
+            display: none;
+        }
+        .sun-icon {
+            display: block;
+        }
+        [data-theme="dark"] .moon-icon {
+            display: block;
+        }
+        [data-theme="dark"] .sun-icon {
+            display: none;
+        }
+        /* Variables CSS pour le thème */
+        :root {
+            --bg-color: #fff7f0;
+            --text-color: #222;
+            --card-bg: #fff;
+            --header-bg: rgba(255,107,0,0.92);
+            --shadow-color: rgba(0,0,0,0.1);
+            --footer-bg: rgba(34,34,34,0.97);
+        }
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2d2d2d;
+            --header-bg: rgba(255,107,0,0.85);
+            --shadow-color: rgba(0,0,0,0.3);
+            --footer-bg: #1a1a1a;
         }
         @media (max-width: 768px) {
-            .header {
-                padding: 1rem 0 0.5rem 0;
-            }
-            .logo {
-                width: 200px;
-            }
             .navbar {
                 flex-direction: column;
-                gap: 0.8rem;
+                gap: 1rem;
                 padding: 0.5rem;
             }
             .nav-links {
@@ -293,27 +413,25 @@
             }
             h1 {
                 font-size: 2rem;
-                margin-bottom: 2rem;
             }
             .contact-info {
-                font-size: 1.1rem;
-                margin-bottom: 2rem;
+                padding: 1.5rem;
             }
-            label {
-                font-size: 1.1rem;
+            .contact-info p {
+                font-size: 1rem;
+            }
+            form {
+                gap: 1.2rem;
             }
             input, textarea {
-                font-size: 1.1rem;
                 padding: 0.8rem 1rem;
             }
             button {
-                font-size: 1.2rem;
-                padding: 1rem 2rem;
-                width: 100%;
+                font-size: 1.1rem;
+                padding: 0.9rem 2rem;
             }
             .footer {
                 padding: 1.5rem 0 1rem 0;
-                font-size: 1rem;
             }
             .footer-content {
                 gap: 0.8rem;
@@ -331,7 +449,6 @@
                 height: 28px;
             }
         }
-
         @media (max-width: 480px) {
             .logo {
                 width: 160px;
@@ -361,76 +478,285 @@
                 padding: 0.9rem 1.8rem;
             }
         }
+
+        /* Styles pour les badges de réseaux sociaux */
+        .social-badges {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .social-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-badge:hover {
+            transform: scale(1.1) translateX(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .social-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .social-badge:hover::before {
+            transform: translateX(100%);
+        }
+
+        .social-badge svg {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .social-badge.instagram:hover svg {
+            fill: #E1306C;
+        }
+
+        .social-badge.facebook:hover svg {
+            fill: #1877F2;
+        }
+
+        .social-badge.twitter:hover svg {
+            fill: #1DA1F2;
+        }
+
+        .social-badge.tiktok:hover svg {
+            fill: #000000;
+        }
+
+        .social-badge .tooltip {
+            position: absolute;
+            right: 60px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .social-badge:hover .tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .social-badges {
+                right: 1rem;
+            }
+            .social-badge {
+                width: 40px;
+                height: 40px;
+            }
+            .social-badge svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Styles du mode nuit pour les icônes sociales */
+        [data-theme="dark"] .social-badge {
+            background: #2d2d2d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] .social-badge svg {
+            stroke: #7fd8ff;
+            filter: brightness(0.8);
+        }
+
+        [data-theme="dark"] .social-badge:hover {
+            background: #3d3d3d;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        [data-theme="dark"] .social-badge:hover svg {
+            stroke: #ff6b00;
+            filter: brightness(1.2);
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <a href="/">
-            <img src="features/img/logo2.svg" alt="Nauticare Logo" class="logo">
+    <!-- Badges de réseaux sociaux -->
+    <div class="social-badges">
+        <a href="#" class="social-badge instagram" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span class="tooltip">Suivez-nous sur Instagram</span>
         </a>
+        <a href="#" class="social-badge facebook" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+            <span class="tooltip">Rejoignez-nous sur Facebook</span>
+        </a>
+        <a href="#" class="social-badge twitter" title="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+            <span class="tooltip">Suivez-nous sur Twitter</span>
+        </a>
+        <a href="#" class="social-badge tiktok" title="TikTok">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                <path d="M15 8v8a4 4 0 0 1-4 4"></path>
+                <line x1="15" y1="4" x2="15" y2="8"></line>
+            </svg>
+            <span class="tooltip">Découvrez-nous sur TikTok</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" title="Changer de thème">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <header class="header">
+        <div class="logo-container">
+            <a href="/">
+                <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo">
+            </a>
+        </div>
         <nav class="navbar">
             <ul class="nav-links">
-                <li><a href="index.html#accueil">Accueil</a></li>
+                <li><a href="index.html">Accueil</a></li>
                 <li><a href="index.html#nos-patchs">Produits</a></li>
-                <li><a href="index.html#about-us">A propos</a></li>
+                <li><a href="index.html#about">À propos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="login-icon" title="Se connecter">
+            <a href="#" class="login-icon" title="Connexion">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-                    <polyline points="10 17 15 12 10 7"/>
-                    <line x1="15" y1="12" x2="3" y2="12"/>
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-            </div>
+            </a>
         </nav>
     </header>
 
-    <div class="contact-container">
+    <main class="contact-container">
         <h1>Contactez-nous</h1>
         <div class="contact-info">
-            Pour toute question, suggestion ou demande de partenariat, n'hésitez pas à nous écrire !<br>
-            Email : <a href="mailto:thenauticare@gmail.com">thenauticare@gmail.com</a>
+            <p>Pour toute question ou demande d'information, n'hésitez pas à nous contacter :</p>
+            <p>Email : <a href="mailto:contact@nauticare.com">contact@nauticare.com</a></p>
+            <p>Téléphone : <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
         </div>
         <form>
-            <label for="name">Nom</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-
+            <div>
+                <label for="name">Nom</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="subject">Sujet</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
             <button type="submit">Envoyer</button>
         </form>
-    </div>
+    </main>
 
-    <footer class="footer" style="margin-top:auto;">
+    <footer class="footer">
         <div class="footer-content">
-            <div style="font-size:1.08rem;opacity:0.93;">&copy; 2024 Nauticare &mdash; Tous droits réservés</div>
-            <div>
-                <a href="mailto:thenauticare@gmail.com">thenauticare@gmail.com</a>
-                <span style="color:#7fd8ff;opacity:0.5;">|</span>
-                <a href="mentions.html">Mentions légales</a>
-            </div>
+            <p>© 2024 Nauticare. Tous droits réservés.</p>
+            <p>
+                <a href="mentions-legales.html">Mentions légales</a> |
+                <a href="politique-confidentialite.html">Politique de confidentialité</a>
+            </p>
+            <p>Email : <a href="mailto:contact@nauticare.com">contact@nauticare.com</a></p>
             <div class="footer-socials">
-                <a href="#" title="Instagram" class="footer-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                <a href="https://www.facebook.com/nauticare" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                     </svg>
                 </a>
-                <a href="#" title="Facebook" class="footer-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                <a href="https://www.instagram.com/nauticare" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                     </svg>
                 </a>
-                <a href="#" title="Twitter" class="footer-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                <a href="https://www.linkedin.com/company/nauticare" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                 </a>
             </div>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Vérifier la préférence système et le thème sauvegardé
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (prefersDarkScheme.matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+
             // Mettre à jour le lien actif pour la page contact
             const navLinks = document.querySelectorAll('.nav-links a');
             navLinks.forEach(link => {
@@ -442,5 +768,6 @@
             });
         });
     </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html> 

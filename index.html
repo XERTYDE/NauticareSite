@@ -653,38 +653,32 @@
             letter-spacing: 1px;
             padding: 0.2rem 0.5rem;
             border-radius: 0.5rem;
-            transition: all 0.22s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         .nav-links a::after {
             content: '';
-            display: block;
             position: absolute;
+            bottom: 0;
             left: 0;
-            right: 100%;
-            bottom: -0.20em;
-            height: 2.5px;
-            background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
-            border-radius: 2px;
-            opacity: 0;
-            transition: all 0.22s ease;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #7fd8ff, #ff6b00);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
         }
         .nav-links a:hover {
-            background: rgba(255,179,71,0.10);
-            transform: scale(1.07);
+            color: #fff;
+            transform: translateY(-2px);
         }
         .nav-links a:hover::after {
-            opacity: 1;
-            right: 0;
+            transform: scaleX(1);
+            transform-origin: left;
         }
         .nav-links a:active {
-            background: rgba(255,179,71,0.10);
-            transform: scale(1.07);
-        }
-        .nav-links a:active::after {
-            opacity: 1;
-            right: 0;
+            transform: translateY(0);
         }
         .login-icon {
             margin-left: 2rem;
@@ -1793,76 +1787,84 @@
         }
 
         .theme-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ff6b00;
+            box-shadow: 0 4px 12px rgba(255,107,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
             cursor: pointer;
-            padding: 0.5rem;
-            margin-right: 1rem;
+            border: none;
+            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease;
+            order: -1;
         }
-
         .theme-toggle:hover {
             transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(255,107,0,0.3);
         }
-
         .theme-toggle svg {
             width: 24px;
             height: 24px;
-            stroke: #fff;
+            stroke: white;
             stroke-width: 2;
             fill: none;
             transition: all 0.3s ease;
         }
-
+        [data-theme="dark"] .theme-toggle {
+            background: #ff6b00 !important;
+            box-shadow: 0 4px 12px rgba(255,107,0,0.2);
+        }
+        [data-theme="dark"] .theme-toggle svg {
+            stroke: #fff;
+        }
+        [data-theme="dark"] .theme-toggle:hover {
+            background: #ff6b00 !important;
+            box-shadow: 0 6px 16px rgba(255,107,0,0.3);
+        }
+        [data-theme="dark"] .theme-toggle:hover svg {
+            stroke: #fff;
+        }
         .moon-icon {
             display: none;
         }
-
         .sun-icon {
             display: block;
         }
-
         [data-theme="dark"] .moon-icon {
             display: block;
         }
-
         [data-theme="dark"] .sun-icon {
             display: none;
         }
-
         [data-theme="dark"] .patch-selection {
             background: #3d3d3d;
         }
-
         [data-theme="dark"] .patch-option {
             background: #2d2d2d;
         }
-
         [data-theme="dark"] .patch-info label {
             color: #f0f0f0;
         }
-
         [data-theme="dark"] .quantity-display {
             color: #f0f0f0;
         }
-
         [data-theme="dark"] .patch-counter {
             background: #3d3d3d;
         }
-
         [data-theme="dark"] .carousel-item-content {
             background: #2d2d2d;
         }
-
         [data-theme="dark"] .carousel-item p {
             color: #f0f0f0;
         }
-
         [data-theme="dark"] .footer {
             background: #1a1a1a;
         }
-
         [data-theme="dark"] .produit-container,
         [data-theme="dark"] .about-container,
         [data-theme="dark"] .partners-container,
@@ -1870,74 +1872,60 @@
             background: rgba(0, 0, 0, 0.85);
             color: #ffffff;
         }
-
         [data-theme="dark"] .section-produit,
         [data-theme="dark"] .section-about,
         [data-theme="dark"] .section-partners,
         [data-theme="dark"] .section-testimonials {
             color: #ffffff;
         }
-
         [data-theme="dark"] .section-produit h1,
         [data-theme="dark"] .section-about h1,
         [data-theme="dark"] .section-partners h1,
         [data-theme="dark"] .section-testimonials h1 {
             color: #ff6b00;
         }
-
         [data-theme="dark"] .section-produit p,
         [data-theme="dark"] .section-about p,
         [data-theme="dark"] .section-partners p,
         [data-theme="dark"] .section-testimonials p {
             color: #ffffff;
         }
-
         [data-theme="dark"] .description-section p {
             color: #ffffff;
         }
-
         [data-theme="dark"] .carousel-item-content {
             background: rgba(45, 45, 45, 0.95);
         }
-
         [data-theme="dark"] .carousel-item p {
             color: #ffffff;
         }
-
         [data-theme="dark"] .partner-card,
         [data-theme="dark"] .testimonial-card {
             background: rgba(45, 45, 45, 0.95);
         }
-
         [data-theme="dark"] .partner-card h3,
         [data-theme="dark"] .partner-card p,
         [data-theme="dark"] .testimonial-card p {
             color: #ffffff;
         }
-
         [data-theme="dark"] .testimonial-card .testimonial-author {
             color: #ffffff;
         }
-
         [data-theme="dark"] .statistics-container {
             background: rgba(45, 45, 45, 0.95);
         }
-
         [data-theme="dark"] .statistics-container .stat-value {
             color: #ff6b00;
         }
-
         [data-theme="dark"] .statistics-container .stat-label {
             color: #ffffff;
         }
-
         [data-theme="dark"] .produit-container,
         [data-theme="dark"] .about-container,
         [data-theme="dark"] .partners-container,
         [data-theme="dark"] .testimonials-container {
             background: rgba(0, 0, 0, 0.85) !important;
         }
-
         [data-theme="dark"] .section-produit p,
         [data-theme="dark"] .section-about p,
         [data-theme="dark"] .description-section p,
@@ -1947,97 +1935,77 @@
         [data-theme="dark"] .statistics-container .stat-label {
             color: #ffffff !important;
         }
-
         [data-theme="dark"] .carousel-item-content,
         [data-theme="dark"] .partner-card,
         [data-theme="dark"] .testimonial-card,
         [data-theme="dark"] .statistics-container {
             background: rgba(45, 45, 45, 0.95) !important;
         }
-
         [data-theme="dark"] .carousel-item p {
             color: #ffffff !important;
         }
-
         [data-theme="dark"] .value-item p {
             color: #333 !important;
         }
-
         [data-theme="dark"] .value-item {
             background: #fff7f0 !important;
         }
-
         [data-theme="dark"] .value-item h3 {
             color: #ff6b00 !important;
         }
-
         [data-theme="dark"] .partner-card p {
             color: #ffffff !important;
         }
-
         [data-theme="dark"] .partner-card h3 {
             color: #ffffff !important;
         }
-
         [data-theme="dark"] .section-partners p {
             color: #ffffff !important;
         }
-
         [data-theme="dark"] .section-about img {
             background: #ffffff !important;
             padding: 1rem !important;
             border-radius: 1rem !important;
             box-shadow: 0 4px 16px rgba(255, 107, 0, 0.15) !important;
         }
-
         [data-theme="dark"] .footer-socials svg {
             stroke: #7fd8ff;
             filter: brightness(0.8);
         }
-
         [data-theme="dark"] .footer-socials a:hover svg {
             stroke: #ff6b00;
             filter: brightness(1.2);
         }
-
         [data-theme="dark"] .social-badge {
             background: #2d2d2d;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-
         [data-theme="dark"] .social-badge svg {
             stroke: #7fd8ff;
             filter: brightness(0.8);
         }
-
         [data-theme="dark"] .social-badge:hover {
             background: #3d3d3d;
             box-shadow: 0 6px 16px rgba(0,0,0,0.3);
         }
-
         [data-theme="dark"] .social-badge:hover svg {
             stroke: #ff6b00;
             filter: brightness(1.2);
         }
-
         [data-theme="dark"] .testimonial-card .testimonial-author {
             color: #ffffff !important;
         }
-
         [data-theme="dark"] .testimonial-card div[style*="font-weight: 600"] {
             color: #ffffff !important;
         }
-
         [data-theme="dark"] .scroll-progress-container {
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
-
         [data-theme="dark"] .scroll-progress-bar {
             background: linear-gradient(to bottom, #ff6b00, #ffb347);
             box-shadow: 0 0 10px rgba(255, 149, 0, 0.4);
         }
-
         [data-theme="dark"] .scroll-progress-dot {
             background: #ff6b00;
             box-shadow: 0 0 10px rgba(255, 149, 0, 0.6);
@@ -2065,6 +2033,18 @@
                 
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
+            });
+
+            // Gestion du scroll pour le header
+            const header = document.querySelector('.header');
+            const overlayContent = document.querySelector('.overlay-content');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             });
         });
     </script>
@@ -2125,6 +2105,22 @@
             </svg>
             <span class="tooltip">Découvrez-nous sur TikTok</span>
         </a>
+        <button class="theme-toggle" id="themeToggle" title="Changer de thème">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
     </div>
 
     <header class="header glass-header">
@@ -2140,31 +2136,15 @@
                 <li><a href="#about-us">A propos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="theme-toggle" title="Changer de thème">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="moon-icon">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sun-icon">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-            </div>
-            <div class="login-icon" title="Se connecter">
+            <a href="#" class="login-icon" title="Connexion">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-                    <polyline points="10 17 15 12 10 7"/>
-                    <line x1="15" y1="12" x2="3" y2="12"/>
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-            </div>
+            </a>
         </nav>
     </header>
+
     <video class="video-bg" autoplay loop muted playsinline preload="metadata" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; filter: brightness(0.95) sepia(0.08);">
         <source src="features/bg/bg1.mp4" type="video/mp4" id="bg-video-source">
         Votre navigateur ne supporte pas la vidéo HTML5.
@@ -2180,12 +2160,13 @@
                 <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 2rem; font-weight: 700; text-align: center;">On a la solution pour vous</h2>
                 
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 3rem; width: 100%;">
-                    <div class="hero-left" style="flex: 1; position: relative;">
-                        <img src="features/img/pack-demarrage.png" alt="Pack Nauticare" style="width: 100%; max-width: 400px; height: auto; border-radius: 1rem; box-shadow: 0 8px 32px rgba(255,107,0,0.15); transition: transform 0.3s ease;">
+                    <div class="hero-left" style="flex: 1; position: relative; display: flex; flex-direction: column; align-items: center;">
+                        <img src="features/img/hero-section.png" alt="Pack Nauticare" style="width: 100%; max-width: 600px; height: auto; border-radius: 1rem; box-shadow: 0 8px 32px rgba(255,107,0,0.15); transition: transform 0.3s ease;">
                         <!-- Badge de qualité -->
                         <div style="position: absolute; top: 1rem; right: 1rem; background: #ff6b00; color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(255,107,0,0.2);">
                             Made in France
                         </div>
+                        <a href="#packs-section" class="cta-btn" style="display: inline-block; text-decoration: none; font-size: 1.4rem; padding: 1.2rem 3.5rem; background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%); box-shadow: 0 4px 15px rgba(255,107,0,0.3); transition: all 0.3s ease; position: relative; overflow: hidden; border-radius: 2rem; margin-top: 2rem; min-width: 400px; text-align: center;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(255,107,0,0.4)'; this.style.background='linear-gradient(135deg, #ff9500 0%, #ff6b00 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,107,0,0.3)'; this.style.background='linear-gradient(135deg, #ff6b00 0%, #ff9500 100%)';">Découvrir nos offres</a>
                     </div>
                     <div class="hero-right" style="flex: 1; text-align: left;">
                         <div style="background: linear-gradient(135deg, #fff7f0 0%, #fff 100%); padding: 2rem; border-radius: 1.2rem; margin-bottom: 2rem; border: 1px solid rgba(255,107,0,0.15); box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; overflow: hidden;">
@@ -2209,7 +2190,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#packs-section" class="cta-btn" style="display: inline-block; text-decoration: none; font-size: 1.2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%); box-shadow: 0 4px 15px rgba(255,107,0,0.3); transition: all 0.3s ease; position: relative; overflow: hidden; border-radius: 2rem;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(255,107,0,0.4)'; this.style.background='linear-gradient(135deg, #ff9500 0%, #ff6b00 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,107,0,0.3)'; this.style.background='linear-gradient(135deg, #ff6b00 0%, #ff9500 100%)';">Découvrir nos offres</a>
                     </div>
                 </div>
             </div>
@@ -2531,7 +2511,7 @@
             </div>
 
             <!-- Statistiques -->
-            <div style="display: flex; justify-content: center; gap: 4rem; margin-top: 4rem; padding: 2rem; background: linear-gradient(135deg, #fff7f0 0%, #fff 100%); border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+            <div class="statistics-container" style="display: flex; justify-content: center; gap: 4rem; margin-top: 4rem; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
                 <div style="text-align: center;">
                     <div style="font-size: 2.5rem; font-weight: 700; color: #ff6b00; margin-bottom: 0.5rem;">98%</div>
                     <div style="color: #666; font-size: 1.1rem;">Clients satisfaits</div>
