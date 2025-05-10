@@ -29,9 +29,13 @@
             flex-direction: column;
             justify-content: flex-start;
             font-family: 'Montserrat', Arial, sans-serif;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
         }
         * {
             font-family: 'Montserrat', Arial, sans-serif;
+            box-sizing: border-box;
         }
         .header {
             position: fixed;
@@ -85,6 +89,8 @@
             box-shadow: 0 4px 24px rgba(0,0,0,0.10);
             padding: 2.5rem 2rem;
             text-align: center;
+            width: 100%;
+            box-sizing: border-box;
         }
         .patch-img {
             width: 200px;
@@ -114,9 +120,12 @@
             flex-direction: column;
             gap: 2rem;
             margin-top: 2.5rem;
-            width: 1000px;
+            width: 100%;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
         }
         .feature-row {
             display: flex;
@@ -176,9 +185,13 @@
             width: 100%;
             max-width: 1200px;
             margin: 10rem auto 2rem auto;
-            padding: 2rem 1rem;
+            padding: 2rem;
             flex: 1 0 auto;
             transition: margin 0.3s ease;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            margin-left: auto;
+            margin-right: auto;
         }
         .header.scrolled ~ .overlay-content {
             margin-top: 6rem;
@@ -1405,9 +1418,10 @@
             transform: translateY(-50%);
             width: 4px;
             height: 200px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.1);
             border-radius: 2px;
             z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .scroll-progress-bar {
@@ -1416,6 +1430,7 @@
             border-radius: 2px;
             transition: height 0.1s ease;
             height: 0%;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
         }
 
         .scroll-progress-dot {
@@ -1427,7 +1442,8 @@
             background: #ff6b00;
             border-radius: 50%;
             transition: top 0.1s ease;
-            box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+            border: 2px solid white;
         }
 
         /* Styles pour les animations des sections */
@@ -1604,7 +1620,465 @@
                 width: 100px;
             }
         }
+
+        /* Styles pour le mode nuit */
+        :root {
+            --bg-color: #fff7f0;
+            --text-color: #222;
+            --card-bg: #fff;
+            --header-bg: rgba(255,107,0,0.92);
+            --shadow-color: rgba(0,0,0,0.1);
+            --gradient-start: #fff7f0;
+            --gradient-end: #fff;
+            --section-bg: rgba(255,255,255,0.95);
+            --feature-bg: #fff;
+            --patch-bg: #f8f8f8;
+            --patch-option-bg: #fff;
+            --counter-bg: #fff7f0;
+            --footer-bg: rgba(34,34,34,0.97);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2d2d2d;
+            --header-bg: rgba(255,107,0,0.85);
+            --shadow-color: rgba(0,0,0,0.3);
+            --gradient-start: #2d2d2d;
+            --gradient-end: #1a1a1a;
+            --section-bg: rgba(45,45,45,0.95);
+            --feature-bg: #2d2d2d;
+            --patch-bg: #3d3d3d;
+            --patch-option-bg: #2d2d2d;
+            --counter-bg: #3d3d3d;
+            --footer-bg: #1a1a1a;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header {
+            background: var(--header-bg);
+        }
+
+        .overlay-content, .main, .pack, .feature, .value-item, .partner-card, .testimonial-card {
+            background: var(--card-bg);
+            box-shadow: 0 4px 24px var(--shadow-color);
+            color: var(--text-color);
+        }
+
+        .produit-container, .about-container, .partners-container, .testimonials-container {
+            background: var(--section-bg);
+        }
+
+        .feature {
+            background: var(--feature-bg);
+            color: var(--text-color);
+        }
+
+        .patch-selection {
+            background: var(--patch-bg);
+        }
+
+        .patch-option {
+            background: var(--patch-option-bg);
+        }
+
+        .patch-info label {
+            color: var(--text-color);
+        }
+
+        .quantity-display {
+            color: var(--text-color);
+        }
+
+        .patch-counter {
+            background: var(--counter-bg);
+            color: var(--text-color);
+        }
+
+        .carousel-item-content {
+            background: var(--card-bg);
+        }
+
+        .carousel-item p {
+            color: var(--text-color);
+        }
+
+        .footer {
+            background: var(--footer-bg);
+        }
+
+        [data-theme="dark"] .hero-container {
+            background: rgba(30, 30, 30, 0.85) !important;
+        }
+
+        [data-theme="dark"] .hero-container h1 {
+            color: #ff6b00 !important;
+        }
+
+        [data-theme="dark"] .hero-container h2 {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .hero-container p {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .hero-right div {
+            background: rgba(45, 45, 45, 0.95) !important;
+            border-color: rgba(255, 107, 0, 0.3) !important;
+        }
+
+        [data-theme="dark"] .hero-right div p {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .hero-right div div {
+            background: rgba(35, 35, 35, 0.95) !important;
+            border-color: rgba(255, 107, 0, 0.2) !important;
+        }
+
+        [data-theme="dark"] .hero-right div div div {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .hero-right div div div div {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .value-item {
+            background: var(--card-bg);
+        }
+
+        [data-theme="dark"] .value-item h3 {
+            color: #ff6b00;
+        }
+
+        [data-theme="dark"] .value-item p {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .section-produit p,
+        [data-theme="dark"] .section-about p {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .description-section p {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .partner-card h3,
+        [data-theme="dark"] .partner-card p {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .testimonial-card p {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .testimonial-card .testimonial-author {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .statistics-container {
+            background: var(--card-bg);
+        }
+
+        [data-theme="dark"] .statistics-container .stat-value {
+            color: #ff6b00;
+        }
+
+        [data-theme="dark"] .statistics-container .stat-label {
+            color: var(--text-color);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+            transition: all 0.3s ease;
+        }
+
+        .moon-icon {
+            display: none;
+        }
+
+        .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .sun-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .patch-selection {
+            background: #3d3d3d;
+        }
+
+        [data-theme="dark"] .patch-option {
+            background: #2d2d2d;
+        }
+
+        [data-theme="dark"] .patch-info label {
+            color: #f0f0f0;
+        }
+
+        [data-theme="dark"] .quantity-display {
+            color: #f0f0f0;
+        }
+
+        [data-theme="dark"] .patch-counter {
+            background: #3d3d3d;
+        }
+
+        [data-theme="dark"] .carousel-item-content {
+            background: #2d2d2d;
+        }
+
+        [data-theme="dark"] .carousel-item p {
+            color: #f0f0f0;
+        }
+
+        [data-theme="dark"] .footer {
+            background: #1a1a1a;
+        }
+
+        [data-theme="dark"] .produit-container,
+        [data-theme="dark"] .about-container,
+        [data-theme="dark"] .partners-container,
+        [data-theme="dark"] .testimonials-container {
+            background: rgba(0, 0, 0, 0.85);
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .section-produit,
+        [data-theme="dark"] .section-about,
+        [data-theme="dark"] .section-partners,
+        [data-theme="dark"] .section-testimonials {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .section-produit h1,
+        [data-theme="dark"] .section-about h1,
+        [data-theme="dark"] .section-partners h1,
+        [data-theme="dark"] .section-testimonials h1 {
+            color: #ff6b00;
+        }
+
+        [data-theme="dark"] .section-produit p,
+        [data-theme="dark"] .section-about p,
+        [data-theme="dark"] .section-partners p,
+        [data-theme="dark"] .section-testimonials p {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .description-section p {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .carousel-item-content {
+            background: rgba(45, 45, 45, 0.95);
+        }
+
+        [data-theme="dark"] .carousel-item p {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .partner-card,
+        [data-theme="dark"] .testimonial-card {
+            background: rgba(45, 45, 45, 0.95);
+        }
+
+        [data-theme="dark"] .partner-card h3,
+        [data-theme="dark"] .partner-card p,
+        [data-theme="dark"] .testimonial-card p {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .testimonial-card .testimonial-author {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .statistics-container {
+            background: rgba(45, 45, 45, 0.95);
+        }
+
+        [data-theme="dark"] .statistics-container .stat-value {
+            color: #ff6b00;
+        }
+
+        [data-theme="dark"] .statistics-container .stat-label {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .produit-container,
+        [data-theme="dark"] .about-container,
+        [data-theme="dark"] .partners-container,
+        [data-theme="dark"] .testimonials-container {
+            background: rgba(0, 0, 0, 0.85) !important;
+        }
+
+        [data-theme="dark"] .section-produit p,
+        [data-theme="dark"] .section-about p,
+        [data-theme="dark"] .description-section p,
+        [data-theme="dark"] .partner-card p,
+        [data-theme="dark"] .testimonial-card p,
+        [data-theme="dark"] .testimonial-card .testimonial-author,
+        [data-theme="dark"] .statistics-container .stat-label {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .carousel-item-content,
+        [data-theme="dark"] .partner-card,
+        [data-theme="dark"] .testimonial-card,
+        [data-theme="dark"] .statistics-container {
+            background: rgba(45, 45, 45, 0.95) !important;
+        }
+
+        [data-theme="dark"] .carousel-item p {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .value-item p {
+            color: #333 !important;
+        }
+
+        [data-theme="dark"] .value-item {
+            background: #fff7f0 !important;
+        }
+
+        [data-theme="dark"] .value-item h3 {
+            color: #ff6b00 !important;
+        }
+
+        [data-theme="dark"] .partner-card p {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .partner-card h3 {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .section-partners p {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .section-about img {
+            background: #ffffff !important;
+            padding: 1rem !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 4px 16px rgba(255, 107, 0, 0.15) !important;
+        }
+
+        [data-theme="dark"] .footer-socials svg {
+            stroke: #7fd8ff;
+            filter: brightness(0.8);
+        }
+
+        [data-theme="dark"] .footer-socials a:hover svg {
+            stroke: #ff6b00;
+            filter: brightness(1.2);
+        }
+
+        [data-theme="dark"] .social-badge {
+            background: #2d2d2d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] .social-badge svg {
+            stroke: #7fd8ff;
+            filter: brightness(0.8);
+        }
+
+        [data-theme="dark"] .social-badge:hover {
+            background: #3d3d3d;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        [data-theme="dark"] .social-badge:hover svg {
+            stroke: #ff6b00;
+            filter: brightness(1.2);
+        }
+
+        [data-theme="dark"] .testimonial-card .testimonial-author {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .testimonial-card div[style*="font-weight: 600"] {
+            color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .scroll-progress-container {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .scroll-progress-bar {
+            background: linear-gradient(to bottom, #ff9500, #ffb347);
+            box-shadow: 0 0 10px rgba(255, 149, 0, 0.4);
+        }
+
+        [data-theme="dark"] .scroll-progress-dot {
+            background: #ff9500;
+            box-shadow: 0 0 10px rgba(255, 149, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        /* Styles pour le mode nuit */
+        @media (prefers-color-scheme: dark) {
+            .feature[data-feature="protection"] span,
+            .feature[data-feature="water"] span,
+            .feature[data-feature="hypoallergenic"] span {
+                color: #ffffff !important;
+            }
+        }
     </style>
+    <script>
+        // Script pour le mode nuit
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Vérifier la préférence système et le thème sauvegardé
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (prefersDarkScheme.matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        });
+    </script>
 </head>
 <body>
     <!-- Ajout du menu hamburger -->
@@ -1681,6 +2155,22 @@
                 <li><a href="#about-us">A propos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="theme-toggle" title="Changer de thème">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="moon-icon">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sun-icon">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </div>
             <div class="login-icon" title="Se connecter">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
