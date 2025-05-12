@@ -13,7 +13,7 @@
     <link rel="preload" as="image" href="features/img/p2.png">
     <link rel="preload" as="image" href="features/img/p3.png">
     <!-- Préchargement de la première vidéo de fond -->
-    <link rel="preload" as="video" href="features/bg/bg1.mp4">
+    <!--<link rel="preload" as="video" href="features/bg/bg1.mp4">-->
     <style>
         html, body {
             height: 100%;
@@ -2164,11 +2164,12 @@
             </a>
         </nav>
     </header>
-
+<!--
     <video class="video-bg" autoplay loop muted playsinline preload="metadata" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; filter: brightness(0.95) sepia(0.08);">
         <source src="features/bg/bg1.mp4" type="video/mp4" id="bg-video-source">
         Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
+-->    
     <main class="overlay-content" id="accueil">
         <div class="hero-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-bottom: 3rem; padding: 5rem 4rem; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10); position: relative; overflow: hidden; max-width: 1400px; margin-left: auto; margin-right: auto;">
             <!-- Effet de gradient en arrière-plan -->
@@ -2183,7 +2184,7 @@
                     <div class="hero-left" style="flex: 1; position: relative; display: flex; flex-direction: column; align-items: center;">
                         <img src="features/img/hero-section.png" alt="Pack Nauticare" style="width: 100%; max-width: 600px; height: auto; border-radius: 1rem; box-shadow: 0 8px 32px rgba(255,107,0,0.15); transition: transform 0.3s ease;">
                         <!-- Badge de qualité -->
-                        <div style="position: absolute; top: 1rem; right: 1rem; background: #ff6b00; color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(255,107,0,0.2);">
+                        <div style="position: absolute; top: 1rem; right: 1rem; background: #7fd8ff; color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(255,107,0,0.2);">
                             Made in France
                         </div>
                         <a href="#packs-section" class="cta-btn" style="display: inline-block; text-decoration: none; font-size: 1.4rem; padding: 1.2rem 3.5rem; background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%); box-shadow: 0 4px 15px rgba(255,107,0,0.3); transition: all 0.3s ease; position: relative; overflow: hidden; border-radius: 2rem; margin-top: 2rem; min-width: 400px; text-align: center;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(255,107,0,0.4)'; this.style.background='linear-gradient(135deg, #ff9500 0%, #ff6b00 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,107,0,0.3)'; this.style.background='linear-gradient(135deg, #ff6b00 0%, #ff9500 100%)';">Découvrir nos offres</a>
@@ -2326,6 +2327,102 @@
             </div>
         </div>
     </main>
+
+
+    <div class="testimonials-container" style="width: 100%; margin: 0; padding: 4rem 0; background: rgba(255,255,255,0.95); position: relative; z-index: 1;">
+        <div class="section-testimonials" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 3rem; position: relative;">
+                Ce que disent nos clients
+                <div style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #ff6b00, #ff9500); border-radius: 3px;"></div>
+            </h1>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;">
+                <!-- Témoignage 1 -->
+                <div class="testimonial-card" style="--delay: 0; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                    
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"Ces patchs ont complètement changé ma façon de surfer. Plus d'irritations, même après des sessions de 4 heures !"</p>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #333;">Thomas</div>
+                                <div style="color: #666; font-size: 0.9rem;">Surfeur professionnel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Témoignage 2 -->
+                <div class="testimonial-card" style="--delay: 1; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                    
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"La qualité est exceptionnelle. Les patchs tiennent parfaitement même dans les vagues les plus puissantes."</p>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #333;">Sophie</div>
+                                <div style="color: #666; font-size: 0.9rem;">Instructrice de surf</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Témoignage 3 -->
+                <div class="testimonial-card" style="--delay: 2; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                    
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"Enfin une solution durable pour les irritations ! Je recommande vivement à tous les surfeurs."</p>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #333;">Marc</div>
+                                <div style="color: #666; font-size: 0.9rem;">Surfeur passionné</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistiques -->
+            <div class="statistics-container" style="display: flex; justify-content: center; gap: 4rem; margin-top: 4rem; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #ff6b00; margin-bottom: 0.5rem;">98%</div>
+                    <div style="color: #666; font-size: 1.1rem;">Clients satisfaits</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #ff6b00; margin-bottom: 0.5rem;">5000+</div>
+                    <div style="color: #666; font-size: 1.1rem;">Patchs vendus</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #ff6b00; margin-bottom: 0.5rem;">4.9/5</div>
+                    <div style="color: #666; font-size: 1.1rem;">Note moyenne</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="produit-container" id="nos-patchs" style="width: 100%; margin: 0; padding: 4rem 0; background: rgba(255,255,255,0.95); position: relative; z-index: 1;">
         <div class="section-produit" style="max-width: 950px; margin: 0 auto; padding: 0 2rem;">
             <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem;">Nos Patchs</h1>
@@ -2444,6 +2541,10 @@
                      onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
                     <div style="text-align: center;">
                         <img src="features/img/coluxia.svg" alt="Logo Coluxia" style="width: 180px; height: auto; margin-bottom: 1rem;">
+                        <!-- Badge de qualité -->
+                        <div style="position: absolute; top: -1rem; right: -3rem; background: #7fd8ff; color: white; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(255,107,0,0.2);">
+                            Made in France
+                        </div>
                         <h3 style="color: #333; font-size: 1.2rem; margin-bottom: 0.5rem;">Laboratoire Coluxia</h3>
                         <p style="color: #666; font-size: 1rem;">Notre partenaire de confiance pour la recherche et le développement</p>
                     </div>
@@ -2466,99 +2567,6 @@
                 <p style="font-size: 1.1rem; line-height: 1.6; color: #333;">
                     Nous sommes fiers de collaborer avec des partenaires de confiance qui partagent nos valeurs d'excellence et d'innovation. Ces partenariats nous permettent de développer des produits de qualité supérieure et de contribuer activement au développement du surf en France.
                 </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="testimonials-container" style="width: 100%; margin: 0; padding: 4rem 0; background: rgba(255,255,255,0.95); position: relative; z-index: 1;">
-        <div class="section-testimonials" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <h1 style="color: #ff6b00; font-size: 2.2rem; text-align: center; margin-bottom: 3rem; position: relative;">
-                Ce que disent nos clients
-                <div style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #ff6b00, #ff9500); border-radius: 3px;"></div>
-            </h1>
-            
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;">
-                <!-- Témoignage 1 -->
-                <div class="testimonial-card" style="--delay: 0; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
-                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
-                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    
-                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"Ces patchs ont complètement changé ma façon de surfer. Plus d'irritations, même après des sessions de 4 heures !"</p>
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: #333;">Thomas</div>
-                                <div style="color: #666; font-size: 0.9rem;">Surfeur professionnel</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Témoignage 2 -->
-                <div class="testimonial-card" style="--delay: 1; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
-                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
-                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    
-                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"La qualité est exceptionnelle. Les patchs tiennent parfaitement même dans les vagues les plus puissantes."</p>
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: #333;">Sophie</div>
-                                <div style="color: #666; font-size: 0.9rem;">Instructrice de surf</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Témoignage 3 -->
-                <div class="testimonial-card" style="--delay: 2; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
-                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
-                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    
-                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"Enfin une solution durable pour les irritations ! Je recommande vivement à tous les surfeurs."</p>
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: #333;">Marc</div>
-                                <div style="color: #666; font-size: 0.9rem;">Surfeur passionné</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Statistiques -->
-            <div class="statistics-container" style="display: flex; justify-content: center; gap: 4rem; margin-top: 4rem; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                <div style="text-align: center;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: #ff6b00; margin-bottom: 0.5rem;">98%</div>
-                    <div style="color: #666; font-size: 1.1rem;">Clients satisfaits</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: #ff6b00; margin-bottom: 0.5rem;">5000+</div>
-                    <div style="color: #666; font-size: 1.1rem;">Patchs vendus</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: #ff6b00; margin-bottom: 0.5rem;">4.9/5</div>
-                    <div style="color: #666; font-size: 1.1rem;">Note moyenne</div>
-                </div>
             </div>
         </div>
     </div>
