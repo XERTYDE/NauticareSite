@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nauticare - Patch Anti Irritation</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Préchargement des images critiques -->
     <link rel="preload" as="image" href="features/img/logo2.svg">
     <link rel="preload" as="image" href="features/img/pack-demarrage.png">
@@ -198,10 +199,10 @@
         }
         .footer {
             width: 100%;
-            background: rgba(34,34,34,0.97);
+            background: linear-gradient(180deg, rgba(34,34,34,0.97) 0%, rgba(20,20,20,0.98) 100%);
             color: #fff;
             text-align: center;
-            padding: 1.2rem 0 0.8rem 0;
+            padding: 2.5rem 0 1.5rem 0;
             font-size: 1rem;
             letter-spacing: 1px;
             position: relative;
@@ -214,22 +215,42 @@
             backdrop-filter: blur(6px) saturate(1.1);
         }
         .footer-content {
-            max-width: 700px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+        .footer-section {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 0.6rem;
+            align-items: flex-start;
+            text-align: left;
+        }
+        .footer-section h3 {
+            color: #7fd8ff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .footer-section p {
+            color: #ccc;
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         .footer a {
             color: #7fd8ff;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             padding: 0.1rem 0.5rem;
             border-radius: 0.5rem;
-            transition: background 0.22s, color 0.22s, transform 0.22s;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            margin: 0.3rem 0;
+            display: inline-block;
         }
         .footer a::after {
             content: '';
@@ -242,44 +263,47 @@
             background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
             border-radius: 2px;
             opacity: 0;
-            transition: opacity 0.22s, right 0.22s;
+            transition: all 0.3s ease;
         }
         .footer a:hover {
-            transform: scale(1.05);
+            transform: translateX(5px);
+            color: #fff;
         }
         .footer a:hover::after {
-            opacity: 1;
             right: 0;
+            opacity: 1;
         }
-        .footer-socials {
-            margin-top: 0.8rem;
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .social-links {
             display: flex;
-            gap: 0.8rem;
-            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
         }
-        .footer-socials svg {
-            stroke: #7fd8ff;
-            transition: stroke 0.2s, transform 0.2s;
-            width: 24px;
-            height: 24px;
+        .social-links a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
         }
-        .footer-socials a:hover svg {
-            stroke: #ff6b00;
-            transform: scale(1.1);
+        .social-links a:hover {
+            transform: translateY(-3px);
         }
-        .footer-socials img {
-            background: #fff7f0;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px #ff6b0033;
-            padding: 0.25rem;
-            width: 24px;
-            height: 24px;
-            transition: filter 0.2s, box-shadow 0.2s, background 0.2s;
-        }
-        .footer-socials img:hover {
-            filter: invert(60%) sepia(100%) saturate(700%) hue-rotate(10deg) brightness(1.2);
-            background: #ffe0b2;
-            box-shadow: 0 4px 16px #ff6b0055;
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .footer-section {
+                align-items: center;
+            }
         }
         .packs-container {
             display: flex;
@@ -2336,34 +2360,49 @@
                 <div style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #ff6b00, #ff9500); border-radius: 3px;"></div>
             </h1>
             
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;">
-                <!-- Témoignage 1 -->
-                <div class="testimonial-card" style="--delay: 0; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
-                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
-                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    
-                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"Ces patchs ont complètement changé ma façon de surfer. Plus d'irritations, même après des sessions de 4 heures !"</p>
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
+            <!-- Témoignage Roany Portilla (vidéo, hors grid) -->
+            <div class="testimonial-card" style="--delay: 0; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0); max-width: 1400px; margin: 0 auto 2.5rem auto;" 
+                 onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                 onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                <h2 style="color: #ff6b00; font-size: 1.5rem; text-align: center; margin-bottom: 1.5rem;">Test live du champion de France de Surf Roany Portilla !</h2>
+                <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <!-- Vidéo -->
+                    <div style="flex: 1 1 600px; min-width: 280px; position: relative; width: 100%; height: 400px;">
+                        <div id="ytb-thumbnail-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            <img src="features/img/ytb-raony.jpeg" alt="Miniature vidéo Roany Portilla" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.8rem; box-shadow: 0 4px 16px rgba(255,107,0,0.12);">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="40" cy="40" r="40" fill="rgba(0,0,0,0.35)"/>
+                                    <polygon points="32,25 60,40 32,55" fill="#fff"/>
                                 </svg>
                             </div>
-                            <div>
-                                <div style="font-weight: 600; color: #333;">Thomas</div>
-                                <div style="color: #666; font-size: 0.9rem;">Surfeur professionnel</div>
-                            </div>
+                        </div>
+                        <div id="ytb-iframe-container" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            <iframe style="width: 100%; height: 100%; border-radius: 0.8rem; box-shadow: 0 4px 16px rgba(255,107,0,0.12);" 
+                                src="https://www.youtube.com/embed/VOTRE_VIDEO_ID?autoplay=1" 
+                                title="Test des patchs Nauticare par Raony Portilla" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
+                    <!-- Photo à droite -->
+                    <div style="flex: 1 1 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem;">
+                        <img src="features/img/raony.jpeg" alt="Roany Portilla" style="width: 100%; height: 400px; object-fit: cover; border-radius: 0.8rem; box-shadow: 0 4px 16px rgba(255,107,0,0.12); margin-bottom: 0.5rem;">
+                    </div>
                 </div>
+                <div style="margin-top: 1.5rem; display: flex; flex-direction: column; height: 100%;">
+                    <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"En tant que champion de France de surf, je peux vous dire que ces patchs sont vraiment révolutionnaires. Ils tiennent parfaitement même dans les conditions les plus extrêmes et me permettent de me concentrer uniquement sur ma performance."</p>
+                </div>
+            </div>
 
-                <!-- Témoignage 2 -->
+            <!-- Grid à 3 colonnes pour les autres témoignages -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 0;">
+                <!-- Témoignage 1 -->
                 <div class="testimonial-card" style="--delay: 1; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
                      onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
                      onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    
                     <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
                         <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"La qualité est exceptionnelle. Les patchs tiennent parfaitement même dans les vagues les plus puissantes."</p>
                         <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
@@ -2381,11 +2420,10 @@
                     </div>
                 </div>
 
-                <!-- Témoignage 3 -->
+                <!-- Témoignage 2 (Marc) -->
                 <div class="testimonial-card" style="--delay: 2; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
                      onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
                      onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
-                    
                     <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
                         <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"Enfin une solution durable pour les irritations ! Je recommande vivement à tous les surfeurs."</p>
                         <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
@@ -2398,6 +2436,27 @@
                             <div>
                                 <div style="font-weight: 600; color: #333;">Marc</div>
                                 <div style="color: #666; font-size: 0.9rem;">Surfeur passionné</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Témoignage 3 (Julie) -->
+                <div class="testimonial-card" style="--delay: 3; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
+                     onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
+                     onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.08)';">
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; height: 100%;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">"J'utilise les patchs Nauticare lors de mes gardes, ils tiennent toute la journée et protègent vraiment bien la peau !"</p>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: auto;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #333;">Julie</div>
+                                <div style="color: #666; font-size: 0.9rem;">Sauveteuse en mer</div>
                             </div>
                         </div>
                     </div>
@@ -2573,26 +2632,30 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <div style="font-size:1.08rem;opacity:0.93;">&copy; 2024 Nauticare &mdash; Tous droits réservés</div>
-            <div>
-                <a href="mailto:thenauticare@gmail.com">thenauticare@gmail.com</a>
-                <span style="color:#7fd8ff;opacity:0.5;">|</span>
-                <a href="mentions.html">Mentions légales</a>
+            <div class="footer-section">
+                <h3>À propos</h3>
+                <p>Nauticare propose des solutions innovantes pour le confort des marins, avec notre patch anti-irritation révolutionnaire.</p>
             </div>
-            <div class="footer-socials">
-                <a href="#" title="Instagram" class="footer-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                </a>
-                <a href="#" title="Facebook" class="footer-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                    </svg>
-                </a>
-                <a href="#" title="Twitter" class="footer-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                    </svg>
-                </a>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <a href="#features">Fonctionnalités</a>
+                <a href="#packs">Nos packs</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Mentions légales</a>
             </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@nauticare.fr</p>
+                <p>Tél: +33 1 23 45 67 89</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nauticare. Tous droits réservés.</p>
         </div>
     </footer>
     <script>
@@ -3116,6 +3179,20 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        // Script pour afficher l'iframe YouTube au clic sur la miniature personnalisée
+        (function() {
+            var thumb = document.getElementById('ytb-thumbnail-container');
+            var iframe = document.getElementById('ytb-iframe-container');
+            if (thumb && iframe) {
+                thumb.addEventListener('click', function() {
+                    thumb.style.display = 'none';
+                    iframe.style.display = 'block';
+                });
+            }
+        })();
     </script>
 </body>
 </html> 
