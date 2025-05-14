@@ -298,27 +298,27 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: #ff6b00;
+            background: var(--header-bg);
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            padding: 0.8rem 0;
+            padding: 0.5rem 0;
             text-align: center;
-            transition: all 0.3s ease;
+            border-bottom: 1.5px solid #ffd9b3;
+            backdrop-filter: blur(8px) saturate(1.2);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .header.scrolled {
             padding: 0.5rem 0;
-            justify-content: center;
         }
         .logo-container {
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 0.3rem;
             transition: all 0.3s ease;
             overflow: hidden;
-            margin-bottom: 0.5rem;
         }
         .header.scrolled .logo-container {
             height: 0;
@@ -329,7 +329,6 @@
             height: auto;
             transition: all 0.3s ease;
             transform-origin: center;
-            will-change: transform, opacity;
         }
         .header.scrolled .logo {
             transform: scale(0);
@@ -1095,41 +1094,17 @@
         .navbar {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 0 0 2rem;
+            padding: 0;
             position: relative;
             transition: all 0.3s ease;
             width: 100%;
-            margin-top: -0.5rem;
         }
         .header.scrolled .navbar {
-            gap: 2rem;
-            margin: 0;
-            padding: 0.5rem 0 0.5rem 2rem;
-        }
-        .logo.premium-logo {
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-        .nav-logo-link {
-            display: flex;
-            align-items: center;
-            margin-right: 1.5rem;
-            transition: transform 0.18s;
-        }
-        .nav-logo-link:hover {
-            transform: scale(1.08) rotate(-6deg);
-        }
-        .nav-logo-img {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px #ff6b0033;
-            background: #fff;
-            object-fit: cover;
+            margin: 0 auto;
+            padding: 0;
         }
         .nav-links {
             list-style: none;
@@ -1137,19 +1112,35 @@
             gap: 2.2rem;
             margin: 0;
             padding: 0;
-            align-items: center;
             justify-content: center;
-            flex: 1;
+            width: 100%;
+        }
+        .header.scrolled .navbar {
+            margin: 0;
+            padding: 0.5rem;
+        }
+        .logo.premium-logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.2rem;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
         }
         .nav-links li {
             display: inline-block;
         }
         .nav-links a {
             color: #fff;
+            text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            text-decoration: none;
-            letter-spacing: 1px;
             padding: 0.2rem 0.5rem;
             border-radius: 0.5rem;
             transition: all 0.3s ease;
@@ -1220,12 +1211,7 @@
                 margin: 0.5rem 0 0 0;
             }
         }
-        .glass-header {
-            background: rgba(255,107,0,0.92);
-            backdrop-filter: blur(8px) saturate(1.2);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-            border-bottom: 1.5px solid #ffd9b3;
-        }
+        
         .premium-logo {
             font-size: 2.8rem;
             font-weight: 900;
@@ -2103,7 +2089,7 @@
             --bg-color: #fff7f0;
             --text-color: #222;
             --card-bg: #fff;
-            --header-bg: rgba(255,107,0,0.92);
+            --header-bg: rgba(255,107,0,1);
             --shadow-color: rgba(0,0,0,0.1);
             --gradient-start: #fff7f0;
             --gradient-end: #fff;
@@ -2119,7 +2105,7 @@
             --bg-color: #1a1a1a;
             --text-color: #f0f0f0;
             --card-bg: #2d2d2d;
-            --header-bg: rgba(255,107,0,0.85);
+            --header-bg: rgba(255,107,0,1);
             --shadow-color: rgba(0,0,0,0.3);
             --gradient-start: #2d2d2d;
             --gradient-end: #1a1a1a;
@@ -2873,17 +2859,17 @@
         </button>
     </div>
 
-    <header class="header glass-header">
+    <header class="header">
         <div class="logo-container">
             <a href="/">
-                <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo" fetchpriority="high">
+                <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo">
             </a>
         </div>
         <nav class="navbar">
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#nos-patchs">Produits</a></li>
-                <li><a href="#about-us">A propos</a></li>
+                <li><a href="#about-us">À propos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <a href="#" class="login-icon" title="Connexion">
@@ -2900,7 +2886,7 @@
         Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
 -->    
-    <main class="overlay-content" id="accueil">
+    <main class="overlay-content" id="accueil" style="margin-top: 120px;">
         <div class="hero-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-bottom: 3rem; padding: 5rem 4rem; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10); position: relative; overflow: hidden; max-width: 1400px; margin-left: auto; margin-right: auto;" class="hero-section">
             <!-- Effet de gradient en arrière-plan -->
             <div style="position: absolute; top: 0; left: 0; right: 0; height: 100%; background: linear-gradient(135deg, rgba(255,107,0,0.05) 0%, rgba(255,255,255,0) 100%); z-index: 0;"></div>
@@ -3355,10 +3341,10 @@
             </div>
             <div class="footer-section">
                 <h3>Liens rapides</h3>
-                <a href="#features">Fonctionnalités</a>
-                <a href="#packs">Nos packs</a>
-                <a href="#contact">Contact</a>
+                <a href="index.html">Accueil</a>
+                <a href="contact.html">Contact</a>
                 <a href="mentions.html">Mentions légales</a>
+                <a href="#">Politique de confidentialité</a>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>

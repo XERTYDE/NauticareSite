@@ -25,17 +25,37 @@
             font-family: 'Montserrat', Arial, sans-serif;
         }
         .header {
-            position: relative;
-            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             background: var(--header-bg);
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            padding: 2rem 0 1rem 0;
+            padding: 0.8rem 0;
             text-align: center;
+            border-bottom: 1.5px solid #ffd9b3;
+            backdrop-filter: blur(8px) saturate(1.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled {
+            padding: 0.3rem 0;
+        }
+        .logo-container {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            transition: height 0.3s ease;
         }
         .logo {
             width: 300px;
             height: auto;
-            margin-bottom: 1rem;
+            transition: all 0.3s ease;
         }
         .navbar {
             display: flex;
@@ -43,9 +63,16 @@
             justify-content: center;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem;
-            gap: 2.5rem;
+            padding: 0;
             position: relative;
+            transition: all 0.3s ease;
+            width: 100%;
+            min-height: 48px;
+        }
+        .header.scrolled .navbar {
+            margin: 0 auto;
+            padding: 0;
+            min-height: 40px;
         }
         .nav-logo {
             width: 48px;
@@ -58,9 +85,18 @@
             gap: 2.2rem;
             margin: 0;
             padding: 0;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled .nav-links {
+            gap: 1.8rem;
         }
         .nav-links li {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
         .nav-links a {
             color: #fff;
@@ -72,6 +108,10 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+        }
+        .header.scrolled .nav-links a {
+            font-size: 1rem;
+            padding: 0.15rem 0.4rem;
         }
         .nav-links a::after {
             content: '';
@@ -118,7 +158,7 @@
         }
         .contact-container {
             max-width: 800px;
-            margin: 3rem auto 2rem auto;
+            margin: 120px auto 2rem auto;
             background: var(--card-bg);
             border-radius: 1.5rem;
             box-shadow: 0 8px 32px var(--shadow-color);
@@ -399,7 +439,7 @@
             --bg-color: #fff7f0;
             --text-color: #222;
             --card-bg: #fff;
-            --header-bg: rgba(255,107,0,0.92);
+            --header-bg: rgba(255,107,0,1);
             --shadow-color: rgba(0,0,0,0.1);
             --footer-bg: rgba(34,34,34,0.97);
         }
@@ -407,24 +447,35 @@
             --bg-color: #1a1a1a;
             --text-color: #f0f0f0;
             --card-bg: #2d2d2d;
-            --header-bg: rgba(255,107,0,0.85);
+            --header-bg: rgba(255,107,0,1);
             --shadow-color: rgba(0,0,0,0.3);
             --footer-bg: #1a1a1a;
         }
         @media (max-width: 768px) {
+            .header {
+                padding: 0.5rem 0 !important;
+            }
+            .logo-container {
+                height: 50px !important;
+                margin-bottom: 0.3rem !important;
+            }
+            .logo {
+                width: 200px !important;
+            }
             .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 0.5rem;
+                padding: 0.5rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
             }
             .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 0.8rem !important;
             }
             .nav-links a {
-                font-size: 1.2rem;
-                padding: 0.3rem 0.6rem;
+                font-size: 1rem !important;
+                padding: 0.3rem 0.8rem !important;
             }
             .contact-container {
                 margin: 2rem 1rem;
@@ -469,11 +520,18 @@
             }
         }
         @media (max-width: 480px) {
+            .header {
+                padding: 0.3rem 0 !important;
+            }
+            .logo-container {
+                height: 40px !important;
+            }
             .logo {
-                width: 160px;
+                width: 160px !important;
             }
             .nav-links a {
-                font-size: 1.1rem;
+                font-size: 0.9rem !important;
+                padding: 0.2rem 0.6rem !important;
             }
             .contact-container {
                 padding: 1.5rem;
@@ -756,6 +814,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.getElementById('themeToggle');
             const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const header = document.querySelector('.header');
+            const logo = document.querySelector('.logo');
+            const logoContainer = document.querySelector('.logo-container');
+            let lastScroll = 0;
+            const scrollThreshold = 50;
             
             // Vérifier la préférence système et le thème sauvegardé
             const savedTheme = localStorage.getItem('theme');
@@ -780,6 +843,43 @@
                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');
+                }
+            });
+
+            // Fonction pour gérer l'effet de scroll sur le logo
+            function updateHeader() {
+                const currentScroll = window.pageYOffset;
+                const scrollProgress = Math.min(currentScroll / scrollThreshold, 1);
+
+                if (currentScroll > 0) {
+                    logo.style.transform = `scale(${1 - scrollProgress})`;
+                    logo.style.opacity = 1 - scrollProgress;
+                    logoContainer.style.height = `${60 * (1 - scrollProgress)}px`;
+                    
+                    if (currentScroll > scrollThreshold) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                } else {
+                    logo.style.transform = 'scale(1)';
+                    logo.style.opacity = 1;
+                    logoContainer.style.height = '60px';
+                    header.classList.remove('scrolled');
+                }
+
+                lastScroll = currentScroll;
+            }
+
+            // Utiliser requestAnimationFrame pour des animations plus fluides
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        updateHeader();
+                        ticking = false;
+                    });
+                    ticking = true;
                 }
             });
         });
