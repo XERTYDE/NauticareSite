@@ -214,6 +214,105 @@
             border-image-slice: 1;
             backdrop-filter: blur(6px) saturate(1.1);
         }
+
+        /* Styles responsifs pour le footer et les éléments sociaux */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 2rem 0 1rem 0 !important;
+            }
+
+            .footer-content {
+                gap: 1.5rem !important;
+                padding: 0 1.5rem !important;
+            }
+
+            .footer-section {
+                text-align: center !important;
+                align-items: center !important;
+            }
+
+            .footer-section h3 {
+                font-size: 1.3rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .footer-section p, .footer-section a {
+                font-size: 1rem !important;
+            }
+
+            .social-links {
+                justify-content: center !important;
+                gap: 1.2rem !important;
+            }
+
+            .social-links a {
+                font-size: 1.3rem !important;
+            }
+
+            .footer-bottom {
+                margin-top: 1.5rem !important;
+                padding-top: 1.5rem !important;
+            }
+
+            .footer-bottom p {
+                font-size: 0.9rem !important;
+            }
+
+            .social-badges {
+                right: 1rem !important;
+            }
+
+            .social-badge {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .social-badge svg {
+                width: 20px !important;
+                height: 20px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                padding: 1.5rem 0 1rem 0 !important;
+            }
+
+            .footer-content {
+                gap: 1rem !important;
+                padding: 0 1rem !important;
+            }
+
+            .footer-section h3 {
+                font-size: 1.2rem !important;
+            }
+
+            .footer-section p, .footer-section a {
+                font-size: 0.9rem !important;
+            }
+
+            .social-links {
+                gap: 1rem !important;
+            }
+
+            .social-links a {
+                font-size: 1.2rem !important;
+            }
+
+            .social-badges {
+                right: 0.5rem !important;
+            }
+
+            .social-badge {
+                width: 35px !important;
+                height: 35px !important;
+            }
+
+            .social-badge svg {
+                width: 18px !important;
+                height: 18px !important;
+            }
+        }
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -315,6 +414,128 @@
             width: 100%;
             max-width: 1000px;
             padding: 0 1rem;
+        }
+
+        /* Styles responsifs pour les sections de produits */
+        @media (max-width: 768px) {
+            .packs-container {
+                flex-direction: column !important;
+                gap: 2rem !important;
+                padding: 0 1rem !important;
+            }
+
+            .pack, .pack.recharge-pack {
+                width: 100% !important;
+                min-height: auto !important;
+                padding: 1.5rem !important;
+            }
+
+            .pack-content-wrapper {
+                flex-direction: column !important;
+                gap: 1.5rem !important;
+            }
+
+            .pack-left, .pack-content {
+                min-width: 100% !important;
+            }
+
+            .pack-img {
+                max-width: 200px !important;
+            }
+
+            .pack-description {
+                max-width: 100% !important;
+                font-size: 1.1rem !important;
+            }
+
+            .patch-selection {
+                max-width: 100% !important;
+            }
+
+            .patch-option {
+                padding: 0.8rem !important;
+            }
+
+            .patch-info img {
+                width: 45px !important;
+                height: 45px !important;
+            }
+
+            .patch-info label {
+                font-size: 1rem !important;
+            }
+
+            .quantity-btn {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 1rem !important;
+            }
+
+            .quantity-display {
+                min-width: 20px !important;
+                font-size: 1rem !important;
+            }
+
+            .patch-counter {
+                font-size: 1rem !important;
+                padding: 0.8rem !important;
+            }
+
+            .features {
+                width: 100% !important;
+                gap: 1.5rem !important;
+                margin-top: 2rem !important;
+            }
+
+            .feature-row {
+                flex-direction: column !important;
+                gap: 1.5rem !important;
+            }
+
+            .feature {
+                width: 100% !important;
+                padding: 1rem 1.2rem !important;
+                font-size: 1.1rem !important;
+            }
+
+            .section-produit, .section-about {
+                padding: 1.5rem !important;
+            }
+
+            .section-produit h1, .section-about h1 {
+                font-size: 2rem !important;
+            }
+
+            .section-produit p, .section-about p {
+                font-size: 1.1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pack-img {
+                max-width: 180px !important;
+            }
+
+            .pack h2 {
+                font-size: 1.4rem !important;
+            }
+
+            .pack-price {
+                font-size: 1.4rem !important;
+            }
+
+            .feature {
+                font-size: 1rem !important;
+                padding: 0.9rem 1rem !important;
+            }
+
+            .section-produit h1, .section-about h1 {
+                font-size: 1.8rem !important;
+            }
+
+            .section-produit p, .section-about p {
+                font-size: 1rem !important;
+            }
         }
         .pack {
             background: #fff;
@@ -855,179 +1076,62 @@
         }
         @media (max-width: 768px) {
             .header {
-                padding: 1rem 0 0.5rem 0;
+                padding: 0.5rem 0 !important;
             }
+
+            .logo-container {
+                height: 50px !important;
+                margin-bottom: 0.3rem !important;
+            }
+
             .logo {
-                width: 200px;
+                width: 200px !important;
             }
+
             .navbar {
-                flex-direction: column;
-                gap: 0.5rem;
-                padding: 0.5rem;
+                padding: 0.5rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
             }
+
             .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 0.8rem !important;
             }
+
             .nav-links a {
-                font-size: 1.2rem;
-                padding: 0.3rem 0.6rem;
+                font-size: 1rem !important;
+                padding: 0.3rem 0.8rem !important;
             }
+
             .overlay-content {
-                padding: 1rem;
-                margin: 1rem auto;
-            }
-            .main-title {
-                font-size: 2rem;
-                margin-bottom: 1.5rem;
-            }
-            .packs-container {
-                flex-direction: column;
-                gap: 2rem;
-                padding: 0 1rem;
-            }
-            .pack, .pack.recharge-pack {
-                width: 100%;
-                min-height: auto;
-                padding: 1.5rem;
-            }
-            .pack-content-wrapper {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .pack-left, .pack-content {
-                min-width: 100%;
-            }
-            .pack-img {
-                max-width: 200px;
-            }
-            .pack-description {
-                max-width: 100%;
-                font-size: 1.1rem;
-        }
-        .patch-selection {
-                max-width: 100%;
-        }
-        .patch-option {
-                padding: 0.8rem;
-            }
-            .patch-info img {
-                width: 45px;
-                height: 45px;
-            }
-            .patch-info label {
-                font-size: 1rem;
-            }
-            .quantity-btn {
-                width: 28px;
-                height: 28px;
-                font-size: 1rem;
-        }
-        .quantity-display {
-                min-width: 20px;
-                font-size: 1rem;
-        }
-        .patch-counter {
-                font-size: 1rem;
-                padding: 0.8rem;
-            }
-            .cta-btn {
-                font-size: 1.1rem;
-                padding: 0.8rem 1.5rem;
-                max-width: 100%;
-            }
-            .features {
-                width: 100%;
-                gap: 1.5rem;
-                margin-top: 2rem;
-            }
-            .feature-row {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .feature {
-                width: 100%;
-                padding: 1rem 1.2rem;
-                font-size: 1.1rem;
-            }
-            .footer {
-                padding: 1.5rem 0 1rem 0;
-                font-size: 1rem;
-            }
-            .footer-content {
-                gap: 0.8rem;
-            }
-            .footer a {
-                font-size: 1rem;
-                padding: 0.2rem 0.5rem;
-            }
-            .footer-socials {
-                margin-top: 1rem;
-                gap: 1rem;
-            }
-            .footer-socials svg, .footer-socials img {
-                width: 28px;
-                height: 28px;
-            }
-            .section-produit, .section-about {
-                padding: 1.5rem;
-            }
-            .section-produit h1, .section-about h1 {
-                font-size: 2rem;
-            }
-            .section-produit p, .section-about p {
-                font-size: 1.1rem;
-            }
-            .value-item {
-                padding: 1.2rem;
-            }
-            .value-item h3 {
-                font-size: 1.3rem;
-            }
-            .value-item p {
-                font-size: 1.1rem;
+                padding: 1rem !important;
+                margin-top: 4rem !important;
             }
         }
 
         @media (max-width: 480px) {
+            .header {
+                padding: 0.3rem 0 !important;
+            }
+
+            .logo-container {
+                height: 40px !important;
+            }
+
             .logo {
-                width: 160px;
+                width: 160px !important;
             }
-            .nav-links {
-            gap: 0.8rem;
-        }
+
             .nav-links a {
-                font-size: 1.1rem;
+                font-size: 0.9rem !important;
+                padding: 0.2rem 0.6rem !important;
             }
-            .main-title {
-                font-size: 1.8rem;
-                margin-bottom: 1rem;
-            }
-            .pack-img {
-                max-width: 180px;
-            }
-            .pack h2 {
-                font-size: 1.4rem;
-            }
-            .pack-price {
-                font-size: 1.4rem;
-            }
-            .feature {
-                font-size: 1rem;
-                padding: 0.9rem 1rem;
-            }
-            .section-produit h1, .section-about h1 {
-                font-size: 1.8rem;
-            }
-            .section-produit p, .section-about p {
-                font-size: 1rem;
-            }
-            .value-item h3 {
-                font-size: 1.2rem;
-            }
-            .value-item p {
-                font-size: 1rem;
+
+            .overlay-content {
+                margin-top: 3.5rem !important;
             }
         }
 
@@ -1260,22 +1364,98 @@
             transform: scale(1.2);
         }
         @media (max-width: 768px) {
+            .testimonials-container {
+                padding: 2rem 0 !important;
+            }
+
+            .section-testimonials {
+                padding: 0 1rem !important;
+            }
+
+            .section-testimonials h1 {
+                font-size: 1.8rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .testimonial-content {
+                font-size: 1rem !important;
+            }
+
+            .testimonial-author {
+                font-size: 1.1rem !important;
+            }
+
             .carousel {
-                height: 350px;
+                height: 300px !important;
+                padding: 1rem !important;
             }
-            .carousel-arrow {
-                width: 40px;
-                height: 40px;
+
+            .carousel-item {
+                padding: 1rem !important;
             }
-            .carousel-arrow svg {
-                width: 20px;
-                height: 20px;
-            }
-            .carousel-item-content {
-                padding: 1.5rem;
-            }
+
             .carousel-item img {
-                width: 140px;
+                width: 120px !important;
+                margin-bottom: 0.8rem !important;
+            }
+
+            .carousel-item h2 {
+                font-size: 1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .carousel-item p {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+            }
+
+            .carousel-arrow {
+                width: 36px !important;
+                height: 36px !important;
+            }
+
+            .carousel-arrow.prev {
+                left: 0.5rem !important;
+            }
+
+            .carousel-arrow.next {
+                right: 0.5rem !important;
+            }
+
+            .carousel-nav {
+                margin-top: 0.8rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-testimonials h1 {
+                font-size: 1.6rem !important;
+            }
+
+            .testimonial-card {
+                padding: 1.2rem !important;
+            }
+
+            .carousel-item img {
+                width: 100px !important;
+            }
+
+            .carousel-item h2 {
+                font-size: 0.9rem !important;
+            }
+
+            .carousel-item p {
+                font-size: 0.8rem !important;
+            }
+
+            .carousel-arrow {
+                width: 32px !important;
+                height: 32px !important;
             }
         }
 
@@ -1577,65 +1757,90 @@
             }
 
             .hero-container {
-                padding: 1.5rem;
+                padding: 2rem 1rem !important;
+                margin-bottom: 2rem !important;
             }
 
             .hero-container h1 {
-                font-size: 2rem;
+                font-size: 1.8rem !important;
+                padding: 0 1rem !important;
+                margin-bottom: 1rem !important;
             }
 
             .hero-container h2 {
-                font-size: 1.5rem;
+                font-size: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
             }
 
-            .packs-container {
-                flex-direction: column;
-                gap: 2rem;
+            .hero-container > div {
+                flex-direction: column !important;
+                gap: 2rem !important;
             }
 
-            .pack, .pack.recharge-pack {
-                width: 100%;
-                min-height: auto;
+            .hero-left, .hero-right {
+                width: 100% !important;
+                padding: 0 !important;
             }
 
-            .pack-content-wrapper {
-                flex-direction: column;
+            .hero-left img {
+                max-width: 100% !important;
             }
 
-            .pack-img {
-                max-width: 200px;
+            .hero-right {
+                margin-top: 1rem !important;
             }
 
-            /* Optimisation des images */
-            img {
-                max-width: 100%;
-                height: auto;
+            .hero-right div {
+                padding: 1rem !important;
             }
 
-            /* Réduction des animations sur mobile */
-            .partners-container, .testimonials-container {
-                transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            .features-hero-text {
+                font-size: 0.7rem !important;
             }
 
-            .partner-card, .testimonial-card {
-                transition: all 0.2s ease;
+            .cta-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                margin: 1rem auto !important;
+                font-size: 1.1rem !important;
+                padding: 0.8rem 1.5rem !important;
             }
 
-            /* Ajustement des espacements */
-            .section-produit, .section-about {
-                padding: 1.5rem;
+            .value-items {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+                padding: 0 1rem !important;
             }
 
-            .carousel-container {
-                height: 300px;
+            .value-item {
+                padding: 1.2rem !important;
             }
 
-            .carousel-item-content {
-                padding: 1rem;
+            .value-item h3 {
+                font-size: 1.3rem !important;
             }
 
-            .carousel-item img {
-                width: 100px;
+            .value-item p {
+                font-size: 1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-container h1 {
+                font-size: 1.5rem !important;
+            }
+
+            .hero-container h2 {
+                font-size: 1.3rem !important;
+            }
+
+            .features-hero-text {
+                font-size: 0.65rem !important;
+            }
+
+            .cta-btn {
+                font-size: 1rem !important;
+                padding: 0.7rem 1.2rem !important;
             }
         }
 
@@ -2055,7 +2260,64 @@
             color: #ffffff !important;
         }
         
+        /* Styles responsifs pour les témoignages */
+        @media (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1.5rem !important;
+                padding: 0 1rem !important;
+            }
+        }
 
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+                padding: 0 1rem !important;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem !important;
+                margin-bottom: 0 !important;
+            }
+
+            .testimonial-card:hover {
+                transform: translateX(0) !important;
+                box-shadow: 0 12px 40px rgba(255,107,0,0.12) !important;
+            }
+
+            .testimonial-content {
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+            }
+
+            .testimonial-author {
+                font-size: 1.1rem !important;
+                margin-top: 1rem !important;
+            }
+
+            .testimonial-role {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testimonial-card {
+                padding: 1.2rem !important;
+            }
+
+            .testimonial-content {
+                font-size: 0.95rem !important;
+            }
+
+            .testimonial-author {
+                font-size: 1rem !important;
+            }
+
+            .testimonial-role {
+                font-size: 0.85rem !important;
+            }
+        }
     </style>
     <script>
         // Script pour le mode nuit
@@ -2398,7 +2660,7 @@
             </div>
 
             <!-- Grid à 3 colonnes pour les autres témoignages -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 0;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 0;" class="testimonials-grid">
                 <!-- Témoignage 1 -->
                 <div class="testimonial-card" style="--delay: 1; background: white; padding: 2rem; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.08); position: relative; transition: all 0.2s ease; cursor: pointer; transform: translateX(0);" 
                      onmouseover="this.style.transform='translateX(-10px)'; this.style.boxShadow='0 12px 40px rgba(255,107,0,0.15)';" 
