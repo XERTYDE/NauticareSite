@@ -16,6 +16,221 @@
     <!-- Préchargement de la première vidéo de fond -->
     <!--<link rel="preload" as="video" href="features/bg/bg1.mp4">-->
     <style>
+        /* Styles responsifs pour le carousel */
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: auto !important;
+                min-height: 400px !important;
+            }
+
+            .carousel {
+                height: auto !important;
+                min-height: 400px !important;
+            }
+
+            .carousel-item {
+                height: auto !important;
+                min-height: 400px !important;
+            }
+
+            .carousel-item-content {
+                padding: 1.2rem !important;
+                height: auto !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                gap: 1rem !important;
+            }
+
+            .carousel-item img {
+                width: 100px !important;
+                height: auto !important;
+                margin: 0 auto 0.5rem !important;
+            }
+
+            .carousel-item h2 {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.5rem !important;
+                line-height: 1.3 !important;
+            }
+
+            .carousel-item p {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                padding: 0 0.5rem !important;
+            }
+
+            .carousel-arrow {
+                width: 36px !important;
+                height: 36px !important;
+                top: 45% !important;
+            }
+
+            .carousel-arrow.prev {
+                left: 0.5rem !important;
+            }
+
+            .carousel-arrow.next {
+                right: 0.5rem !important;
+            }
+
+            .carousel-arrow svg {
+                width: 18px !important;
+                height: 18px !important;
+            }
+
+            .carousel-nav {
+                margin-top: 1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-container {
+                min-height: 380px !important;
+            }
+
+            .carousel {
+                min-height: 380px !important;
+            }
+
+            .carousel-item {
+                min-height: 380px !important;
+            }
+
+            .carousel-item-content {
+                padding: 1rem !important;
+            }
+
+            .carousel-item img {
+                width: 80px !important;
+            }
+
+            .carousel-item h2 {
+                font-size: 1rem !important;
+            }
+
+            .carousel-item p {
+                font-size: 0.85rem !important;
+                padding: 0 0.3rem !important;
+            }
+
+            .carousel-arrow {
+                width: 32px !important;
+                height: 32px !important;
+            }
+
+            .carousel-arrow svg {
+                width: 16px !important;
+                height: 16px !important;
+            }
+        }
+
+        /* Styles responsifs pour la hero section */
+        @media (max-width: 768px) {
+            .hero-container {
+                padding: 2rem 1rem !important;
+                gap: 1rem !important;
+            }
+
+            .hero-container > div {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+
+            .hero-left, .hero-right {
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .hero-left {
+                order: 1 !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .hero-right {
+                order: 2 !important;
+            }
+
+            .hero-left img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            .hero-container h1 {
+                font-size: 1.8rem !important;
+                padding: 0 0.5rem !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.3 !important;
+            }
+
+            .hero-container h2 {
+                font-size: 1.4rem !important;
+                padding: 0 0.5rem !important;
+                margin-bottom: 1.5rem !important;
+                line-height: 1.3 !important;
+            }
+
+            .hero-right > div {
+                padding: 1rem !important;
+            }
+
+            .features-hero-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.5rem !important;
+                margin-top: 0.8rem !important;
+                padding: 0 0.5rem !important;
+            }
+
+            .features-hero-text {
+                font-size: 0.8rem !important;
+            }
+
+            .features-hero-icon {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-container {
+                padding: 1.5rem 0.8rem !important;
+            }
+
+            .hero-container h1 {
+                font-size: 1.5rem !important;
+                padding: 0 0.3rem !important;
+            }
+
+            .hero-container h2 {
+                font-size: 1.2rem !important;
+                padding: 0 0.3rem !important;
+            }
+
+            .features-hero-grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.4rem !important;
+            }
+
+            .features-hero-grid > div {
+                padding: 0.3rem !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 0.5rem !important;
+                text-align: left !important;
+            }
+
+            .features-hero-text {
+                font-size: 0.7rem !important;
+            }
+
+            .features-hero-icon {
+                font-size: 0.8rem !important;
+                margin: 0 !important;
+            }
+        }
+
         html, body {
             height: 100%;
             font-family: 'Montserrat', Arial, sans-serif;
@@ -2278,6 +2493,10 @@
 
             .testimonial-card {
                 padding: 1.5rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .testimonial-card:last-child {
                 margin-bottom: 0 !important;
             }
 
@@ -2318,10 +2537,196 @@
                 font-size: 0.85rem !important;
             }
         }
+
+        /* Styles responsifs pour la grille des caractéristiques */
+        @media (max-width: 768px) {
+            .features-hero-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.5rem !important;
+                margin-top: 0.8rem !important;
+                padding: 0 0.5rem !important;
+            }
+
+            .features-hero-grid > div {
+                padding: 0.4rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-hero-grid {
+                grid-template-columns: repeat(1, 1fr) !important;
+                gap: 0.4rem !important;
+                margin-top: 0.6rem !important;
+            }
+
+            .features-hero-grid > div {
+                padding: 0.3rem !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 0.5rem !important;
+                text-align: left !important;
+            }
+
+            .features-hero-grid .features-hero-icon {
+                margin: 0 !important;
+            }
+
+            .features-hero-grid .features-hero-text {
+                font-size: 0.8rem !important;
+            }
+        }
+
+        /* Styles responsifs pour la hero section */
+        @media (max-width: 768px) {
+            .hero-flex-container {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+
+            .hero-left, .hero-right {
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .hero-left {
+                order: 1 !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .hero-right {
+                order: 2 !important;
+            }
+
+            .hero-left img {
+                max-width: 100% !important;
+                height: auto !important;
+                margin-top: 1rem !important;
+            }
+            .hero-section {
+                padding: 2rem 1rem !important;
+                gap: 1rem !important;
+            }
+
+            .hero-section > div {
+                padding: 0 !important;
+            }
+
+            .hero-section h1 {
+                font-size: 1.8rem !important;
+                padding: 0 0.5rem !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.3 !important;
+            }
+
+            .hero-section h2 {
+                font-size: 1.4rem !important;
+                padding: 0 0.5rem !important;
+                margin-bottom: 1.5rem !important;
+                line-height: 1.3 !important;
+            }
+
+            .hero-section .hero-left {
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .hero-section .hero-right {
+                width: 100% !important;
+                padding: 0 !important;
+                margin-top: 1rem !important;
+            }
+
+            .hero-section .hero-right > div {
+                padding: 1rem !important;
+            }
+
+            .hero-section .hero-right img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            .hero-section .features-hero-text {
+                font-size: 0.8rem !important;
+            }
+
+            .hero-section .features-hero-icon {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 1.5rem 0.8rem !important;
+            }
+
+            .hero-section h1 {
+                font-size: 1.5rem !important;
+                padding: 0 0.3rem !important;
+            }
+
+            .hero-section h2 {
+                font-size: 1.2rem !important;
+                padding: 0 0.3rem !important;
+            }
+
+            .hero-section .features-hero-text {
+                font-size: 0.7rem !important;
+            }
+
+            .hero-section .features-hero-icon {
+                font-size: 0.8rem !important;
+            }
+
+            .hero-section .hero-right > div {
+                padding: 0.8rem !important;
+            }
+        }
     </style>
     <script>
+        // Gestion du swipe pour le carousel sur mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
         // Script pour le mode nuit
         document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel-container');
+
+            // Gestion des événements tactiles
+            if (carousel) {
+                carousel.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, false);
+
+                carousel.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, false);
+
+                // Empêcher le défilement de la page pendant le swipe du carousel
+                carousel.addEventListener('touchmove', (e) => {
+                    if (Math.abs(e.changedTouches[0].screenX - touchStartX) > 10) {
+                        e.preventDefault();
+                    }
+                }, { passive: false });
+            }
+
+            function handleSwipe() {
+                const swipeThreshold = 50; // Distance minimale pour détecter un swipe
+                const swipeDistance = touchEndX - touchStartX;
+
+                if (Math.abs(swipeDistance) > swipeThreshold) {
+                    if (swipeDistance > 0) {
+                        // Swipe vers la droite - image précédente
+                        const prevButton = document.querySelector('.carousel-arrow.prev');
+                        if (prevButton) prevButton.click();
+                    } else {
+                        // Swipe vers la gauche - image suivante
+                        const nextButton = document.querySelector('.carousel-arrow.next');
+                        if (nextButton) nextButton.click();
+                    }
+                }
+            }
             const themeToggle = document.querySelector('.theme-toggle');
             const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
             
@@ -2457,7 +2862,7 @@
     </video>
 -->    
     <main class="overlay-content" id="accueil">
-        <div class="hero-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-bottom: 3rem; padding: 5rem 4rem; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10); position: relative; overflow: hidden; max-width: 1400px; margin-left: auto; margin-right: auto;">
+        <div class="hero-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-bottom: 3rem; padding: 5rem 4rem; background: rgba(255,255,255,0.95); border-radius: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10); position: relative; overflow: hidden; max-width: 1400px; margin-left: auto; margin-right: auto;" class="hero-section">
             <!-- Effet de gradient en arrière-plan -->
             <div style="position: absolute; top: 0; left: 0; right: 0; height: 100%; background: linear-gradient(135deg, rgba(255,107,0,0.05) 0%, rgba(255,255,255,0) 100%); z-index: 0;"></div>
             
@@ -2466,7 +2871,7 @@
                 <h1 style="font-size: 2.5rem; color: #ff6b00; margin: 0 auto 1.5rem; padding: 0 2rem; font-weight: 800; text-align: center; line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 100%;">Vous avez des irritations quand vous surfez ?</h1>
                 <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 2rem; font-weight: 700; text-align: center;">On a la solution pour vous</h2>
                 
-                <div style="display: flex; align-items: stretch; gap: 1rem; width: 100%; padding: 0; min-height: 100%;">
+                <div class="hero-flex-container" style="display: flex; align-items: stretch; gap: 1rem; width: 100%; padding: 0; min-height: 100%;">
                     <div class="hero-left" style="width: 65%; position: relative; display: flex; flex-direction: column; align-items: center; margin-top: 0; padding-right: 1rem; height: 100%;">
                         <img src="features/img/hero-section.png" alt="Pack Nauticare" style="width: 100%; max-width: 900px; height: 100%; object-fit: contain; border-radius: 1.2rem; box-shadow: 0 8px 32px rgba(255,107,0,0.15); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: center; position: relative;" onmouseover="this.style.transform='scale(1.03) translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(255,107,0,0.25), 0 0 20px rgba(255,107,0,0.1)'; this.style.filter='brightness(1.05) contrast(1.05)';" onmouseout="this.style.transform='scale(1) translateY(0)'; this.style.boxShadow='0 8px 32px rgba(255,107,0,0.15)'; this.style.filter='brightness(1) contrast(1)';">
                         <!-- Badge de qualité -->
@@ -2481,7 +2886,7 @@
                             
                             <p style="font-size: 1.1rem; line-height: 1.4; color: #333; margin-bottom: 1rem; font-weight: 500; position: relative;">Nauticare vous propose un patch hydrophobe pour vous protéger des irritations, pouvant vous protéger jusqu'à <span style="color: #ff6b00; font-weight: 700;">30 heures</span> !</p>
                             
-                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem;">
+                            <div class="features-hero-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem;">
                                 <div style="background: white; padding: 0.5rem; border-radius: 0.6rem; text-align: center; box-shadow: 0 2px 8px rgba(255,107,0,0.05); border: 1px solid rgba(255,107,0,0.1);">
                                     <div class='features-hero-icon' style="color: #ff6b00; font-size: 1rem; margin-bottom: 0.2rem;">✓</div>
                                     <div class='features-hero-text' style="color: #333; font-weight: 600; font-size: 0.8rem;">Protection optimale</div>
