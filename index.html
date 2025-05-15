@@ -16,6 +16,16 @@
     <!-- Préchargement de la première vidéo de fond -->
     <!--<link rel="preload" as="video" href="features/bg/bg1.mp4">-->
     <style>
+        html, body {
+        touch-action: manipulation;
+        -webkit-user-select: none; /* iOS Safari */
+        -ms-user-select: none;
+        user-select: none;
+        }
+        a, button, input {
+        touch-action: manipulation;
+        }
+
         /* Styles responsifs pour les statistiques */
         @media (max-width: 768px) {
             .statistics-mobile {
@@ -3894,5 +3904,20 @@
             }
         })();
     </script>
+
+    <script>
+        document.addEventListener('gesturestart', function (e) {
+        e.preventDefault();});
+    </script>
+
+    <script>
+    document.addEventListener('touchmove', function (e) {
+        if (e.scale !== 1) {
+            e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+
+
 </body>
 </html> 
