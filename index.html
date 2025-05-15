@@ -3408,21 +3408,6 @@
         }
     }
 
-    // Charger une vidéo de fond aléatoire
-    function loadRandomBackground() {
-        try {
-            const randomVideo = videoList[Math.floor(Math.random() * videoList.length)];
-            const videoSource = document.getElementById('bg-video-source');
-            videoSource.src = 'features/bg/' + randomVideo;
-            videoSource.parentElement.load();
-        } catch (error) {
-            console.error('Erreur lors du chargement de la vidéo de fond :', error);
-        }
-    }
-
-    // Charger une vidéo aléatoire au chargement de la page
-    loadRandomBackground();
-
     // Système de sélection pour le pack de démarrage
     const quantitiesDemarrage = {
         cou: 0,
