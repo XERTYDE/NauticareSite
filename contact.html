@@ -34,6 +34,42 @@
         * {
             font-family: 'Montserrat', Arial, sans-serif;
         }
+        /* Styles pour le menu hamburger */
+        .hamburger-menu {
+                    display: none;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 30px;
+                    height: 21px;
+                    cursor: pointer;
+                    z-index: 1002;
+                    position: fixed;
+                    top: 1.5rem;
+                    right: 1.5rem;
+                    transition: all 0.3s ease;
+                }
+
+                .hamburger-menu span {
+                    display: block;
+                    width: 100%;
+                    height: 3px;
+                    background: #fff;
+                    border-radius: 3px;
+                    transition: all 0.3s ease;
+                }
+
+                .hamburger-menu.active span:nth-child(1) {
+                    transform: translateY(9px) rotate(45deg);
+                }
+
+                .hamburger-menu.active span:nth-child(2) {
+                    opacity: 0;
+                }
+
+                .hamburger-menu.active span:nth-child(3) {
+                    transform: translateY(-9px) rotate(-45deg);
+                }
+
         .header {
             position: fixed;
             top: 0;
@@ -363,6 +399,168 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
+        @media (max-width: 700px) {
+            .navbar { 
+                flex-direction: column; 
+                gap: 0.7rem; 
+                padding: 0 0.5rem; 
+                justify-content: flex-start; 
+            }
+            .nav-logo-link { 
+                margin-right: 0; 
+                margin-bottom: 0.5rem; 
+            }
+            .nav-links { 
+                gap: 1.2rem; 
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .login-icon {
+                position: static;
+                margin: 0.5rem 0 0 0;
+            }
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.5rem 0 !important;
+            }
+
+            .logo-container {
+                height: 50px !important;
+                margin-bottom: 0.3rem !important;
+            }
+
+            .logo {
+                width: 200px !important;
+            }
+
+            .navbar {
+                padding: 0.5rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+            }
+
+            .nav-links {
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 0.8rem !important;
+            }
+
+            .nav-links a {
+                font-size: 1rem !important;
+                padding: 0.3rem 0.8rem !important;
+            }
+
+            .overlay-content {
+                padding: 1rem !important;
+                margin-top: 4rem !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.3rem 0 !important;
+            }
+
+            .logo-container {
+                height: 40px !important;
+            }
+
+            .logo {
+                width: 160px !important;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem !important;
+                padding: 0.2rem 0.6rem !important;
+            }
+
+            .overlay-content {
+                margin-top: 3.5rem !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            .overlay-content {
+                padding: 1rem;
+                margin-top: 5rem;
+            }
+
+            .hero-container {
+                padding: 2rem 1rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .hero-container h1 {
+                font-size: 1.8rem !important;
+                padding: 0 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .hero-container h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .hero-container > div {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+
+            .hero-left, .hero-right {
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .hero-left img {
+                max-width: 100% !important;
+            }
+
+            .hero-right {
+                margin-top: 1rem !important;
+            }
+
+            .hero-right div {
+                padding: 1rem !important;
+            }
+
+            .features-hero-text {
+                font-size: 0.7rem !important;
+            }
+
+            .cta-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                margin: 1rem auto !important;
+                font-size: 1.1rem !important;
+                padding: 0.8rem 1.5rem !important;
+            }
+
+            .value-items {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+                padding: 0 1rem !important;
+            }
+
+            .value-item {
+                padding: 1.2rem !important;
+            }
+
+            .value-item h3 {
+                font-size: 1.3rem !important;
+            }
+
+            .value-item p {
+                font-size: 1rem !important;
+            }
+        }
         .footer a:hover {
             transform: translateX(5px);
             color: #fff;
@@ -401,6 +599,10 @@
             }
             .footer-section {
                 align-items: center;
+            }
+
+            .hamburger-menu {
+                display: flex;
             }
         }
         .theme-toggle {
@@ -692,6 +894,21 @@
     </style>
 </head>
 <body>
+    <!-- Ajout du menu hamburger -->
+    <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Menu mobile -->
+    <nav class="mobile-nav">
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#nos-patchs">Produits</a></li>
+            <li><a href="#about-us">A propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
     <!-- Badges de réseaux sociaux -->
     <div class="social-badges">
         <a href="#" class="social-badge instagram" title="Instagram">
@@ -907,5 +1124,38 @@
             }
         }, { passive: false });
     </script>
+
+<script>
+    // Script pour le menu hamburger
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileLinks = document.querySelectorAll('.mobile-nav .nav-links a');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Fermer le menu au clic en dehors
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+</script>
+
 </body>
 </html> 
