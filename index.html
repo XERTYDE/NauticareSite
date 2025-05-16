@@ -3387,7 +3387,7 @@
     // Fonction pour envoyer les données de clic au serveur
     async function trackClick(packType) {
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbwLLEe5SdVAaqREWErDWa5-znqtxemXn_i1uSl34P-qdNtaSsfmUaS3bsoZskNZKhaGOQ/exec', {
+            const response = await fetch('https://script.google.com/macros/s/.../exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -3397,12 +3397,15 @@
                 timestamp: new Date().toISOString(),
                 quantities: packType === 'demarrage' ? quantitiesDemarrage : quantitiesRecharge
             })
-            });
+        });
 
-            window.location.href = 'merci.html'; // Décommenter quand la page de paiement sera prête
-            if (!response.ok) {
-                throw new Error('Erreur lors du suivi du clic');
-            }
+        const responseText = await response.text();
+        console.log('Réponse brute du serveur :', responseText);
+
+        if (!response.ok) {
+            throw new Error('Erreur lors du suivi du clic');
+        }
+
             
             // Rediriger vers la page de paiement ou afficher un message
             alert('Redirection vers la page de paiement...');
