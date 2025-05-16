@@ -3387,17 +3387,18 @@
     // Fonction pour envoyer les données de clic au serveur
     async function trackClick(packType) {
         try {
-            const response = await fetch('/api/track-click', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    packType: packType,
-                    timestamp: new Date().toISOString(),
-                    quantities: packType === 'demarrage' ? quantitiesDemarrage : quantitiesRecharge
-                })
+            const response = await fetch('https://script.google.com/macros/s/AKfycbwDmUXG3kct-fslIbl5skOg7_TMAKRzFEjvBLewYU7zO3s2uKe7cvP7efVGIjj5fiEdBA/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                packType: packType,
+                timestamp: new Date().toISOString(),
+                quantities: packType === 'demarrage' ? quantitiesDemarrage : quantitiesRecharge
+            })
             });
+
             window.location.href = 'merci.html'; // Décommenter quand la page de paiement sera prête
             if (!response.ok) {
                 throw new Error('Erreur lors du suivi du clic');
