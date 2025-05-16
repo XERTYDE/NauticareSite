@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Contact - Nauticare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        html, body {
+        touch-action: manipulation;
+        -webkit-user-select: none; /* iOS Safari */
+        -ms-user-select: none;
+        user-select: none;
+        }
+        a, button, input {
+        touch-action: manipulation;
+        }
+        html, body {
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        html, body {
+        overflow-x: hidden;
+        position: relative;
+        }
+
+        * {
+        box-sizing: border-box;
+        max-width: 100vw;
+        }
+        body {
+            margin: 0;
+            background: var(--bg-color);
+            min-height: 100vh;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Montserrat', Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        * {
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        /* Styles pour le menu hamburger */
+        .hamburger-menu {
+                    display: none;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 30px;
+                    height: 21px;
+                    cursor: pointer;
+                    z-index: 1002;
+                    position: fixed;
+                    top: 1.5rem;
+                    right: 1.5rem;
+                    transition: all 0.3s ease;
+                }
+
+                .hamburger-menu span {
+                    display: block;
+                    width: 100%;
+                    height: 3px;
+                    background: #fff;
+                    border-radius: 3px;
+                    transition: all 0.3s ease;
+                }
+
+                .hamburger-menu.active span:nth-child(1) {
+                    transform: translateY(9px) rotate(45deg);
+                }
+
+                .hamburger-menu.active span:nth-child(2) {
+                    opacity: 0;
+                }
+
+                .hamburger-menu.active span:nth-child(3) {
+                    transform: translateY(-9px) rotate(-45deg);
+                }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 0.8rem 0;
+            text-align: center;
+            border-bottom: 1.5px solid #ffd9b3;
+            backdrop-filter: blur(8px) saturate(1.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled {
+            padding: 0.3rem 0;
+        }
+        .logo-container {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            transition: height 0.3s ease;
+        }
+        .logo {
+            width: 300px;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0;
+            position: relative;
+            transition: all 0.3s ease;
+            width: 100%;
+            min-height: 48px;
+        }
+        .header.scrolled .navbar {
+            margin: 0 auto;
+            padding: 0;
+            min-height: 40px;
+        }
+        .nav-logo {
+            width: 48px;
+            height: auto;
+            margin-right: 1.5rem;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.2rem;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled .nav-links {
+            gap: 1.8rem;
+        }
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .header.scrolled .nav-links a {
+            font-size: 1rem;
+            padding: 0.15rem 0.4rem;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #7fd8ff;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .nav-links a:active {
+            transform: translateY(0);
+        }
+        .login-icon {
+            margin-left: 2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            position: fixed;
+            right: 1rem;
+            margin-right: 0;
+            z-index: 1001;
+        }
+        .login-icon:hover {
+            transform: scale(1.1);
+        }
+        .login-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+        }
+        .contact-container {
+            max-width: 800px;
+            margin: 120px auto 2rem auto;
+            margin-top: 10rem;
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            padding: 3rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b00, #ffb347);
+            border-radius: 4px 4px 0 0;
+        }
+        .contact-info {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+        .contact-info p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .contact-info a {
+            color: #ff6b00;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.2rem 0;
+        }
+        .contact-info a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b00, #ffb347);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: #ffb347;
+        }
+        .contact-info a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        h1 {
+            color: #ff6b00;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(255,107,0,0.1);
+        }
+        form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        form div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        label {
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        input, textarea {
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 1rem 1.2rem;
+            border-radius: 0.8rem;
+            border: 2px solid rgba(255,107,0,0.2);
+            background: var(--card-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            resize: vertical;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ff6b00;
+            box-shadow: 0 0 0 4px rgba(255,107,0,0.1);
+        }
+        textarea {
+            min-height: 150px;
+        }
+        button {
+            background: linear-gradient(90deg, #ff6b00, #ffb347);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 2rem;
+            padding: 1rem 2.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(255,107,0,0.2);
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,0,0.3);
+            background: linear-gradient(90deg, #ffb347, #ff6b00);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .footer {
+            width: 100%;
+            background: linear-gradient(180deg, rgba(34,34,34,0.97) 0%, rgba(20,20,20,0.98) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 2.5rem 0 1.5rem 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 -4px 24px rgba(255,107,0,0.10);
+            flex-shrink: 0;
+            border-top: 2px solid transparent;
+            border-image: linear-gradient(90deg, #7fd8ff 0%, #003366 100%);
+            border-image-slice: 1;
+            backdrop-filter: blur(6px) saturate(1.1);
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+        .footer-section h3 {
+            color: #7fd8ff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .footer-section p {
+            color: #ccc;
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .footer a {
+            color: #7fd8ff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.1rem 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin: 0.3rem 0;
+            display: inline-block;
+        }
+        .footer a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -0.35em;
+            height: 2px;
+            background: linear-gradient(90deg, #7fd8ff 0%, transparent 100%);
+            border-radius: 2px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 700px) {
+            .navbar { 
+                flex-direction: column; 
+                gap: 0.7rem; 
+                padding: 0 0.5rem; 
+                justify-content: flex-start; 
+            }
+            .nav-logo-link { 
+                margin-right: 0; 
+                margin-bottom: 0.5rem; 
+            }
+            .nav-links { 
+                gap: 1.2rem; 
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .login-icon {
+                position: static;
+                margin: 0.5rem 0 0 0;
+            }
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.5rem 0 !important;
+            }
+
+            .logo-container {
+                height: 50px !important;
+                margin-bottom: 0.3rem !important;
+            }
+
+            .logo {
+                width: 200px !important;
+            }
+
+            .navbar {
+                padding: 0.5rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+            }
+
+            .nav-links {
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 0.8rem !important;
+            }
+
+            .nav-links a {
+                font-size: 1rem !important;
+                padding: 0.3rem 0.8rem !important;
+            }
+
+            .overlay-content {
+                padding: 1rem !important;
+                margin-top: 4rem !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.3rem 0 !important;
+            }
+
+            .logo-container {
+                height: 40px !important;
+            }
+
+            .logo {
+                width: 160px !important;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem !important;
+                padding: 0.2rem 0.6rem !important;
+            }
+
+            .overlay-content {
+                margin-top: 3.5rem !important;
+            }
+        }
+/* Styles pour le menu hamburger */
+.hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1002;
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: rgba(255,107,0,0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            padding: 5rem 2rem;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav .nav-links {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mobile-nav .nav-links a {
+            font-size: 1.2rem;
+            color: #fff;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav .nav-links a:hover {
+            opacity: 1;
+            transform: translateX(10px);
+        }
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            .overlay-content {
+                padding: 1rem;
+                margin-top: 5rem;
+            }
+
+            .hero-container {
+                padding: 2rem 1rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .hero-container h1 {
+                font-size: 1.8rem !important;
+                padding: 0 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .hero-container h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .hero-container > div {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+
+            .hero-left, .hero-right {
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .hero-left img {
+                max-width: 100% !important;
+            }
+
+            .hero-right {
+                margin-top: 1rem !important;
+            }
+
+            .hero-right div {
+                padding: 1rem !important;
+            }
+
+            .features-hero-text {
+                font-size: 0.7rem !important;
+            }
+
+            .cta-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                margin: 1rem auto !important;
+                font-size: 1.1rem !important;
+                padding: 0.8rem 1.5rem !important;
+            }
+
+            .value-items {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+                padding: 0 1rem !important;
+            }
+
+            .value-item {
+                padding: 1.2rem !important;
+            }
+
+            .value-item h3 {
+                font-size: 1.3rem !important;
+            }
+
+            .value-item p {
+                font-size: 1rem !important;
+            }
+        }
+        .footer a:hover {
+            transform: translateX(5px);
+            color: #fff;
+        }
+        .footer a:hover::after {
+            right: 0;
+            opacity: 1;
+        }
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-links a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .footer-section {
+                align-items: center;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+        .theme-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ff6b00;
+            box-shadow: 0 4px 12px rgba(255,107,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            order: -1;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(255,107,0,0.3);
+        }
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+            transition: all 0.3s ease;
+        }
+        .moon-icon {
+            display: none;
+        }
+        .sun-icon {
+            display: block;
+        }
+        [data-theme="dark"] .moon-icon {
+            display: block;
+        }
+        [data-theme="dark"] .sun-icon {
+            display: none;
+        }
+        /* Variables CSS pour le thème */
+        :root {
+            --bg-color: #fff7f0;
+            --text-color: #222;
+            --card-bg: #fff;
+            --header-bg: rgba(255,107,0,1);
+            --shadow-color: rgba(0,0,0,0.1);
+            --footer-bg: rgba(34,34,34,0.97);
+        }
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2d2d2d;
+            --header-bg: rgba(255,107,0,1);
+            --shadow-color: rgba(0,0,0,0.3);
+            --footer-bg: #1a1a1a;
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.5rem 0 !important;
+            }
+            .logo-container {
+                height: 50px !important;
+                margin-bottom: 0.3rem !important;
+            }
+            .logo {
+                width: 200px !important;
+            }
+            .navbar {
+                padding: 0.5rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+            }
+            .nav-links {
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 0.8rem !important;
+            }
+            .nav-links a {
+                font-size: 1rem !important;
+                padding: 0.3rem 0.8rem !important;
+            }
+            .contact-container {
+                margin: 2rem 1rem;
+                margin-top: 5rem;
+                padding: 2rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .contact-info {
+                padding: 1.5rem;
+            }
+            .contact-info p {
+                font-size: 1rem;
+            }
+            form {
+                gap: 1.2rem;
+            }
+            input, textarea {
+                padding: 0.8rem 1rem;
+            }
+            button {
+                font-size: 1.1rem;
+                padding: 0.9rem 2rem;
+            }
+            .footer {
+                padding: 1.5rem 0 1rem 0;
+            }
+            .footer-content {
+                gap: 0.8rem;
+            }
+            .footer a {
+                font-size: 1rem;
+                padding: 0.2rem 0.5rem;
+            }
+            .footer-socials {
+                margin-top: 1rem;
+                gap: 1rem;
+            }
+            .footer-socials svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.3rem 0 !important;
+            }
+            .logo-container {
+                height: 40px !important;
+            }
+            .logo {
+                width: 160px !important;
+            }
+            .nav-links a {
+                font-size: 0.9rem !important;
+                padding: 0.2rem 0.6rem !important;
+            }
+            .contact-container {
+                margin-top: 5rem;
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            .contact-info {
+                font-size: 1rem;
+            }
+            label {
+                font-size: 1rem;
+            }
+            input, textarea {
+                font-size: 1rem;
+                padding: 0.7rem 0.9rem;
+            }
+            button {
+                font-size: 1.1rem;
+                padding: 0.9rem 1.8rem;
+            }
+        }
+
+        /* Styles pour les badges de réseaux sociaux */
+        .social-badges {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .social-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-badge:hover {
+            transform: scale(1.1) translateX(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .social-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .social-badge:hover::before {
+            transform: translateX(100%);
+        }
+
+        .social-badge svg {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .social-badge.instagram:hover svg {
+            fill: #E1306C;
+        }
+
+        .social-badge.facebook:hover svg {
+            fill: #1877F2;
+        }
+
+        .social-badge.twitter:hover svg {
+            fill: #1DA1F2;
+        }
+
+        .social-badge.tiktok:hover svg {
+            fill: #000000;
+        }
+
+        .social-badge .tooltip {
+            position: absolute;
+            right: 60px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .social-badge:hover .tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .social-badges {
+                right: 1rem;
+            }
+            .social-badge {
+                width: 40px;
+                height: 40px;
+            }
+            .social-badge svg {
+                width: 20px;
+                height: 20px;
+            }
+            .contact-container {
+                margin-top: 5rem;
+            }
+        }
+
+        /* Styles du mode nuit pour les icônes sociales */
+        [data-theme="dark"] .social-badge {
+            background: #2d2d2d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] .social-badge svg {
+            stroke: #7fd8ff;
+            filter: brightness(0.8);
+        }
+
+        [data-theme="dark"] .social-badge:hover {
+            background: #3d3d3d;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        [data-theme="dark"] .social-badge:hover svg {
+            stroke: #ff6b00;
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Ajout du menu hamburger -->
+    <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Menu mobile -->
+    <nav class="mobile-nav">
+        <ul class="nav-links">
+            <li><a href="index.html#accueil">Accueil</a></li>
+            <li><a href="index.html#nos-patchs">Produits</a></li>
+            <li><a href="index.html#about-us">A propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- Badges de réseaux sociaux -->
+    <div class="social-badges">
+        <a href="https://www.instagram.com/nauticare_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-badge instagram" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span class="tooltip">Suivez-nous sur Instagram</span>
+        </a>
+        <a href="https://www.instagram.com/nauticare_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-badge facebook" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+            <span class="tooltip">Rejoignez-nous sur Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/nauticare_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-badge twitter" title="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+            <span class="tooltip">Suivez-nous sur Twitter</span>
+        </a>
+        <a href="https://www.instagram.com/nauticare_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-badge tiktok" title="TikTok">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                <path d="M15 8v8a4 4 0 0 1-4 4"></path>
+                <line x1="15" y1="4" x2="15" y2="8"></line>
+            </svg>
+            <span class="tooltip">Découvrez-nous sur TikTok</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" title="Changer de thème">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <header class="header">
+        <div class="logo-container">
+            <a href="/">
+                <img src="features/img/logo2.svg" alt="Logo Nauticare" class="logo">
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html#nos-patchs">Produits</a></li>
+                <li><a href="index.html#about">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="#" class="login-icon" title="Connexion">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <main class="contact-container">
+        <h1>Merci !</h1>
+        <div class="contact-info">
+            <p>Nous vous remercions chaleureusement pour votre intérêt envers nos patchs anti-irritation. Actuellement, le produit est en cours de développement.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>À propos</h3>
+                <p>Nauticare est votre partenaire de confiance pour une expérience nautique sans irritation. Notre mission est de rendre vos aventures en mer plus agréables.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <a href="index.html">Accueil</a>
+                <a href="contact.html">Contact</a>
+                <a href="mentions.html">Mentions légales</a>
+                <a href="#">Politique de confidentialité</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: thenauticare@gmail.com</p>
+                <p>Tél: +33 7 82 03 30 50</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/nauticare_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/nauticare_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/nauticare_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nauticare. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const header = document.querySelector('.header');
+            const logo = document.querySelector('.logo');
+            const logoContainer = document.querySelector('.logo-container');
+            let lastScroll = 0;
+            const scrollThreshold = 50;
+            
+            // Vérifier la préférence système et le thème sauvegardé
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (prefersDarkScheme.matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+
+            // Mettre à jour le lien actif pour la page contact
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === 'contact.html') {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Fonction pour gérer l'effet de scroll sur le logo
+            function updateHeader() {
+                const currentScroll = window.pageYOffset;
+                const scrollProgress = Math.min(currentScroll / scrollThreshold, 1);
+
+                if (currentScroll > 0) {
+                    logo.style.transform = `scale(${1 - scrollProgress})`;
+                    logo.style.opacity = 1 - scrollProgress;
+                    logoContainer.style.height = `${60 * (1 - scrollProgress)}px`;
+                    
+                    if (currentScroll > scrollThreshold) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                } else {
+                    logo.style.transform = 'scale(1)';
+                    logo.style.opacity = 1;
+                    logoContainer.style.height = '60px';
+                    header.classList.remove('scrolled');
+                }
+
+                lastScroll = currentScroll;
+            }
+
+            // Utiliser requestAnimationFrame pour des animations plus fluides
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        updateHeader();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('gesturestart', function (e) {
+        e.preventDefault();});
+    </script>
+
+    <script>
+    document.addEventListener('touchmove', function (e) {
+        if (e.scale !== 1) {
+            e.preventDefault();
+            }
+        }, { passive: false });
+        document.addEventListener('touchmove', function (e) {
+        if (e.touches.length > 1) {
+            e.preventDefault(); // blocage du zoom à deux doigts
+        }
+        }, { passive: false });
+        document.addEventListener('touchstart', function (e) {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+        }, { passive: false });
+
+        document.addEventListener('gesturestart', function (e) {
+        e.preventDefault();
+        });
+    </script>
+
+<script>
+    // Script pour le menu hamburger
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileLinks = document.querySelectorAll('.mobile-nav .nav-links a');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Fermer le menu au clic en dehors
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+</script>
+
+</body>
+</html> 

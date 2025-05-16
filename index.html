@@ -3398,14 +3398,14 @@
                     quantities: packType === 'demarrage' ? quantitiesDemarrage : quantitiesRecharge
                 })
             });
-            
+            window.location.href = 'merci.html'; // Décommenter quand la page de paiement sera prête
             if (!response.ok) {
                 throw new Error('Erreur lors du suivi du clic');
             }
             
             // Rediriger vers la page de paiement ou afficher un message
             alert('Redirection vers la page de paiement...');
-            // window.location.href = '/paiement.html'; // Décommenter quand la page de paiement sera prête
+            
             
         } catch (error) {
             console.error('Erreur:', error);
@@ -3730,58 +3730,6 @@
     </script>
 
     <script>
-        // Optimisation de la vidéo de fond
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.querySelector('.video-bg');
-            const videoSource = document.getElementById('bg-video-source');
-            
-            // Fonction pour charger la vidéo suivante en arrière-plan
-            function preloadNextVideo() {
-                const currentVideo = videoSource.src.split('/').pop();
-                const currentIndex = videoList.indexOf(currentVideo);
-                const nextIndex = (currentIndex + 1) % videoList.length;
-                const nextVideo = videoList[nextIndex];
-                
-                // Créer un élément video temporaire pour précharger
-                const tempVideo = document.createElement('video');
-                tempVideo.src = 'features/bg/' + nextVideo;
-                tempVideo.preload = 'metadata';
-            }
-
-            // Optimiser la lecture de la vidéo
-            video.addEventListener('loadedmetadata', function() {
-                // Réduire la qualité de la vidéo si nécessaire
-                if (window.innerWidth <= 768) {
-                    video.playbackRate = 0.75; // Ralentir légèrement la vidéo sur mobile
-                }
-                
-                // Précharger la vidéo suivante
-                preloadNextVideo();
-            });
-
-            // Gérer le changement de vidéo
-            video.addEventListener('ended', function() {
-                const currentVideo = videoSource.src.split('/').pop();
-                const currentIndex = videoList.indexOf(currentVideo);
-                const nextIndex = (currentIndex + 1) % videoList.length;
-                videoSource.src = 'features/bg/' + videoList[nextIndex];
-                video.load();
-                video.play();
-                preloadNextVideo();
-            });
-
-            // Optimiser la performance sur mobile
-            if ('connection' in navigator) {
-                if (navigator.connection.saveData) {
-                    video.removeAttribute('autoplay');
-                }
-                if (navigator.connection.effectiveType === '4g') {
-                    video.playbackRate = 1;
-                } else {
-                    video.playbackRate = 0.75;
-                }
-            }
-        });
 
         // Lazy loading des images avec Intersection Observer
         document.addEventListener('DOMContentLoaded', function() {
