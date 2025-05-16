@@ -3384,124 +3384,82 @@
         </div>
     </footer>
     <script>
-    // Fonction pour envoyer les données de clic au serveur
-    async function trackClick(packType) {
-        try {
-            const response = await fetch('https://script.google.com/macros/s/.../exec', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                packType: packType,
-                timestamp: new Date().toISOString(),
-                quantities: packType === 'demarrage' ? quantitiesDemarrage : quantitiesRecharge
-            })
-        });
-
-        const responseText = await response.text();
-        console.log('Réponse brute du serveur :', responseText);
-
-        if (!response.ok) {
-            throw new Error('Erreur lors du suivi du clic');
+        const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfeD0smrbOfVaSoZMOg9y6qVf8nNeQJozjPugVdS-87zcXZ3A/formResponse';
+    
+        async function trackClick(packType) {
+            const quantities = packType === 'demarrage' ? quantitiesDemarrage : quantitiesRecharge;
+    
+            // Construire une chaîne texte décrivant les quantités sélectionnées
+            // Exemple : "cou:1, petit:1, grand:1"
+            const quantitiesText = `cou:${quantities.cou}, petit:${quantities.petit}, grand:${quantities.grand}`;
+    
+            const formData = new FormData();
+            formData.append('entry.192225578', packType);           // Remplace par ton ID exact pour "Type de pack"
+            formData.append('entry.1706931144', quantitiesText);     // Remplace par ton ID exact pour "Quantités sélectionnées"
+    
+            try {
+                await fetch(formURL, {
+                    method: 'POST',
+                    mode: 'no-cors',    // Important pour contourner CORS sur Google Forms
+                    body: formData
+                });
+    
+                // Redirection après soumission
+                window.location.href = 'merci.html';
+            } catch (error) {
+                console.error('Erreur :', error);
+                alert('Une erreur est survenue. Veuillez réessayer.');
+            }
         }
-
-            
-            // Rediriger vers la page de paiement ou afficher un message
-            alert('Redirection vers la page de paiement...');
-            
-            
-        } catch (error) {
-            console.error('Erreur:', error);
-            alert('Une erreur est survenue. Veuillez réessayer.');
+    
+        const quantitiesDemarrage = { cou: 0, petit: 0, grand: 0 };
+        const counterDemarrage = document.getElementById('counter-demarrage');
+        const demarrageButton = document.getElementById('acheter-demarrage');
+        let totalQuantityDemarrage = 0;
+    
+        function updateQuantityDemarrage(type, change) {
+            const newQuantity = quantitiesDemarrage[type] + change;
+            if (newQuantity < 0 || totalQuantityDemarrage + change > 3) return;
+    
+            quantitiesDemarrage[type] = newQuantity;
+            totalQuantityDemarrage += change;
+            document.getElementById(`quantity-${type}-demarrage`).textContent = newQuantity;
+    
+            if (totalQuantityDemarrage === 3) {
+                counterDemarrage.textContent = '3 patchs sélectionnés';
+                demarrageButton.disabled = false;
+            } else {
+                counterDemarrage.textContent = `Sélectionnez ${3 - totalQuantityDemarrage} patch${3 - totalQuantityDemarrage > 1 ? 's' : ''} supplémentaire${3 - totalQuantityDemarrage > 1 ? 's' : ''}`;
+                demarrageButton.disabled = true;
+            }
         }
-    }
-
-    // Système de sélection pour le pack de démarrage
-    const quantitiesDemarrage = {
-        cou: 0,
-        petit: 0,
-        grand: 0
-    };
-
-    const counterDemarrage = document.getElementById('counter-demarrage');
-    const demarrageButton = document.getElementById('acheter-demarrage');
-    let totalQuantityDemarrage = 0;
-
-    function updateQuantityDemarrage(type, change) {
-        const newQuantity = quantitiesDemarrage[type] + change;
-
-        // Vérifier si le changement est valide
-        if (newQuantity < 0) return;
-        if (totalQuantityDemarrage + change > 3) return;
-
-        // Mettre à jour la quantité
-        quantitiesDemarrage[type] = newQuantity;
-        totalQuantityDemarrage += change;
-
-        // Mettre à jour l'affichage
-        document.getElementById(`quantity-${type}-demarrage`).textContent = quantitiesDemarrage[type];
-
-        // Mettre à jour le compteur
-        if (totalQuantityDemarrage === 3) {
-            counterDemarrage.textContent = '3 patchs sélectionnés';
-            counterDemarrage.classList.remove('error');
-            demarrageButton.disabled = false;
-        } else {
-            counterDemarrage.textContent = `Sélectionnez ${3 - totalQuantityDemarrage} patch${3 - totalQuantityDemarrage > 1 ? 's' : ''} supplémentaire${3 - totalQuantityDemarrage > 1 ? 's' : ''}`;
-            counterDemarrage.classList.remove('error');
-            demarrageButton.disabled = true;
+    
+        const quantitiesRecharge = { cou: 0, petit: 0, grand: 0 };
+        const counterRecharge = document.getElementById('counter-recharge');
+        const rechargeButton = document.getElementById('acheter-recharge');
+        let totalQuantityRecharge = 0;
+    
+        function updateQuantityRecharge(type, change) {
+            const newQuantity = quantitiesRecharge[type] + change;
+            if (newQuantity < 0 || totalQuantityRecharge + change > 3) return;
+    
+            quantitiesRecharge[type] = newQuantity;
+            totalQuantityRecharge += change;
+            document.getElementById(`quantity-${type}-recharge`).textContent = newQuantity;
+    
+            if (totalQuantityRecharge === 3) {
+                counterRecharge.textContent = '3 patchs sélectionnés';
+                rechargeButton.disabled = false;
+            } else {
+                counterRecharge.textContent = `Sélectionnez ${3 - totalQuantityRecharge} patch${3 - totalQuantityRecharge > 1 ? 's' : ''} supplémentaire${3 - totalQuantityRecharge > 1 ? 's' : ''}`;
+                rechargeButton.disabled = true;
+            }
         }
-    }
-
-    // Système de sélection pour le pack de recharge
-    const quantitiesRecharge = {
-        cou: 0,
-        petit: 0,
-        grand: 0
-    };
-
-    const counterRecharge = document.getElementById('counter-recharge');
-    const rechargeButton = document.getElementById('acheter-recharge');
-    let totalQuantityRecharge = 0;
-
-    function updateQuantityRecharge(type, change) {
-        const newQuantity = quantitiesRecharge[type] + change;
-
-        // Vérifier si le changement est valide
-        if (newQuantity < 0) return;
-        if (totalQuantityRecharge + change > 3) return;
-
-        // Mettre à jour la quantité
-        quantitiesRecharge[type] = newQuantity;
-        totalQuantityRecharge += change;
-
-        // Mettre à jour l'affichage
-        document.getElementById(`quantity-${type}-recharge`).textContent = quantitiesRecharge[type];
-
-        // Mettre à jour le compteur
-        if (totalQuantityRecharge === 3) {
-            counterRecharge.textContent = '3 patchs sélectionnés';
-            counterRecharge.classList.remove('error');
-            rechargeButton.disabled = false;
-        } else {
-            counterRecharge.textContent = `Sélectionnez ${3 - totalQuantityRecharge} patch${3 - totalQuantityRecharge > 1 ? 's' : ''} supplémentaire${3 - totalQuantityRecharge > 1 ? 's' : ''}`;
-            counterRecharge.classList.remove('error');
-            rechargeButton.disabled = true;
-        }
-    }
-
-    // Bouton de démarrage
-    document.getElementById('acheter-demarrage').onclick = function() {
-        trackClick('demarrage');
-    };
-
-    // Bouton de recharge
-    document.getElementById('acheter-recharge').onclick = function() {
-        trackClick('recharge');
-    };
-</script>
-
+    
+        document.getElementById('acheter-demarrage').onclick = () => trackClick('demarrage');
+        document.getElementById('acheter-recharge').onclick = () => trackClick('recharge');
+    </script>
+ 
     <script>
         // Fonction pour le défilement fluide
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
