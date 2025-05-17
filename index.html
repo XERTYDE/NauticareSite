@@ -3412,11 +3412,27 @@
             }
         }
     
-        const quantitiesDemarrage = { cou: 0, petit: 0, grand: 0 };
+        const quantitiesDemarrage = { cou: 1, petit: 1, grand: 1 };
+        const quantitiesRecharge = { cou: 1, petit: 1, grand: 1 };
         const counterDemarrage = document.getElementById('counter-demarrage');
+        const counterRecharge = document.getElementById('counter-recharge');
         const demarrageButton = document.getElementById('acheter-demarrage');
-        let totalQuantityDemarrage = 0;
-    
+        const rechargeButton = document.getElementById('acheter-recharge');
+        let totalQuantityDemarrage = 3;
+        let totalQuantityRecharge = 3;
+
+        // Initialiser l'affichage
+        document.getElementById('quantity-cou-demarrage').textContent = '1';
+        document.getElementById('quantity-petit-demarrage').textContent = '1';
+        document.getElementById('quantity-grand-demarrage').textContent = '1';
+        document.getElementById('quantity-cou-recharge').textContent = '1';
+        document.getElementById('quantity-petit-recharge').textContent = '1';
+        document.getElementById('quantity-grand-recharge').textContent = '1';
+        counterDemarrage.textContent = '3 patchs sélectionnés';
+        counterRecharge.textContent = '3 patchs sélectionnés';
+        demarrageButton.disabled = false;
+        rechargeButton.disabled = false;
+
         function updateQuantityDemarrage(type, change) {
             const newQuantity = quantitiesDemarrage[type] + change;
             if (newQuantity < 0 || totalQuantityDemarrage + change > 3) return;
@@ -3433,11 +3449,6 @@
                 demarrageButton.disabled = true;
             }
         }
-    
-        const quantitiesRecharge = { cou: 0, petit: 0, grand: 0 };
-        const counterRecharge = document.getElementById('counter-recharge');
-        const rechargeButton = document.getElementById('acheter-recharge');
-        let totalQuantityRecharge = 0;
     
         function updateQuantityRecharge(type, change) {
             const newQuantity = quantitiesRecharge[type] + change;
