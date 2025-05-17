@@ -3837,7 +3837,19 @@
     }, { passive: false });
   </script>
   
-
+    <script>
+        // Empêche le swipe horizontal sur mobile
+        document.addEventListener('touchmove', function(e) {
+            const touch = e.touches[0];
+            const startX = touch.clientX;
+            const startY = touch.clientY;
+            
+            // Si le mouvement est plus horizontal que vertical, empêcher le défilement
+            if (Math.abs(touch.clientX - startX) > Math.abs(touch.clientY - startY)) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
 
 </body>
 </html> 
