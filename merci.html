@@ -235,11 +235,15 @@
         }
         .contact-info {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             padding: 2rem;
             background: var(--card-bg);
             border-radius: 1rem;
             box-shadow: 0 4px 16px var(--shadow-color);
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .contact-info p {
             margin: 1rem 0;
@@ -977,6 +981,111 @@
             stroke: #ff6b00;
             filter: brightness(1.2);
         }
+        .newsletter-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            padding: 3rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .newsletter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b00, #ffb347);
+            border-radius: 4px 4px 0 0;
+        }
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px var(--shadow-color);
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .newsletter-form h2 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        .newsletter-form p {
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.8rem;
+            font-size: 1rem;
+            background: var(--input-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        .newsletter-form input[type="email"]:focus {
+            outline: none;
+            border-color: #ff6b00;
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+        }
+        .newsletter-form button {
+            background: linear-gradient(90deg, #ff6b00, #ffb347);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+        }
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
+        }
+        .newsletter-form button:active {
+            transform: translateY(0);
+        }
+        @media (max-width: 768px) {
+            .newsletter-container {
+                margin: 2rem 1rem;
+                padding: 2rem;
+            }
+            .newsletter-form {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+            .newsletter-form h2 {
+                font-size: 1.5rem;
+            }
+            .newsletter-form p {
+                font-size: 1rem;
+            }
+            .newsletter-form input[type="email"],
+            .newsletter-form button {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1071,6 +1180,12 @@
         <div class="contact-info">
             <p>Nous vous remercions chaleureusement pour votre intérêt envers nos patchs anti-irritation. Actuellement, le produit est en cours de développement.</p>
         </div>
+        <form class="newsletter-form" id="newsletterForm">
+            <h2>Restez informé des mises à jour</h2>
+            <p>Inscrivez-vous à notre newsletter pour recevoir les dates de sortie des patches et les dernières actualités de Nauticare.</p>
+            <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+            <button type="submit">S'inscrire</button>
+        </form>
     </main>
 
     <footer class="footer">
@@ -1233,6 +1348,16 @@
                 document.body.style.overflow = '';
             }
         });
+    });
+</script>
+
+<script>
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        // Ici, vous pouvez ajouter le code pour envoyer l'email à votre serveur
+        alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+        this.reset();
     });
 </script>
 
