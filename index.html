@@ -726,10 +726,22 @@
 
             .patch-selection {
                 max-width: 100% !important;
+                padding: 1rem !important;
             }
 
             .patch-option {
-                padding: 0.8rem !important;
+                padding: 1rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.8rem !important;
+            }
+
+            .patch-info {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+                width: 100% !important;
             }
 
             .patch-info img {
@@ -738,52 +750,34 @@
             }
 
             .patch-info label {
-                font-size: 1rem !important;
+                font-size: 1.1rem !important;
+                white-space: normal !important;
+                text-align: center !important;
+                width: 100% !important;
+            }
+
+            .quantity-controls {
+                display: flex !important;
+                justify-content: center !important;
+                gap: 1rem !important;
+                width: 100% !important;
             }
 
             .quantity-btn {
-                width: 28px !important;
-                height: 28px !important;
-                font-size: 1rem !important;
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 1.2rem !important;
             }
 
             .quantity-display {
-                min-width: 20px !important;
-                font-size: 1rem !important;
+                min-width: 24px !important;
+                font-size: 1.1rem !important;
             }
 
             .patch-counter {
-                font-size: 1rem !important;
-                padding: 0.8rem !important;
-            }
-
-            .features {
-                width: 100% !important;
-                gap: 1.5rem !important;
-                margin-top: 2rem !important;
-            }
-
-            .feature-row {
-                flex-direction: column !important;
-                gap: 1.5rem !important;
-            }
-
-            .feature {
-                width: 100% !important;
-                padding: 1rem 1.2rem !important;
                 font-size: 1.1rem !important;
-            }
-
-            .section-produit, .section-about {
-                padding: 1.5rem !important;
-            }
-
-            .section-produit h1, .section-about h1 {
-                font-size: 2rem !important;
-            }
-
-            .section-produit p, .section-about p {
-                font-size: 1.1rem !important;
+                padding: 1rem !important;
+                margin-top: 1rem !important;
             }
         }
 
@@ -2964,11 +2958,11 @@
                 <div class="pack-content-wrapper">
                     <div class="pack-left">
                         <img src="features/img/pack-demarrage.png" alt="Pack de Démarrage" class="pack-img" loading="eager" fetchpriority="high" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05) rotate(2deg)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'">
-                        <p class="pack-description">Commencez votre voyage vers une peau plus saine avec notre pack de démarrage complet 3 patchs + une boîte de protection.</p>
+                        <p class="pack-description">3 patchs au choix et une boîte de protection</p>
                     </div>
                     <div class="pack-content">
                         <div class="patch-selection">
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection optimale pour le cou, zone sensible aux frottements')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection optimale pour le cou, zone sensible aux frottements. Dimensions: 5.5cm x 14cm')" onmouseout="hideTooltip(this)">
                                 <div class="patch-info">
                                     <img src="features/img/p1.png" alt="Patch Cou" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-cou-demarrage">Patch Cou</label>
@@ -2979,7 +2973,7 @@
                                     <button class="quantity-btn" onclick="updateQuantityDemarrage('cou', 1)">+</button>
                                 </div>
                             </div>
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Idéal pour les petites zones d\'irritation')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Idéal pour les petites zones d\'irritation. Dimensions: 5.5cm x 7cm')" onmouseout="hideTooltip(this)">
                                 <div class="patch-info">
                                     <img src="features/img/p2.png" alt="Patch Petit" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-petit-demarrage">Patch Petit</label>
@@ -2990,7 +2984,7 @@
                                     <button class="quantity-btn" onclick="updateQuantityDemarrage('petit', 1)">+</button>
                                 </div>
                             </div>
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection renforcée pour les articulations')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection renforcée pour les articulations. Dimensions: 4.5cm x 14cm')" onmouseout="hideTooltip(this)">
                                 <div class="patch-info">
                                     <img src="features/img/p3.png" alt="Patch Articulation" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-grand-demarrage">Patch Articulation</label>
@@ -3018,11 +3012,11 @@
                 <div class="pack-content-wrapper">
                     <div class="pack-left">
                         <img src="features/img/recharge.png" alt="Pack de Recharge" class="pack-img" loading="eager" fetchpriority="high" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05) rotate(-2deg)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'">
-                        <p class="pack-description">Rechargez votre stock de patchs pour continuer à prendre soin de votre peau.</p>
+                        <p class="pack-description">3 patchs au choix</p>
                     </div>
                     <div class="pack-content">
                 <div class="patch-selection">
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection optimale pour le cou, zone sensible aux frottements')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection optimale pour le cou, zone sensible aux frottements. Dimensions: 5.5cm x 14cm')" onmouseout="hideTooltip(this)">
                         <div class="patch-info">
                                     <img src="features/img/p1.png" alt="Patch Cou" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-cou-recharge">Patch Cou</label>
@@ -3033,7 +3027,7 @@
                                     <button class="quantity-btn" onclick="updateQuantityRecharge('cou', 1)">+</button>
                         </div>
                     </div>
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Idéal pour les petites zones d\'irritation')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Idéal pour les petites zones d\'irritation. Dimensions: 5.5cm x 7cm')" onmouseout="hideTooltip(this)">
                         <div class="patch-info">
                                     <img src="features/img/p2.png" alt="Patch Petit" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-petit-recharge">Patch Petit</label>
@@ -3044,7 +3038,7 @@
                                     <button class="quantity-btn" onclick="updateQuantityRecharge('petit', 1)">+</button>
                         </div>
                     </div>
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection renforcée pour les articulations')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection renforcée pour les articulations. Dimensions: 4.5cm x 14cm')" onmouseout="hideTooltip(this)">
                         <div class="patch-info">
                                     <img src="features/img/p3.png" alt="Patch Articulation" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-grand-recharge">Patch Articulation</label>
@@ -3222,21 +3216,21 @@
                         <div class="carousel-item-content">
                             <img src="./features/img/p1.png" alt="Patch Cou">
                             <h2>Patch Cou</h2>
-                            <p>Idéal pour les irritations du cou, ce patch offre une protection optimale et un confort exceptionnel.</p>
+                            <p>Idéal pour les irritations du cou, ce patch offre une protection optimale et un confort exceptionnel. Dimensions: 5.5cm x 14cm</p>
                 </div>
                 </div>
                     <div class="carousel-item">
                         <div class="carousel-item-content">
                             <img src="./features/img/p2.png" alt="Patch Petit">
                             <h2>Patch Petit</h2>
-                            <p>Parfait pour les petites zones d'irritation, ce patch discret assure une protection efficace.</p>
+                            <p>Parfait pour les petites zones d'irritation, ce patch discret assure une protection efficace. Dimensions: 5.5cm x 7cm</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="carousel-item-content">
                             <img src="./features/img/p3.png" alt="Patch Articulation">
                             <h2>Patch Articulation</h2>
-                            <p>Le Patch Articulation est spécialement conçu pour être placé derrière les articulations (genoux, coudes, entre-jambes) pour une protection optimale contre les frottements et les irritations.</p>
+                            <p>Le Patch Articulation est spécialement conçu pour être placé derrière les articulations (genoux, coudes, entre-jambes) pour une protection optimale contre les frottements et les irritations. Dimensions: 4.5cm x 14cm</p>
                         </div>
                     </div>
                 </div>
