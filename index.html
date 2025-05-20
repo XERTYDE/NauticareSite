@@ -822,6 +822,8 @@
             transition: transform 0.3s, box-shadow 0.3s;
             margin: 0 auto;
             min-height: 400px;
+            position: relative;
+            z-index: 1;
         }
         .pack.recharge-pack {
             width: 550px;
@@ -850,6 +852,8 @@
             gap: 1rem;
             width: 100%;
             flex: 1;
+            position: relative;
+            z-index: 1;
         }
         .pack.recharge-pack .pack-left {
             display: flex;
@@ -875,6 +879,8 @@
             flex-direction: column;
             text-align: left;
             width: 100%;
+            position: relative;
+            z-index: 1;
         }
         .pack.recharge-pack .pack-content .patch-selection {
             flex: 1;
@@ -899,6 +905,8 @@
             width: 300px;
             height: auto;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
         .pack h2 {
             color: #ff6b00;
@@ -947,7 +955,48 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             width: 100%;
             min-height: 50px;
+            position: relative;
         }
+
+        .patch-option .tooltip {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 100%;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .patch-option .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: rgba(0,0,0,0.9) transparent transparent transparent;
+        }
+
+        .patch-option:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
         .patch-info {
             display: flex;
             align-items: center;
@@ -1028,6 +1077,8 @@
             margin-bottom: 1.2rem;
             max-width: 600px;
             align-items: flex-start;
+            position: relative;
+            z-index: 1;
         }
         .pack-left {
             flex: 1;
@@ -1036,6 +1087,8 @@
             align-items: center;
             gap: 0.8rem;
             min-width: 220px;
+            position: relative;
+            z-index: 1;
         }
         .pack-content {
             flex: 1;
@@ -1043,6 +1096,8 @@
             flex-direction: column;
             gap: 0.8rem;
             min-width: 300px;
+            position: relative;
+            z-index: 1;
         }
         .pack-img {
             width: 100%;
@@ -2962,7 +3017,7 @@
                     </div>
                     <div class="pack-content">
                         <div class="patch-selection">
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection optimale pour le cou, zone sensible aux frottements. Dimensions: 5.5cm x 14cm')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" data-tooltip="Protection optimale pour le cou, zone sensible aux frottements. Dimensions: 5.5cm x 14cm">
                                 <div class="patch-info">
                                     <img src="features/img/p1.png" alt="Patch Cou" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-cou-demarrage">Patch Cou</label>
@@ -2973,7 +3028,7 @@
                                     <button class="quantity-btn" onclick="updateQuantityDemarrage('cou', 1)">+</button>
                                 </div>
                             </div>
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Idéal pour les petites zones d\'irritation. Dimensions: 5.5cm x 7cm')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" data-tooltip="Idéal pour les petites zones d'irritation. Dimensions: 5.5cm x 7cm">
                                 <div class="patch-info">
                                     <img src="features/img/p2.png" alt="Patch Petit" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-petit-demarrage">Patch Petit</label>
@@ -2984,7 +3039,7 @@
                                     <button class="quantity-btn" onclick="updateQuantityDemarrage('petit', 1)">+</button>
                                 </div>
                             </div>
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection renforcée pour les articulations. Dimensions: 4.5cm x 14cm')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" data-tooltip="Protection renforcée pour les articulations. Dimensions: 4.5cm x 14cm">
                                 <div class="patch-info">
                                     <img src="features/img/p3.png" alt="Patch Articulation" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-grand-demarrage">Patch Articulation</label>
@@ -3016,7 +3071,7 @@
                     </div>
                     <div class="pack-content">
                 <div class="patch-selection">
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection optimale pour le cou, zone sensible aux frottements. Dimensions: 5.5cm x 14cm')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" data-tooltip="Protection optimale pour le cou, zone sensible aux frottements. Dimensions: 5.5cm x 14cm">
                         <div class="patch-info">
                                     <img src="features/img/p1.png" alt="Patch Cou" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-cou-recharge">Patch Cou</label>
@@ -3027,7 +3082,7 @@
                                     <button class="quantity-btn" onclick="updateQuantityRecharge('cou', 1)">+</button>
                         </div>
                     </div>
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Idéal pour les petites zones d\'irritation. Dimensions: 5.5cm x 7cm')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" data-tooltip="Idéal pour les petites zones d'irritation. Dimensions: 5.5cm x 7cm">
                         <div class="patch-info">
                                     <img src="features/img/p2.png" alt="Patch Petit" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-petit-recharge">Patch Petit</label>
@@ -3038,7 +3093,7 @@
                                     <button class="quantity-btn" onclick="updateQuantityRecharge('petit', 1)">+</button>
                         </div>
                     </div>
-                            <div class="patch-option" style="position: relative;" onmouseover="showTooltip(this, 'Protection renforcée pour les articulations. Dimensions: 4.5cm x 14cm')" onmouseout="hideTooltip(this)">
+                            <div class="patch-option" style="position: relative;" data-tooltip="Protection renforcée pour les articulations. Dimensions: 4.5cm x 14cm">
                         <div class="patch-info">
                                     <img src="features/img/p3.png" alt="Patch Articulation" style="width: 45px; height: 45px; object-fit: contain;">
                                     <label for="patch-grand-recharge">Patch Articulation</label>
@@ -3678,20 +3733,82 @@
 
     <script>
         function showTooltip(element, text) {
-            let tooltip = element.querySelector('.tooltip');
-            if (!tooltip) {
-                tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                element.appendChild(tooltip);
+            // Si une tooltip existe déjà pour cet élément, la supprimer
+            if (element._patchTooltip) {
+                document.body.removeChild(element._patchTooltip);
+                element._patchTooltip = null;
             }
+            let tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
             tooltip.textContent = text;
+            document.body.appendChild(tooltip);
+
+            // Positionner la tooltip au-dessus de l'élément survolé
+            const rect = element.getBoundingClientRect();
+            tooltip.style.position = 'fixed';
+            tooltip.style.left = `${rect.left + rect.width / 2}px`;
+            tooltip.style.top = `${rect.top - 10}px`;
+            tooltip.style.transform = 'translate(-50%, -100%)';
             tooltip.style.opacity = '1';
+            tooltip.style.visibility = 'visible';
+            tooltip.dataset.tooltipFor = 'patch-tooltip';
+            element._patchTooltip = tooltip;
+
+            // Gestion du survol de la tooltip elle-même
+            let isOverElement = true;
+            let isOverTooltip = false;
+            let hideTimeout;
+
+            function clearHideTimeout() {
+                if (hideTimeout) {
+                    clearTimeout(hideTimeout);
+                    hideTimeout = null;
+                }
+            }
+            function scheduleHide() {
+                clearHideTimeout();
+                hideTimeout = setTimeout(() => {
+                    if (!isOverElement && !isOverTooltip && element._patchTooltip) {
+                        document.body.removeChild(element._patchTooltip);
+                        element._patchTooltip = null;
+                        element._patchTooltipHandlers = null;
+                    }
+                }, 100); // délai court pour éviter le flicker
+            }
+            function onElementEnter() {
+                isOverElement = true;
+                clearHideTimeout();
+            }
+            function onElementLeave() {
+                isOverElement = false;
+                scheduleHide();
+            }
+            function onTooltipEnter() {
+                isOverTooltip = true;
+                clearHideTimeout();
+            }
+            function onTooltipLeave() {
+                isOverTooltip = false;
+                scheduleHide();
+            }
+            element.addEventListener('mouseenter', onElementEnter);
+            element.addEventListener('mouseleave', onElementLeave);
+            tooltip.addEventListener('mouseenter', onTooltipEnter);
+            tooltip.addEventListener('mouseleave', onTooltipLeave);
+            // Stocker les handlers pour pouvoir les retirer
+            element._patchTooltipHandlers = { onElementEnter, onElementLeave, onTooltipEnter, onTooltipLeave };
         }
 
         function hideTooltip(element) {
-            const tooltip = element.querySelector('.tooltip');
-            if (tooltip) {
-                tooltip.style.opacity = '0';
+            if (element._patchTooltip) {
+                // Retirer les listeners
+                element.removeEventListener('mouseleave', element._patchTooltipHandlers.onElementLeave);
+                element.removeEventListener('mouseenter', element._patchTooltipHandlers.onElementEnter);
+                element._patchTooltip.removeEventListener('mouseenter', element._patchTooltipHandlers.onTooltipEnter);
+                element._patchTooltip.removeEventListener('mouseleave', element._patchTooltipHandlers.onTooltipLeave);
+                document.body.removeChild(element._patchTooltip);
+                element._patchTooltip = null;
+                element._patchTooltipHandlers = null;
             }
         }
     </script>
@@ -3854,6 +3971,20 @@
                 e.preventDefault();
             }
         }, { passive: false });
+    </script>
+
+    <script>
+        // ... autres scripts ...
+        // Gestion des tooltips patchs :
+        document.querySelectorAll('.patch-option').forEach(option => {
+            option.addEventListener('mouseenter', function() {
+                const text = option.getAttribute('data-tooltip');
+                if (text) showTooltip(option, text);
+            });
+            option.addEventListener('mouseleave', function() {
+                hideTooltip(option);
+            });
+        });
     </script>
 
 </body>
